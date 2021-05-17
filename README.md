@@ -5,3 +5,7 @@
 ## Funzionalità
 ## Esecuzione Programma
 ## Componenti del Team
+- Davide
+- Marc
+- Luca
+- Brenno
