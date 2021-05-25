@@ -1,7 +1,7 @@
-package Home;
+package home;
 
 /**
- * La HomeController è la classe per gestire il funzionamento della HomePage grafica.
+ * La home.HomeController è la classe per gestire il funzionamento della HomePage grafica.
  * <p>
  *     Questa classe ha lo scopo di completare e controllare il funzionamento degli elementi GUI.
  *     Questa classe è complementare al file HomePage.fxml
