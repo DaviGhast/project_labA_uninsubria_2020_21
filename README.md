@@ -5,7 +5,7 @@
 ## Funzionalità
 ## Esecuzione Programma
 ## Componenti del Team
-- Davide
-- Marc
-- Luca
-- Brenno
+- Davide Mainardi
+- Marc Cepraga
+- Luca Muggiasca
+- Brenno Re
