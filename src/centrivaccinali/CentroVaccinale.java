@@ -1,84 +1,102 @@
 package centrivaccinali;
 
+/**
+ * Classe oggetto <code>CentroVaccinale</code>
+ *
+ * @author Davide Mainardi
+ * @author Marc Cepraga
+ * @author Luca Muggiasca
+ * @author Brenno Re
+ */
 public class CentroVaccinale {
 
-    public static void main(String[] args) {
+    private String nomeCentroVaccinale, qualificatoreIndirizzo, nomeIndirizzo, comune, siglaProvincia, tipologia;
+    private int numeroCivico, cap;
 
+    /**
+     * <p>Metodo costruttore per l'oggetto CetroVaccinale</p>
+     * @param nomeCentroVaccinale
+     * @param qualificatoreIndirizzo
+     * @param nomeIndirizzo
+     * @param comune
+     * @param siglaProvincia
+     * @param tipologia
+     * @param numeroCivico
+     * @param cap
+     */
+    public CentroVaccinale(String nomeCentroVaccinale, String qualificatoreIndirizzo, String nomeIndirizzo, String comune, String siglaProvincia, String tipologia, int numeroCivico, int cap){
+        this.nomeCentroVaccinale = nomeCentroVaccinale;
+        this.qualificatoreIndirizzo = qualificatoreIndirizzo;
+        this.nomeIndirizzo = nomeIndirizzo;
+        this.comune = comune;
+        this.siglaProvincia = siglaProvincia;
+        this.tipologia = tipologia;
+        this.numeroCivico = numeroCivico;
+        this.cap = cap;
     }
-        private String nomeCentroVaccinale, qualificatoreindirizzo, nomeindirizzo, comune, siglaprovincia, tipologia;
-        private int numerocivico, cap;
 
-    public
-        CentroVaccinale(String nomeCentroVaccinale, String qualificatoreindirizzo, String nomeindirizzo, String comune, String siglaprovincia, String tipologia, int numerocivico, int cap){
-            this.nomeCentroVaccinale = nomeCentroVaccinale;
-            this.qualificatoreindirizzo = qualificatoreindirizzo;
-            this.nomeindirizzo = nomeindirizzo;
-            this.comune = comune;
-            this.siglaprovincia = siglaprovincia;
-            this.tipologia = tipologia;
-            this.numerocivico = numerocivico;
-            this.cap = cap;
-        }
-
-        public String getnomeCentroVaccinale () {
-            return nomeCentroVaccinale;
-        }
-
-        public void setnomeCentroVaccinale (String nomeCentroVaccinale){
-            this.nomeCentroVaccinale = nomeCentroVaccinale;
-        }
-
-        public String getqualificatoreindirizzo () {
-            return qualificatoreindirizzo;
-        }
-
-        public void qualificatoreindirizzo (String qualificatoreindirizzo){
-            this.qualificatoreindirizzo = qualificatoreindirizzo;
-        }
-
-        public String getnomeindirizzo () {
-            return nomeindirizzo;
-        }
-
-        public void setnomeindirizzo (String nomeindirizzo){
-            this.nomeindirizzo = nomeindirizzo;
-        }
-
-        public String getcomune () {
-            return comune;
-        }
-
-        public void setcomune (String comune){
-            this.comune = comune;
-        }
-
-        public String getsiglaprovincia () {
-            return siglaprovincia;
-        }
-
-        public void setsiglaprovincia (String siglaprovincia){
-            this.siglaprovincia = siglaprovincia;
-        }
-
-        public String gettipologia () {
-            return tipologia;
-        }
-
-        public void settipologia (String tipologia){
-            this.tipologia = tipologia;
-        }
-        public int getnumerocivico () {
-            return numerocivico;
-        }
-
-        public void setnumerocivico ( int numerocivico){
-            this.numerocivico = numerocivico;
-        }
-        public int getcap () {
-            return cap;
-        }
-
-        public void setcap ( int cap){
-            this.cap = cap;
-        }
+    public String getNomeCentroVaccinale() {
+        return nomeCentroVaccinale;
     }
+
+    public void setNomeCentroVaccinale(String nomeCentroVaccinale) {
+        this.nomeCentroVaccinale = nomeCentroVaccinale;
+    }
+
+    public String getQualificatoreIndirizzo() {
+        return qualificatoreIndirizzo;
+    }
+
+    public void setQualificatoreIndirizzo(String qualificatoreIndirizzo) {
+        this.qualificatoreIndirizzo = qualificatoreIndirizzo;
+    }
+
+    public String getNomeIndirizzo() {
+        return nomeIndirizzo;
+    }
+
+    public void setNomeIndirizzo(String nomeIndirizzo) {
+        this.nomeIndirizzo = nomeIndirizzo;
+    }
+
+    public String getComune() {
+        return comune;
+    }
+
+    public void setComune(String comune) {
+        this.comune = comune;
+    }
+
+    public String getSiglaProvincia() {
+        return siglaProvincia;
+    }
+
+    public void setSiglaProvincia(String siglaProvincia) {
+        this.siglaProvincia = siglaProvincia;
+    }
+
+    public String getTipologia() {
+        return tipologia;
+    }
+
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
+    }
+
+    public int getNumeroCivico() {
+        return numeroCivico;
+    }
+
+    public void setNumeroCivico(int numeroCivico) {
+        this.numeroCivico = numeroCivico;
+    }
+
+    public int getCap() {
+        return cap;
+    }
+
+    public void setCap(int cap) {
+        this.cap = cap;
+    }
+
+}
