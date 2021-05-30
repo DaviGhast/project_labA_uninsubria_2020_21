@@ -24,7 +24,7 @@ public class CittadinoVaccinato {
      * @param idVaccinazione
      */
 
-    public void CentroVaccinale(String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, int idVaccinazione) {
+    public CittadinoVaccinato(String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, int idVaccinazione) {
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.nomeCittadino = nomeCittadino;
         this.cognomeCittadino = cognomeCittadino;
