@@ -74,6 +74,21 @@ public class CentriVaccinali {
         }
     }
 
+    public static void Scrittura (CentroVaccinale centro) {
+        File file = new File("../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv");
+        try {
+            FileWriter fw = new FileWriter(file,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(centro.getNomeCentroVaccinale()+","+centro.getQualificatoreIndirizzo()+","+centro.getNomeIndirizzo()+","+centro.getComune()+","+centro.getSiglaProvincia()+","+centro.getTipologia()+","+centro.getNumeroCivico()+","+centro.getCap());
+            bw.newLine();
+            bw.close();
+            System.out.println("Scrittura eseguita con successo");
+        } catch (IOException e) {
+            System.out.println("Errore");
+            e.printStackTrace();
+        }
+    }
+
 
 
 
