@@ -82,7 +82,7 @@ public class CentriVaccinali {
             bw.write(centro.getNomeCentroVaccinale()+","+centro.getQualificatoreIndirizzo()+","+centro.getNomeIndirizzo()+","+centro.getComune()+","+centro.getSiglaProvincia()+","+centro.getTipologia()+","+centro.getNumeroCivico()+","+centro.getCap());
             bw.newLine();
             bw.close();
-            System.out.println("Scrittura eseguita con successo");
+            System.out.println("Scrittura eseguita con successoooo");
         } catch (IOException e) {
             System.out.println("Errore");
             e.printStackTrace();
