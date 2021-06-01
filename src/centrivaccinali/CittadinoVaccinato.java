@@ -64,7 +64,7 @@ public class CittadinoVaccinato {
 
     public void setvaccinoSomministrato(String vaccinoSomministrato) {this.vaccinoSomministrato = vaccinoSomministrato; }
 
-    public int getidVaccinazione() {return idVaccinazione; }
+    public int getdVaccinazione() {return idVaccinazione; }
 
     public void setidVaccinazione(int idVaccinazione) {this.idVaccinazione = idVaccinazione; }
 

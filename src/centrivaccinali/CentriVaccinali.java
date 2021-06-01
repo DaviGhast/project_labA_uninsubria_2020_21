@@ -19,8 +19,8 @@ public class CentriVaccinali {
         }else{
             System.out.println("Esiste");
         }*/
-        CreaFile();
-        Lettura();
+        creaFile();
+        lettura();
 
 
     }
@@ -39,7 +39,7 @@ public class CentriVaccinali {
     public static void creaFile(){
         try {
             File file = new File("../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv");
-            if(!Verifica()){
+            if(!verifica()){
                 file.createNewFile();
                 System.out.println("Il file è stato creato");
 
