@@ -25,7 +25,7 @@ public class CentriVaccinali {
 
     }
 
-    public static boolean Verifica() {
+    public static boolean verifica() {
        File f = new File("../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv");
        if(f.exists()){
            return true;
@@ -36,7 +36,7 @@ public class CentriVaccinali {
     }
 
 
-    public static void CreaFile(){
+    public static void creaFile(){
         try {
             File file = new File("../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv");
             if(!Verifica()){
@@ -53,7 +53,7 @@ public class CentriVaccinali {
         }
     }
 
-    public static void Lettura() {
+    public static void lettura() {
         String file = "../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv";
         BufferedReader reader = null;
         String line = "";
@@ -74,7 +74,7 @@ public class CentriVaccinali {
         }
     }
 
-    public static void Scrittura (CentroVaccinale centro) {
+    public static void scrittura (CentroVaccinale centro) {
         File file = new File("../project_labA_uninsubria_2020_21/data/CentriVaccinali.dati.csv");
         try {
             FileWriter fw = new FileWriter(file,true);
