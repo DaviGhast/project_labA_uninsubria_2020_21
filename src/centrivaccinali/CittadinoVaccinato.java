@@ -23,7 +23,6 @@ public class CittadinoVaccinato {
      * @param vaccinoSomministrato
      * @param idVaccinazione
      */
-
     public CittadinoVaccinato(String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, int idVaccinazione) {
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.nomeCittadino = nomeCittadino;
@@ -46,28 +45,48 @@ public class CittadinoVaccinato {
         return nomeCittadino;
     }
 
-    public void setNomeCittadino(String nomeCittadino) { this.nomeCittadino = nomeCittadino; }
+    public void setNomeCittadino(String nomeCittadino) {
+        this.nomeCittadino = nomeCittadino;
+    }
 
-    public String getCognomeCittadino() {return cognomeCittadino; }
+    public String getCognomeCittadino() {
+        return cognomeCittadino;
+    }
 
-    public void setCognomeCittadino(String cognomeCittadino) {this.cognomeCittadino = cognomeCittadino; }
+    public void setCognomeCittadino(String cognomeCittadino) {
+        this.cognomeCittadino = cognomeCittadino;
+    }
 
-    public String getcodiceFiscaleCittadino() {return codiceFiscaleCittadino; }
+    public String getCodiceFiscaleCittadino() {
+        return codiceFiscaleCittadino;
+    }
 
-    public void setcodiceFiscaleCittadino(String codiceFiscaleCittadino) {this.codiceFiscaleCittadino = codiceFiscaleCittadino; }
+    public void setCodiceFiscaleCittadino(String codiceFiscaleCittadino) {
+        this.codiceFiscaleCittadino = codiceFiscaleCittadino;
+    }
 
-    public String getdataVaccinazione() {return dataVaccinazione; }
+    public String getDataVaccinazione() {
+        return dataVaccinazione;
+    }
 
-    public void setdataVaccinazione(String dataVaccinazione) {this.dataVaccinazione = dataVaccinazione; }
+    public void setDataVaccinazione(String dataVaccinazione) {
+        this.dataVaccinazione = dataVaccinazione;
+    }
 
-    public String getvaccinoSomministrato() {return vaccinoSomministrato; }
+    public String getVaccinoSomministrato() {
+        return vaccinoSomministrato;
+    }
 
-    public void setvaccinoSomministrato(String vaccinoSomministrato) {this.vaccinoSomministrato = vaccinoSomministrato; }
+    public void setVaccinoSomministrato(String vaccinoSomministrato) {
+        this.vaccinoSomministrato = vaccinoSomministrato;
+    }
 
-    public int getidVaccinazione() {return idVaccinazione; }
+    public int getIdVaccinazione() {
+        return idVaccinazione;
+    }
 
-    public void setidVaccinazione(int idVaccinazione) {this.idVaccinazione = idVaccinazione; }
+    public void setIdVaccinazione(int idVaccinazione) {
+        this.idVaccinazione = idVaccinazione;
+    }
 
 }
-
-
