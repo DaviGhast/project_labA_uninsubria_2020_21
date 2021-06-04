@@ -10,6 +10,7 @@ package centrivaccinali;
  */
 public class CentroVaccinale {
 
+    private short id;
     private String nomeCentroVaccinale, qualificatoreIndirizzo, nomeIndirizzo, comune, siglaProvincia, tipologia;
     private int numeroCivico, cap;
 
@@ -24,7 +25,8 @@ public class CentroVaccinale {
      * @param numeroCivico
      * @param cap
      */
-    public CentroVaccinale(String nomeCentroVaccinale, String qualificatoreIndirizzo, String nomeIndirizzo, String comune, String siglaProvincia, String tipologia, int numeroCivico, int cap){
+    public CentroVaccinale(short id, String nomeCentroVaccinale, String qualificatoreIndirizzo, String nomeIndirizzo, String comune, String siglaProvincia, String tipologia, int numeroCivico, int cap){
+        this.id = id;
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.qualificatoreIndirizzo = qualificatoreIndirizzo;
         this.nomeIndirizzo = nomeIndirizzo;
