@@ -37,6 +37,14 @@ public class CentroVaccinale {
         this.cap = cap;
     }
 
+    public short getId() {
+        return id;
+    }
+
+    public void setId(short id) {
+        this.id = id;
+    }
+
     public String getNomeCentroVaccinale() {
         return nomeCentroVaccinale;
     }
