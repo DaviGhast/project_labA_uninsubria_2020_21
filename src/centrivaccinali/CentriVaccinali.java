@@ -1,6 +1,9 @@
 
 package centrivaccinali;
+import gestionefile.GestioneCSV;
+
 import java.io.*;
+import java.util.Vector;
 
 /**
  * CentriVaccinali è la classe principale della sotto applicazione Centri Vaccinali.
@@ -90,9 +93,31 @@ public class CentriVaccinali {
     }
 
 
+}
 
+class GestioneCentrivaccinali extends GestioneCSV {
+
+    /**
+     * Metodo costruttore <code>GestioneCSV</code>
+     *
+     */
+    public GestioneCentrivaccinali() {
+        super("CentriVaccinali.dati", new String[]{});
+    }
+
+    public void scriviCentriVaccinali(Vector<CentroVaccinale> centriVaccinali) {
+        for (CentroVaccinale centroVaccinale : centriVaccinali) {
+            StringBuffer linea = new StringBuffer();
+            linea
+        }
+    }
+
+    public void inserisciCentriVaccinali(){
+
+    }
 
 }
+
 
 
 
