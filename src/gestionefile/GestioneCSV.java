@@ -26,7 +26,7 @@ public class GestioneCSV {
      *     è una stringa che contine la directory dei file CSV
      * </p>
      */
-    private String pathFile = "../project_labA_uninsubria_2020_21/data/";
+    private String pathFile = "../project_labA_uninsubria_2020_21/data";
     private String[] arrayNomiColonne = null;
     private File file;
     //CSV separator because "," is their digit separator
@@ -39,8 +39,9 @@ public class GestioneCSV {
      * @param arrayNomiColonne array di stringhe che descrive il nome delle varie colonne
      */
     public GestioneCSV (String filename, String[] arrayNomiColonne) {
-        filename = filename.concat(ESTENSIONE_CSV);
-        pathFile.concat(filename);
+        filename = "/"+filename.concat(ESTENSIONE_CSV);
+        pathFile = pathFile.concat(filename);
+        System.out.println(pathFile);
         file = new File(pathFile);
         this.arrayNomiColonne = arrayNomiColonne;
     }
@@ -68,7 +69,7 @@ public class GestioneCSV {
      *     questo metodo richiama altri 2 metodi
      * </p>
      */
-    public void VerificaFile () {
+    public void verificaFile () {
         creaFile();
         controllaNomiColonne();
     }
@@ -81,7 +82,6 @@ public class GestioneCSV {
      * @throws IOException
      */
     public void creaFile() {
-        file = new File(pathFile);
         try {
             if (file.createNewFile()) {
                 System.out.println("File creato: " + file.getName());
@@ -102,7 +102,6 @@ public class GestioneCSV {
      * @throws IOException
      */
     public void controllaNomiColonne() {
-        file = new File(pathFile);
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -163,7 +162,6 @@ public class GestioneCSV {
      * @throws IOException
      */
     public void letturaFile() {
-        file = new File(pathFile);
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -189,7 +187,6 @@ public class GestioneCSV {
      * @throws IOException
      */
     public void scritturaFile(String dato) {
-        File file = new File(pathFile);
         try {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -210,7 +207,6 @@ public class GestioneCSV {
      * @return
      */
     public int numRisultatiPerTutto(String dato) {
-        file = new File(pathFile);
         String line = "";
         int count = 0;
         try {
@@ -237,7 +233,6 @@ public class GestioneCSV {
      * @return
      */
     public int numRisultatiPerCampo(String dato, int indexCampo) {
-        File file = new File(pathFile);
         String line = "";
         int count = 0;
         try {
@@ -261,7 +256,6 @@ public class GestioneCSV {
      * @return
      */
     public Vector<String[]> ricercaRighePerTutto(String dato) {
-        file = new File(pathFile);
         Vector<String[]> rows = new Vector<String[]>();
         String line = "";
         try {
@@ -288,7 +282,6 @@ public class GestioneCSV {
      * @return
      */
     public Vector<String[]> ricercaRighePerCampo(String dato, int indexCampo) {
-        file = new File(pathFile);
         Vector<String[]> rows = new Vector<String[]>();
         String line = "";
         try {
@@ -366,7 +359,6 @@ public class GestioneCSV {
         letturaFile();
         System.out.println();
         Scanner in = new Scanner(System.in);
-        file = new File(pathFile);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = "";
         Vector<String> rows = new Vector<>();
@@ -442,7 +434,7 @@ public class GestioneCSV {
      */
     public void stampaCSV (String[] row){
         for (String index : row) {
-            System.out.printf("%-20s", index);
+            System.out.printf("%-25s", index);
         }
         System.out.println();
     }
