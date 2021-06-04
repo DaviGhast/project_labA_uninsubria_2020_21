@@ -16,6 +16,7 @@ public class CentroVaccinale {
 
     /**
      * <p>Metodo costruttore per l'oggetto CetroVaccinale</p>
+     * @param id
      * @param nomeCentroVaccinale
      * @param qualificatoreIndirizzo
      * @param nomeIndirizzo
@@ -110,3 +111,4 @@ public class CentroVaccinale {
     }
 
 }
+
