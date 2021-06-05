@@ -29,25 +29,30 @@ public class CentriVaccinali {
      */
     public static void loopMenu () {
         Scanner in = new Scanner(System.in);
+        GestioneCentrivaccinali gestioneCentrivaccinali;
+        GestioneVaccinati gestioneVaccinati;
         boolean exit = false;
         while (!exit){
             System.out.println("MENU Operatori vaccinali:");
             System.out.println("0 - Registra nuovo centro vaccinale");
             System.out.println("1 - Registra nuovo vaccinato");
-            System.out.println("3 - Esci e torna alla Homepage");
+            System.out.println("2 - Esci e torna alla Homepage");
             System.out.print("Enter op: ");
             int op = in.nextInt();
             switch (op){
                 case 0:
-                    GestioneCentrivaccinali gestioneCentrivaccinali = new GestioneCentrivaccinali();
+                    gestioneCentrivaccinali = new GestioneCentrivaccinali();
                     gestioneCentrivaccinali.verificaFile();
                     gestioneCentrivaccinali.scriviCentriVaccinali(
                             gestioneCentrivaccinali.registraCentroVaccinale());
-                    System.out.println();
                     gestioneCentrivaccinali.letturaFile();
                     break;
                 case 1:
-
+                    gestioneCentrivaccinali = new GestioneCentrivaccinali();
+                    gestioneVaccinati = new GestioneVaccinati(gestioneCentrivaccinali.cercaCentro());
+                    gestioneVaccinati.verificaFile();
+                    gestioneVaccinati.scriviVaccinati(gestioneVaccinati.registraVaccinati());
+                    gestioneVaccinati.letturaFile();
                     break;
                 case 2:
                     exit = true;
@@ -60,8 +65,6 @@ public class CentriVaccinali {
 }
 
 class GestioneCentrivaccinali extends GestioneCSV {
-
-    private static final String SEPARATORE_CSV = ",";
 
     /**
      * Metodo costruttore <code>GestioneCSV</code>
@@ -134,7 +137,109 @@ class GestioneCentrivaccinali extends GestioneCSV {
             while (!controllo){
                 System.out.print("Vuoi inserire un nuovo Centro Vaccinale? [S/N] ");
                 opzione = in.next();
-                opzione.toUpperCase();
+                opzione = opzione.toUpperCase();
+                if (opzione.equals("S")||opzione.equals("SI")||opzione.equals("N")||opzione.equals("NO")){
+                    controllo = true;
+                } else {
+                    System.out.print("Errore di inserimento, ritenta");
+                }
+                System.out.println();
+            }
+            switch (opzione){
+                case "S":
+                case "SI":
+                    exit = false;
+                    break;
+                case "N":
+                case "NO":
+                    exit = true;
+            }
+        }
+        return centriVaccinaliVector;
+    }
+
+    public String cercaCentro (){
+        Scanner in = new Scanner(System.in);
+        boolean esci = false;
+        String nomeCentroVaccinale = "";
+        while (!esci){
+            System.out.print("Inserisci nome Centro Vaccinale: ");
+            nomeCentroVaccinale = in.nextLine();
+            if (ricercaCentroEsiste(nomeCentroVaccinale) == true){
+                esci = true;
+            } else {
+                System.out.print("Centro inesistente, magari hai sbagliato a scrivere");
+            }
+        }
+        return nomeCentroVaccinale;
+    }
+
+    public boolean ricercaCentroEsiste(String nomeCentroVaccinale) {
+        boolean exist = false;
+        int count = numRisultatiPerTutto(nomeCentroVaccinale);
+        Vector<String[]> rows = ricercaRighePerTutto(nomeCentroVaccinale);
+        for (int i = 0; i < count; i++) {
+            String[] row = rows.elementAt(i);
+            if (row[1].equals(nomeCentroVaccinale)){
+                exist = true;
+            }
+        }
+        return exist;
+    }
+
+}
+
+class GestioneVaccinati extends GestioneCSV {
+
+    private String nomeCentroVaccinale;
+    /**
+     * Metodo costruttore <code>GestioneCSV</code>
+     * @param nomeCentroVaccinale
+     */
+    public GestioneVaccinati(String nomeCentroVaccinale) {
+        super("Vaccinati_"+nomeCentroVaccinale.replace(" ","_")+".dati",
+                new String[]{"Id","Nome Centro"});
+        this.nomeCentroVaccinale = nomeCentroVaccinale;
+    }
+
+    public Vector<CittadinoVaccinato> registraVaccinati() {
+        Scanner in = new Scanner(System.in);
+        Vector<CittadinoVaccinato> vaccinatiVector = new Vector<>();
+        boolean exit = false;
+        while (!exit){
+            //creazione e ricerca id libero
+            short id = 0;
+            while (ricercaIdEsiste(""+id)!=false){
+                id++;
+            }
+            //richieste info in input
+            System.out.print("Inserisci nomeCittadino: ");
+            String nomeCittadino = in.nextLine();
+            System.out.print("Inserisci cognomeCittadino: ");
+            String cognomeCittadino = in.nextLine();
+            System.out.print("Inserisci codiceFiscaleCittadino: ");
+            String codiceFiscaleCittadino = in.nextLine();
+            System.out.print("Inserisci dataVaccinazione: ");
+            String dataVaccinazione = in.nextLine();
+            System.out.print("Inserisci vaccinoSomministrato: ");
+            String vaccinoSomministrato = in.nextLine();
+            //creazione e ricerca id univoco libero
+            GestioneCSV vaccinati = new GestioneCSV("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+            short idUniv = 0;
+            while (vaccinati.ricercaIdEsiste(""+idUniv)!=false){
+                idUniv++;
+            }
+            vaccinati.scritturaFile(idUniv+SEPARATORE_CSV+nomeCentroVaccinale+SEPARATORE_CSV+id);
+            //inserimento oggetto CentroVaccinale nel vettore
+            vaccinatiVector.add(new CittadinoVaccinato(id,nomeCentroVaccinale,nomeCittadino,cognomeCittadino,codiceFiscaleCittadino,dataVaccinazione,vaccinoSomministrato,idUniv));
+            System.out.println("Oggetto caricato nel vettore");
+            //vuoi continuare
+            boolean controllo = false;
+            String opzione = "";
+            while (!controllo){
+                System.out.print("Vuoi inserire un nuovo Vaccinato? [S/N] ");
+                opzione = in.next();
+                opzione = opzione.toUpperCase();
                 if (opzione.equals("S")||opzione.equals("SI")||opzione.equals("N")||opzione.equals("NO")){
                     controllo = true;
                 } else {
@@ -151,20 +256,30 @@ class GestioneCentrivaccinali extends GestioneCSV {
                     exit = true;
             }
         }
-        return centriVaccinaliVector;
+        return vaccinatiVector;
     }
 
-}
-
-class GestioneVaccinati extends GestioneCSV {
-
-    /**
-     * Metodo costruttore <code>GestioneCSV</code>
-     *
-     */
-    public GestioneVaccinati(CentroVaccinale centroVaccinale) {
-        super("Vaccinati"+centroVaccinale.getNomeCentroVaccinale()+".dati",
-                new String[]{"Id","Nome Centro"});
+    public void scriviVaccinati(Vector<CittadinoVaccinato> vaccinatiVector) {
+        for (CittadinoVaccinato cittadinoVaccinato : vaccinatiVector) {
+            StringBuffer linea = new StringBuffer();
+            linea.append(cittadinoVaccinato.getId());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getNomeCentroVaccinale());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getNomeCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getCognomeCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getCodiceFiscaleCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getDataVaccinazione());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getVaccinoSomministrato());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getIdVaccinazione());
+            linea.append(SEPARATORE_CSV);
+            scritturaFile(linea.toString());
+        }
     }
 
 }

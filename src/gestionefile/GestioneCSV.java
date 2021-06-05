@@ -30,7 +30,7 @@ public class GestioneCSV {
     private String[] arrayNomiColonne = null;
     private File file;
     //CSV separator because "," is their digit separator
-    private static final String SEPARATORE_CSV = ",";
+    public static final String SEPARATORE_CSV = ",";
     private static final String ESTENSIONE_CSV = ".csv";
 
     /**

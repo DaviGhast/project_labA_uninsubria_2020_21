@@ -10,7 +10,7 @@ package centrivaccinali;
 public class CittadinoVaccinato {
 
     String nomeCentroVaccinale, nomeCittadino, cognomeCittadino, codiceFiscaleCittadino, dataVaccinazione, vaccinoSomministrato;
-    int idVaccinazione;
+    short id, idVaccinazione;
 
     /**
      * Metodo costruttore per le istanze della classe CittadinoVaccinato
@@ -21,10 +21,12 @@ public class CittadinoVaccinato {
      * @param codiceFiscaleCittadino
      * @param dataVaccinazione
      * @param vaccinoSomministrato
+     * @param id
      * @param idVaccinazione
      */
 
-    public CittadinoVaccinato(String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, int idVaccinazione) {
+    public CittadinoVaccinato(short id, String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, short idVaccinazione) {
+        this.id = id;
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.nomeCittadino = nomeCittadino;
         this.cognomeCittadino = cognomeCittadino;
@@ -46,28 +48,57 @@ public class CittadinoVaccinato {
         return nomeCittadino;
     }
 
-    public void setNomeCittadino(String nomeCittadino) { this.nomeCittadino = nomeCittadino; }
+    public void setNomeCittadino(String nomeCittadino) {
+        this.nomeCittadino = nomeCittadino;
+    }
 
-    public String getCognomeCittadino() {return cognomeCittadino; }
+    public String getCognomeCittadino() {
+        return cognomeCittadino;
+    }
 
-    public void setCognomeCittadino(String cognomeCittadino) {this.cognomeCittadino = cognomeCittadino; }
+    public void setCognomeCittadino(String cognomeCittadino) {
+        this.cognomeCittadino = cognomeCittadino;
+    }
 
-    public String getcodiceFiscaleCittadino() {return codiceFiscaleCittadino; }
+    public String getCodiceFiscaleCittadino() {
+        return codiceFiscaleCittadino;
+    }
 
-    public void setcodiceFiscaleCittadino(String codiceFiscaleCittadino) {this.codiceFiscaleCittadino = codiceFiscaleCittadino; }
+    public void setCodiceFiscaleCittadino(String codiceFiscaleCittadino) {
+        this.codiceFiscaleCittadino = codiceFiscaleCittadino;
+    }
 
-    public String getdataVaccinazione() {return dataVaccinazione; }
+    public String getDataVaccinazione() {
+        return dataVaccinazione;
+    }
 
-    public void setdataVaccinazione(String dataVaccinazione) {this.dataVaccinazione = dataVaccinazione; }
+    public void setDataVaccinazione(String dataVaccinazione) {
+        this.dataVaccinazione = dataVaccinazione;
+    }
 
-    public String getvaccinoSomministrato() {return vaccinoSomministrato; }
+    public String getVaccinoSomministrato() {
+        return vaccinoSomministrato;
+    }
 
-    public void setvaccinoSomministrato(String vaccinoSomministrato) {this.vaccinoSomministrato = vaccinoSomministrato; }
+    public void setVaccinoSomministrato(String vaccinoSomministrato) {
+        this.vaccinoSomministrato = vaccinoSomministrato;
+    }
 
-    public int getidVaccinazione() {return idVaccinazione; }
+    public short getId() {
+        return id;
+    }
 
-    public void setidVaccinazione(int idVaccinazione) {this.idVaccinazione = idVaccinazione; }
+    public void setId(short id) {
+        this.id = id;
+    }
 
+    public short getIdVaccinazione() {
+        return idVaccinazione;
+    }
+
+    public void setIdVaccinazione(short idVaccinazione) {
+        this.idVaccinazione = idVaccinazione;
+    }
 }
 
 
