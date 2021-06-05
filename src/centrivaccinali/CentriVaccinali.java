@@ -3,6 +3,10 @@ package centrivaccinali;
 import gestionefile.GestioneCSV;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -219,16 +223,57 @@ class GestioneVaccinati extends GestioneCSV {
             String cognomeCittadino = in.nextLine();
             System.out.print("Inserisci codiceFiscaleCittadino: ");
             String codiceFiscaleCittadino = in.nextLine();
-            System.out.print("Inserisci dataVaccinazione: ");
-            String dataVaccinazione = in.nextLine();
+            String dataVaccinazione = "";
+            //inserimento data
+            DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            boolean controlloData = false;
+            String opzioneData = "";
+            while (!controlloData){
+                System.out.print("Vuoi prendere la data di oggi? [S/N] ");
+                opzioneData = in.nextLine();
+                opzioneData = opzioneData.toUpperCase();
+                if (opzioneData.equals("S")||opzioneData.equals("SI")||opzioneData.equals("N")||opzioneData.equals("NO")){
+                    controlloData = true;
+                } else {
+                    System.out.print("Errore di inserimento, ritenta");
+                }
+            }
+            switch (opzioneData){
+                case "S":
+                case "SI":
+                    //automatico
+                    Date oggi = Calendar.getInstance().getTime();
+                    dataVaccinazione = formato.format(oggi);
+                    break;
+                case "N":
+                case "NO":
+                    //manuale
+                    String giorno = "0",mese = "0",anno = "0";
+                    while (giorno.length() != 2 && Integer.parseInt(giorno) <= 31){
+                        System.out.print("Inserisci giorno in numero [gg]: ");
+                        giorno = in.nextLine();
+                    }
+                    while (mese.length() != 2 && Integer.parseInt(mese) <= 12){
+                        System.out.print("Inserisci mese in numero [mm]: ");
+                        mese = in.nextLine();
+                    }
+                    while (anno.length() != 4){
+                        System.out.print("Inserisci anno in numero [anno]: ");
+                        anno = in.nextLine();
+                    }
+                    dataVaccinazione = giorno+"/"+mese+"/"+anno;
+                    break;
+            }
             System.out.print("Inserisci vaccinoSomministrato: ");
             String vaccinoSomministrato = in.nextLine();
             //creazione e ricerca id univoco libero
             GestioneCSV vaccinati = new GestioneCSV("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+            vaccinati.verificaFile();
             short idUniv = 0;
             while (vaccinati.ricercaIdEsiste(""+idUniv)!=false){
                 idUniv++;
             }
+            //scrittura parallela dei dati univoci nel file Vaccinati.dati
             vaccinati.scritturaFile(idUniv+SEPARATORE_CSV+nomeCentroVaccinale+SEPARATORE_CSV+id);
             //inserimento oggetto CentroVaccinale nel vettore
             vaccinatiVector.add(new CittadinoVaccinato(id,nomeCentroVaccinale,nomeCittadino,cognomeCittadino,codiceFiscaleCittadino,dataVaccinazione,vaccinoSomministrato,idUniv));
@@ -254,6 +299,7 @@ class GestioneVaccinati extends GestioneCSV {
                 case "N":
                 case "NO":
                     exit = true;
+                    break;
             }
         }
         return vaccinatiVector;
