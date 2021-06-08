@@ -248,6 +248,7 @@ class GestioneVaccinati extends GestioneCSV {
                 case "N":
                 case "NO":
                     //manuale
+                    //TODO Aggiornare con uso Date
                     String giorno = "0",mese = "0",anno = "0";
                     while (giorno.length() != 2 && Integer.parseInt(giorno) <= 31){
                         System.out.print("Inserisci giorno in numero [gg]: ");
@@ -265,6 +266,7 @@ class GestioneVaccinati extends GestioneCSV {
                     break;
             }
             System.out.print("Inserisci vaccinoSomministrato: ");
+            //TODO modifica vaccino sarà un Enum
             String vaccinoSomministrato = in.nextLine();
             //creazione e ricerca id univoco libero
             GestioneCSV vaccinati = new GestioneCSV("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});

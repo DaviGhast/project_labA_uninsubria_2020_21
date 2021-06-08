@@ -12,6 +12,8 @@ public class CittadinoVaccinato {
     String nomeCentroVaccinale, nomeCittadino, cognomeCittadino, codiceFiscaleCittadino, dataVaccinazione, vaccinoSomministrato;
     short id, idVaccinazione;
 
+    //TODO modifica vaccino sarà un Enum
+
     /**
      * Metodo costruttore per le istanze della classe CittadinoVaccinato
      *
