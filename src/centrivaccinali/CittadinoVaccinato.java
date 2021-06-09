@@ -39,7 +39,8 @@ public class CittadinoVaccinato {
     }
 
     public String getNomeCentroVaccinale() {
-        return nomeCentroVaccinale;
+
+     return nomeCentroVaccinale;
     }
 
     public void setNomeCentroVaccinale(String nomeCentroVaccinale) {
