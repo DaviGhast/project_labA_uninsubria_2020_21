@@ -18,7 +18,7 @@ import java.util.Vector;
  * @author Luca Muggiasca
  * @author Brenno Re
  */
-public class GestioneCSV {
+public class GestioneCsv {
 
     /**
      * Attributo <code>pathFile</code>
@@ -38,7 +38,7 @@ public class GestioneCSV {
      * @param filename nome del file che concatenato con <code>pathFile</code> da la path completa
      * @param arrayNomiColonne array di stringhe che descrive il nome delle varie colonne
      */
-    public GestioneCSV (String filename, String[] arrayNomiColonne) {
+    public GestioneCsv(String filename, String[] arrayNomiColonne) {
         filename = "/"+filename.concat(ESTENSIONE_CSV);
         pathFile = pathFile.concat(filename);
         System.out.println(pathFile);

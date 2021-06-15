@@ -1,8 +1,9 @@
 
 package centrivaccinali;
-import gestionefile.GestioneCSV;
 
-import java.io.*;
+import gestionefile.GestioneCsv;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -68,7 +69,7 @@ public class CentriVaccinali {
 
 }
 
-class GestioneCentrivaccinali extends GestioneCSV {
+class GestioneCentrivaccinali extends GestioneCsv {
 
     /**
      * Metodo costruttore <code>GestioneCSV</code>
@@ -105,7 +106,7 @@ class GestioneCentrivaccinali extends GestioneCSV {
 
     public Vector<CentroVaccinale> registraCentroVaccinale(){
         Scanner in = new Scanner(System.in);
-        Vector<CentroVaccinale> centriVaccinaliVector = new Vector<>();
+        Vector<CentroVaccinale> centriVaccinaliVector = new Vector<CentroVaccinale>();
         boolean exit = false;
         while (!exit){
             //creazione e ricerca id libero
@@ -193,7 +194,7 @@ class GestioneCentrivaccinali extends GestioneCSV {
 
 }
 
-class GestioneVaccinati extends GestioneCSV {
+class GestioneVaccinati extends GestioneCsv {
 
     private String nomeCentroVaccinale;
     /**
@@ -208,7 +209,7 @@ class GestioneVaccinati extends GestioneCSV {
 
     public Vector<CittadinoVaccinato> registraVaccinati() {
         Scanner in = new Scanner(System.in);
-        Vector<CittadinoVaccinato> vaccinatiVector = new Vector<>();
+        Vector<CittadinoVaccinato> vaccinatiVector = new Vector<CittadinoVaccinato>();
         boolean exit = false;
         while (!exit){
             //creazione e ricerca id libero
@@ -269,7 +270,7 @@ class GestioneVaccinati extends GestioneCSV {
             //TODO modifica vaccino sarà un Enum
             String vaccinoSomministrato = in.nextLine();
             //creazione e ricerca id univoco libero
-            GestioneCSV vaccinati = new GestioneCSV("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+            GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
             vaccinati.verificaFile();
             short idUniv = 0;
             while (vaccinati.ricercaIdEsiste(""+idUniv)!=false){
