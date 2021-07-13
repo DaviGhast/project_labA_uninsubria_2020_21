@@ -1,13 +1,8 @@
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  * La MainClass è la classe principale del programma.
  * <p>
- *     Questa classe ha lo scopo di lanciare la prima pagina della GUI.
+ *     Questa classe ha lo scopo di lanciare la pl'applicazione.
  * </p>
  * <p>
  *     La prima finestra della GUI, è la Homepage
@@ -18,26 +13,10 @@ import javafx.stage.Stage;
  * @author Brenno Re
  */
 
-public class MainClass extends Application {
-
-    /**
-     * Metodo Start
-     * <p>
-     *     In questo metodo viene caricato il file della GUI HomePage.fxml per essere avviato
-     * </p>
-     * @param primaryStage
-     * @throws Exception
-     */
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("home/HomePage.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
+public class MainClass {
 
     public static void main(String[] args) {
-        launch(args);
+
     }
 
 }
