@@ -127,9 +127,11 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return exist;
         }
 
-        public ArrayList<CentroVaccinale> getCentroVaccinalePerNome(String nomeCentroVaccinale){
-            ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<CentroVaccinale>();
+        public ArrayList<CentroVaccinale> getCentroVaccinalePerNome(){
             Scanner in = new Scanner(System.in);
+            System.out.print("Inserisci nome Centro Vaccinale: ");
+            String nomeCentroVaccinale = in.nextLine();
+            ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<CentroVaccinale>();
             int count = numRisultatiPerCampo(nomeCentroVaccinale,1);
             Vector<String[]> rows = ricercaRighePerCampo(nomeCentroVaccinale,1);
             for (int i = 0; i < count; i++) {
@@ -140,9 +142,13 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return listaCentriVaccinali;
         }
 
-    public ArrayList<CentroVaccinale> getCentroVaccinalePerComuneTipologia(String comune, String tipologia){
-        ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<CentroVaccinale>();
+    public ArrayList<CentroVaccinale> getCentroVaccinalePerComuneTipologia(){
         Scanner in = new Scanner(System.in);
+        System.out.print("Inserisci comune Centro Vaccinale: ");
+        String comune = in.nextLine();
+        System.out.print("Inserisci tipologia Centro Vaccinale: ");
+        String tipologia = in.nextLine();
+        ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<CentroVaccinale>();
         int count = numRisultatiPerCampo(comune,4);
         Vector<String[]> rows = ricercaRighePerCampo(comune,4);
         for (int i = 0; i < count; i++) {

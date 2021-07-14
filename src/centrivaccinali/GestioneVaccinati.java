@@ -18,7 +18,7 @@ public class GestioneVaccinati extends GestioneCsv {
      */
     public GestioneVaccinati(String nomeCentroVaccinale) {
         super("Vaccinati_"+nomeCentroVaccinale.replace(" ","_")+".dati",
-                new String[]{"Id","Nome Centro"});
+                new String[]{"Id","Nome Centro", "Nome Cittadino", "Cognome Cittadino", "CodiceFiscale", "Data", "Vaccino", "id Vaccinazione"});
         this.nomeCentroVaccinale = nomeCentroVaccinale;
     }
 

@@ -31,16 +31,10 @@ public class Cittadini {
             int op = in.nextInt();
             switch (op){
                 case 0:
-                    System.out.print("Inserisci nome Centro Vaccinale: ");
-                    String nomeCentroVaccinale = in.nextLine();
-                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerNome(nomeCentroVaccinale));
+                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerNome());
                     break;
                 case 1:
-                    System.out.print("Inserisci comune Centro Vaccinale: ");
-                    String comune = in.nextLine();
-                    System.out.print("Inserisci tipologia Centro Vaccinale: ");
-                    String tipologia = in.nextLine();
-                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerComuneTipologia(comune,tipologia));
+                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerComuneTipologia());
                     break;
                 case 2:
                     exit = true;
