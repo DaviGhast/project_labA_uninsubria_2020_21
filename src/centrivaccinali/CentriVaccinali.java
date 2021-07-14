@@ -1,15 +1,11 @@
 
 package centrivaccinali;
 
-import gestionefile.GestioneCsv;
+import cittadini.Cittadini;
+import cittadini.GestioneCittadinoRegistrato;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.Vector;
 
 /**
  * CentriVaccinali è la classe principale della sotto applicazione Centri Vaccinali.
@@ -22,19 +18,41 @@ import java.util.Vector;
 
 public class CentriVaccinali {
 
-    public static void main() {
-
+    public static void main(String[] args) {
         loopMenu();
+    }
 
+    public static void loopMenu () {
+        Scanner in = new Scanner(System.in);
+        boolean exit = false;
+        while (!exit){
+            System.out.println("MENU Applicazione:");
+            System.out.println("0 - Operatori Vaccinali");
+            System.out.println("1 - Cittadini");
+            System.out.println("2 - Esci e chiudi il programma");
+            System.out.print("Enter op: ");
+            int op = in.nextInt();
+            switch (op){
+                case 0:
+                    loopMenuOperatori();
+                    break;
+                case 1:
+                    loopMenuCittadini();
+                    break;
+                case 2:
+                    exit = true;
+                    break;
+            }
+        }
     }
 
     /**
      *
      * @throws IOException
      */
-    public static void loopMenu () {
+    public static void loopMenuOperatori () {
         Scanner in = new Scanner(System.in);
-        GestioneCentrivaccinali gestioneCentrivaccinali;
+        GestioneCentriVaccinali gestioneCentrivaccinali;
         GestioneVaccinati gestioneVaccinati;
         boolean exit = false;
         while (!exit){
@@ -46,15 +64,15 @@ public class CentriVaccinali {
             int op = in.nextInt();
             switch (op){
                 case 0:
-                    gestioneCentrivaccinali = new GestioneCentrivaccinali();
+                    gestioneCentrivaccinali = new GestioneCentriVaccinali();
                     gestioneCentrivaccinali.verificaFile();
                     gestioneCentrivaccinali.scriviCentriVaccinali(
                             gestioneCentrivaccinali.registraCentroVaccinale());
                     gestioneCentrivaccinali.letturaFile();
                     break;
                 case 1:
-                    gestioneCentrivaccinali = new GestioneCentrivaccinali();
-                    gestioneVaccinati = new GestioneVaccinati(gestioneCentrivaccinali.cercaCentro());
+                    gestioneCentrivaccinali = new GestioneCentriVaccinali();
+                    gestioneVaccinati = new GestioneVaccinati(gestioneCentrivaccinali.cercaCentroEsiste());
                     gestioneVaccinati.verificaFile();
                     gestioneVaccinati.scriviVaccinati(gestioneVaccinati.registraVaccinati());
                     gestioneVaccinati.letturaFile();
@@ -66,6 +84,36 @@ public class CentriVaccinali {
         }
     }
 
+    public static void loopMenuCittadini () {
+        Scanner in = new Scanner(System.in);
+        Cittadini cittadini = new Cittadini();
+
+        boolean exit = false;
+        while (!exit){
+            System.out.println("MENU Cittadini:");
+            System.out.println("0 - Cerca centro Vaccinale");
+            System.out.println("1 - Registra nuovo vaccinato");
+            System.out.println("2 - Inserisci EventiAvversi");
+            System.out.println("3 - Esci e torna alla Homepage");
+            System.out.print("Enter op: ");
+            int op = in.nextInt();
+            switch (op){
+                case 0:
+                    cittadini.cercaCentroVaccinale();
+                    break;
+                case 1:
+                    GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
+                    gestioneCittadinoRegistrato.scriviCittadinoRegistrato(gestioneCittadinoRegistrato.registraCittadino());
+                    break;
+                case 2:
+                    cittadini.login();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+            }
+        }
+    }
 
 }
 

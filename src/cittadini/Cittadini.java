@@ -1,5 +1,10 @@
 package cittadini;
-import java.io.*;
+
+import centrivaccinali.CentroVaccinale;
+import centrivaccinali.GestioneCentriVaccinali;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Classe <code>Cittadini</code>
@@ -12,57 +17,65 @@ import java.io.*;
  * @author Brenno Re
  */
 public class Cittadini {
-    public void registraCittadino(String nomeCittadino, String cognomeCittadino, String codiceFiscale, String email, String userId, String password, Integer idUnivocoVaccinazione )
 
-    {
-        File csvFile = new File("Cittadini_Registrati.dati.csv");
-        if (csvFile.isFile()) {
-            BufferedWriter b;
-            b=new BufferedWriter (csvFile);
-
-            b.write(nomeCittadino);
-
-            b.write(",");
-
-            b.write(cognomeCittadino);
-
-
-            b.write(",");
-
-            b.write(codiceFiscale);
-
-            b.write(",");
-
-            b.write(email);
-
-            b.write(",");
-
-            b.write(userId);
-
-            b.write(",");
-
-            b.write(password);
-
-            b.write(",");
-
-            b.write(idUnivocoVaccinazione);
-
-            b.write(",");
-
-
-            b.flush();
-            // create BufferedReader and read data from csv
+    public void cercaCentroVaccinale(){
+        Scanner in = new Scanner(System.in);
+        GestioneCentriVaccinali gestioneCentriVaccinali = new GestioneCentriVaccinali();
+        boolean exit = false;
+        while (!exit){
+            System.out.println("MENU Cerca centro Vaccinalie:");
+            System.out.println("0 - ricerca per nome del centro");
+            System.out.println("1 - ricerca per comune e tipologia");
+            System.out.println("2 - Esci dalla ricerca");
+            System.out.print("Enter op: ");
+            int op = in.nextInt();
+            switch (op){
+                case 0:
+                    System.out.print("Inserisci nome Centro Vaccinale: ");
+                    String nomeCentroVaccinale = in.nextLine();
+                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerNome(nomeCentroVaccinale));
+                    break;
+                case 1:
+                    System.out.print("Inserisci comune Centro Vaccinale: ");
+                    String comune = in.nextLine();
+                    System.out.print("Inserisci tipologia Centro Vaccinale: ");
+                    String tipologia = in.nextLine();
+                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerComuneTipologia(comune,tipologia));
+                    break;
+                case 2:
+                    exit = true;
+                    break;
+            }
         }
     }
 
-    /**
-     * Metodo <code>main</code>
-     * <p>
-     *     ha lo scopo di lanciare la sotto applicazione per i cittadini
-     * </p>
-     */
-    public static void main () {
+    public CentroVaccinale visualizzaInfoCentroVaccinale(ArrayList<CentroVaccinale> listaCentriVaccinali){
+        Scanner in = new Scanner(System.in);
 
+            System.out.println("Lista Ouptup ricerca:");
+            for (int i = 0; i < listaCentriVaccinali.size(); i++){
+                System.out.println(i +" - "+listaCentriVaccinali.get(i).getNomeCentroVaccinale());
+            }
+            System.out.print("Enter op: ");
+            int op = in.nextInt();
+            System.out.println("\nDi seguito le informazioni del centro selezionato:");
+            listaCentriVaccinali.get(op).toString();
+            return listaCentriVaccinali.get(op);
+    }
+
+    public void login(){
+        GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
+        Scanner in = new Scanner(System.in);
+        System.out.print("Inserisci il tuo Userid ");
+        String userid = in.nextLine();
+        System.out.print("Inserisci la tua Password ");
+        String password = in.nextLine();
+        if (gestioneCittadinoRegistrato.rispostaCittadinoEsiste(userid,password)){
+
+
+        } else {
+            System.out.print("Login errato");
+        }
     }
 
 
