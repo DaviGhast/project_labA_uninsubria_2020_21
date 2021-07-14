@@ -250,6 +250,24 @@ public class GestioneCsv {
         return count;
     }
 
+    public int numRisultatiPerCampoVisuliz(String dato, int indexCampo) {
+        String line = "";
+        int count = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(SEPARATORE_CSV);
+                if (row[indexCampo].contains(dato)){
+                    count++;
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     /**
      * Metodo <code>ricercaRighePerTutto</code>
      * @param dato
@@ -289,6 +307,24 @@ public class GestioneCsv {
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(SEPARATORE_CSV);
                 if (row[indexCampo].equals(dato)){
+                    rows.add(row);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return rows;
+    }
+
+    public Vector<String[]> ricercaRighePerCampoVisualiz(String dato, int indexCampo) {
+        Vector<String[]> rows = new Vector<String[]>();
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(SEPARATORE_CSV);
+                if (row[indexCampo].contains(dato)){
                     rows.add(row);
                 }
             }

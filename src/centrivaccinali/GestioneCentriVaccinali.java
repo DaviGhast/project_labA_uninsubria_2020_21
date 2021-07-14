@@ -69,7 +69,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
                 String tipologia = in.nextLine();
                 tipologia = tipologia.substring(0,1).toUpperCase()+tipologia.substring(1).toLowerCase();
                 //inserimento oggetto CentroVaccinale nel vettore
-                centriVaccinaliVector.add(new CentroVaccinale(id,nomeCentroVaccinale,qualificatoreIndirizzo,nomeIndirizzo,comune,siglaProvincia,tipologia,Integer.parseInt(numeroCivico),Integer.parseInt(cap)));
+                centriVaccinaliVector.add(new CentroVaccinale(id,nomeCentroVaccinale,qualificatoreIndirizzo,nomeIndirizzo,Integer.parseInt(numeroCivico),comune,siglaProvincia,Integer.parseInt(cap),tipologia));
                 System.out.println("Oggetto caricato nel vettore");
                 //vuoi continuare
                 boolean controllo = false;
@@ -131,13 +131,15 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             Scanner in = new Scanner(System.in);
             System.out.print("Inserisci nome Centro Vaccinale: ");
             String nomeCentroVaccinale = in.nextLine();
-            ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<CentroVaccinale>();
-            int count = numRisultatiPerCampo(nomeCentroVaccinale,1);
-            Vector<String[]> rows = ricercaRighePerCampo(nomeCentroVaccinale,1);
+            ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();
+            int count = numRisultatiPerCampoVisuliz(nomeCentroVaccinale,1);
+            Vector<String[]> rows = ricercaRighePerCampoVisualiz(nomeCentroVaccinale,1);
             for (int i = 0; i < count; i++) {
                 String[] row = rows.elementAt(i);
-                listaCentriVaccinali.add(new CentroVaccinale(Short.parseShort(row[0]), row[1], row[2], row[3],
-                        row[4], row[5], row[6], Integer.parseInt(row[7]), Integer.parseInt(row[8])));
+                CentroVaccinale centroVaccinale = new CentroVaccinale(Short.parseShort(row[0]), row[1], row[2], row[3],
+                        Integer.parseInt(row[4]), row[5], row[6], Integer.parseInt(row[7]), row[8]);
+                listaCentriVaccinali.add(centroVaccinale);
+                listaCentriVaccinali.get(i).toString();
             }
             return listaCentriVaccinali;
         }
@@ -154,14 +156,14 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         for (int i = 0; i < count; i++) {
             String[] row = rows.elementAt(i);
             listaCentriVaccinali.add(new CentroVaccinale(Short.parseShort(row[0]), row[1], row[2], row[3],
-                    row[4], row[5], row[6], Integer.parseInt(row[7]), Integer.parseInt(row[8])));
+                    Integer.parseInt(row[4]), row[5], row[6], Integer.parseInt(row[7]), row[8]));
         }
         count = numRisultatiPerCampo(tipologia,6);
         rows = ricercaRighePerCampo(tipologia,6);
         for (int i = 0; i < count; i++) {
             String[] row = rows.elementAt(i);
             listaCentriVaccinali.add(new CentroVaccinale(Short.parseShort(row[0]), row[1], row[2], row[3],
-                    row[4], row[5], row[6], Integer.parseInt(row[7]), Integer.parseInt(row[8])));
+                    Integer.parseInt(row[4]), row[5], row[6], Integer.parseInt(row[7]), row[8]));
         }
         Set<CentroVaccinale> set = new HashSet<>(listaCentriVaccinali);
         listaCentriVaccinali.clear();

@@ -26,7 +26,7 @@ public class CentroVaccinale {
      * @param numeroCivico
      * @param cap
      */
-    public CentroVaccinale(short id, String nomeCentroVaccinale, String qualificatoreIndirizzo, String nomeIndirizzo, String comune, String siglaProvincia, String tipologia, int numeroCivico, int cap){
+    public CentroVaccinale(short id, String nomeCentroVaccinale, String qualificatoreIndirizzo, String nomeIndirizzo, int numeroCivico, String comune, String siglaProvincia, int cap, String tipologia){
         this.id = id;
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.qualificatoreIndirizzo = qualificatoreIndirizzo;

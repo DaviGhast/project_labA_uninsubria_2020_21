@@ -45,16 +45,20 @@ public class Cittadini {
 
     public CentroVaccinale visualizzaInfoCentroVaccinale(ArrayList<CentroVaccinale> listaCentriVaccinali){
         Scanner in = new Scanner(System.in);
-
-            System.out.println("Lista Ouptup ricerca:");
+        if (listaCentriVaccinali != null){
+            System.out.println("\nLista Ouptup ricerca:");
             for (int i = 0; i < listaCentriVaccinali.size(); i++){
-                System.out.println(i +" - "+listaCentriVaccinali.get(i).getNomeCentroVaccinale());
+                System.out.println(""+i +" - "+listaCentriVaccinali.get(i).getNomeCentroVaccinale()+"");
             }
             System.out.print("Enter op: ");
             int op = in.nextInt();
-            System.out.println("\nDi seguito le informazioni del centro selezionato:");
-            listaCentriVaccinali.get(op).toString();
+            System.out.println("Di seguito le informazioni del centro selezionato:");
+            System.out.print(listaCentriVaccinali.get(op).toString());
             return listaCentriVaccinali.get(op);
+        } else {
+            System.out.println("\nhai sbagliato a scrivere gli argomenti di ricerca:");
+            return null;
+        }
     }
 
     public void login(){
