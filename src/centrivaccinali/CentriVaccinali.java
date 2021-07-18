@@ -84,6 +84,9 @@ public class CentriVaccinali {
         }
     }
 
+    /**
+     *
+     */
     public static void loopMenuCittadini () {
         Scanner in = new Scanner(System.in);
         Cittadini cittadini = new Cittadini();
