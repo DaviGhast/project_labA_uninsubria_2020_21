@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *
+ * La classe <code>AlgoritmoMD5</code>
  *
  */
 public class AlgoritmoMD5 {
