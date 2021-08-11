@@ -46,10 +46,7 @@ public class CentriVaccinali {
         }
     }
 
-    /**
-     *
-     * @throws IOException
-     */
+
     public static void loopMenuOperatori () {
         Scanner in = new Scanner(System.in);
         GestioneCentriVaccinali gestioneCentrivaccinali;

@@ -14,7 +14,13 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             super("CentriVaccinali.dati", new String[]{"Id","Nome Centro","Qual Indirizzo","Nome Indirizzo","Civico","Comune","Provincia","Cap","Tipologia"});
         }
 
-        public void scriviCentriVaccinali(Vector<CentroVaccinale> centriVaccinaliVector) {
+    /**
+     * <code>scrivi Centri Vaccinali</code>
+     * <p>questo metodo converte l'oggetto centrovaccinale in una string per essere scritti in un file CSV</p>
+     * @see CentroVaccinale
+     * @param centriVaccinaliVector
+     */
+    public void scriviCentriVaccinali(Vector<CentroVaccinale> centriVaccinaliVector) {
             for (CentroVaccinale centroVaccinale : centriVaccinaliVector) {
                 StringBuffer linea = new StringBuffer();
                 linea.append(centroVaccinale.getId());
