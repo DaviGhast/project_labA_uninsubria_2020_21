@@ -22,6 +22,10 @@ public class GestioneVaccinati extends GestioneCsv {
         this.nomeCentroVaccinale = nomeCentroVaccinale;
     }
 
+    /**
+     * il metodo registra il CittadinoVaccinato in vaccinatiVector
+     *
+     */
     public Vector<CittadinoVaccinato> registraVaccinati() {
         Scanner in = new Scanner(System.in);
         Vector<CittadinoVaccinato> vaccinatiVector = new Vector<CittadinoVaccinato>();
@@ -123,6 +127,10 @@ public class GestioneVaccinati extends GestioneCsv {
         return vaccinatiVector;
     }
 
+    /**
+     * il metodo inserisce un cittadinoVaccinato in vaccinatiVector
+     * @param vaccinatiVector
+     */
     public void scriviVaccinati(Vector<CittadinoVaccinato> vaccinatiVector) {
         for (CittadinoVaccinato cittadinoVaccinato : vaccinatiVector) {
             StringBuffer linea = new StringBuffer();
