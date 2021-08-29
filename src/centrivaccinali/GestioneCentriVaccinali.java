@@ -45,6 +45,11 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             }
         }
 
+    /**
+     * il metodo permette di inserire nuovi centri vaccinali
+     *
+     *
+     */
         public Vector<CentroVaccinale> registraCentroVaccinale(){
             Scanner in = new Scanner(System.in);
             Vector<CentroVaccinale> centriVaccinaliVector = new Vector<CentroVaccinale>();
@@ -104,6 +109,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return centriVaccinaliVector;
         }
 
+    /**
+     * il metodo verifica l'esistenza di un centroVaccinale
+     * @return esiste o non esiste
+     */
         public String cercaCentroEsiste(){
             Scanner in = new Scanner(System.in);
             boolean esci = false;
@@ -120,6 +129,11 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return nomeCentroVaccinale;
         }
 
+    /**
+     * il metodo verifica l'esistenza di un centro vaccinale tramite il suo nome
+     * @param nomeCentroVaccinale
+     * @return esiste o non esiste
+     */
         public boolean ricercaCentroEsistePerNome(String nomeCentroVaccinale) {
             boolean exist = false;
             int count = numRisultatiPerCampo(nomeCentroVaccinale,1);
@@ -133,6 +147,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return exist;
         }
 
+    /**
+     * creazione lista centriVaccinali tramite array
+     * @return
+     */
         public ArrayList<CentroVaccinale> getCentroVaccinalePerNome(){
             Scanner in = new Scanner(System.in);
             System.out.print("Inserisci nome Centro Vaccinale: ");
@@ -150,6 +168,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return listaCentriVaccinali;
         }
 
+    /**
+     * il metodo restituisce il centroVaccinale cercato per comune e tipologia
+     * @return centroVaccinale
+     */
     public ArrayList<CentroVaccinale> getCentroVaccinalePerComuneTipologia(){
         Scanner in = new Scanner(System.in);
         System.out.print("Inserisci comune Centro Vaccinale: ");
