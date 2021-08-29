@@ -15,6 +15,10 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         verificaFile();
     }
 
+    /**
+     * il metodo permette ad un cittadino di registrarsi inserendo i propri dati
+     * @return CittadinoRegistrato
+     */
     public CittadinoRegistrato registraCittadino(){
         Scanner in = new Scanner(System.in);
             //richieste info in input
@@ -54,6 +58,11 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
             scritturaFile(linea.toString());
     }
 
+    /**
+     * il metodo restituisce un cittadino registrato tramite id
+     * @param userid
+     * @return cittadinoRegistrato
+     */
     public CittadinoRegistrato getCittadinoRegistrato (String userid){
         CittadinoRegistrato cittadinoRegistrato = null;
         int count = numRisultatiPerCampo(userid,3);
@@ -65,6 +74,11 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         return cittadinoRegistrato;
     }
 
+    /**
+     * il metodo verifica l'esistenza di un userid
+     * @param userid
+     * @return esiste o non esiste
+     */
     public boolean useidEsistente(String userid){
         boolean exist = false;
         int count = numRisultatiPerCampo(userid,3);
