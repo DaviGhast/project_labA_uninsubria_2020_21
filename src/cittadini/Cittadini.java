@@ -43,6 +43,11 @@ public class Cittadini {
         }
     }
 
+    /**
+     * il metodo restituisce le info di un centro vaccinale
+     * @param listaCentriVaccinali
+     * @return info del CentroVaccinale
+     */
     public CentroVaccinale visualizzaInfoCentroVaccinale(ArrayList<CentroVaccinale> listaCentriVaccinali){
         Scanner in = new Scanner(System.in);
         if (listaCentriVaccinali != null){
@@ -61,6 +66,9 @@ public class Cittadini {
         }
     }
 
+    /**
+     * gestione credenziali per il login del cittadino
+     */
     public void login(){
         GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
         Scanner in = new Scanner(System.in);
