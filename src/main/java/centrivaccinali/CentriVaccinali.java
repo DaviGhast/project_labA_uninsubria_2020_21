@@ -3,13 +3,6 @@ package centrivaccinali;
 
 import cittadini.Cittadini;
 import cittadini.GestioneCittadinoRegistrato;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 
 import java.io.IOException;
@@ -24,11 +17,11 @@ import java.util.Scanner;
  * @author Brenno Re
  */
 
-public class CentriVaccinali extends Application {
+public class CentriVaccinali {
 
     public static void main(String[] args) {
         //loopMenu();
-        launch();
+        ui.controllers.MainUIController.launch(ui.controllers.MainUIController.class);
     }
 
     public static void loopMenu () {
@@ -122,14 +115,6 @@ public class CentriVaccinali extends Application {
                     break;
             }
         }
-    }
-
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CentriVaccinali.class.getResource("HOMEPAGE.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
     }
 
 }
