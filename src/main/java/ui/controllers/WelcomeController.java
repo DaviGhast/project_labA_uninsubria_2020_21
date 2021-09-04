@@ -16,23 +16,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WelcomeController implements Initializable {
+public class WelcomeController {
     /**
      * Description for the basic view.
      */
-    private final String OPERATORE_DESC = "A view with only basic features";
+    private final String OPERATORE_DESC = "Pannello di controllo per gli operatori sanitari";
     /**
      * Description for the debug view.
      */
-    private final String CITTADINO_DESC = "A view with debugging features, showing logs, errors and other info";
-    /**
-     * Path to the choose window fxml file.
-     */
-    private final URL chooseWindowFxml = getClass().getResource("/fxml/ChooseWindow.fxml");
+    private final String CITTADINO_DESC = "Pagina per i cittadini";
 
 
-    @FXML
-    private RadioButton operatore, cittadino;
+    @FXML private RadioButton operatore, cittadino;
     @FXML private Label description;
     @FXML private Button confirm;
 
@@ -52,8 +47,8 @@ public class WelcomeController implements Initializable {
     @FXML void confirm_selection(ActionEvent ev) throws IOException {
         if (operatore.isSelected()) {
             MainUIController.setRoot("OperatoreView");
-        } else{
-
+        } else if (cittadino.isSelected()) {
+            MainUIController.setRoot("CittadinoView");
         }
     }
 
@@ -63,11 +58,6 @@ public class WelcomeController implements Initializable {
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
 

@@ -3,16 +3,13 @@ package ui.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class OperatoreViewController {
+public class RegistraCentroVaccinaleController {
 
     private final String REGISTRA_CENTRO_DESC = "Registra un nuovo Centro Vaccinale";
     private final String REGISTRA_VACCINATO_DESC = "Pannello di controllo per gli operatori sanitari";

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.RegistraCentroVaccinaleController">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
+               <children>
+                  <Label alignment="CENTER" layoutX="29.0" layoutY="33.0" prefHeight="29.0" prefWidth="238.0" text="Nome Centro Vaccinale" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="registraVaccinato" contentDisplay="CENTER" layoutX="303.0" layoutY="342.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="163.0" text="Aziendale">
+                     <font>
+                        <Font name="Century Gothic" size="21.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="views" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <TextField fx:id="nomeCentro" layoutX="276.0" layoutY="29.0" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="29.0" layoutY="97.0" prefHeight="29.0" prefWidth="238.0" text="Indirizzo" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="29.0" layoutY="324.0" prefHeight="29.0" prefWidth="238.0" text="Tipologia" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="registraVaccinato1" contentDisplay="CENTER" layoutX="303.0" layoutY="298.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Ospedaliero">
+                     <font>
+                        <Font name="Century Gothic" size="21.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="views1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="registraVaccinato2" contentDisplay="CENTER" layoutX="470.0" layoutY="342.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="118.0" text="Hub">
+                     <font>
+                        <Font name="Century Gothic" size="21.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="views2" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <TextField layoutX="302.0" layoutY="127.0" prefHeight="38.0" prefWidth="238.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="277.0" layoutY="178.0" prefHeight="38.0" prefWidth="244.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="526.0" layoutY="178.0" prefHeight="38.0" prefWidth="42.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="29.0" layoutY="131.0" prefHeight="29.0" prefWidth="238.0" text="qualificatore [via/v.le/piazza]" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="29.0" layoutY="183.0" prefHeight="29.0" prefWidth="238.0" text="nome e n° civico" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="30.0" layoutY="236.0" prefHeight="29.0" prefWidth="238.0" text="comune, sigla provincia e cap" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="276.0" layoutY="232.0" prefHeight="38.0" prefWidth="176.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="501.0" layoutY="232.0" prefHeight="38.0" prefWidth="66.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="456.0" layoutY="232.0" prefHeight="38.0" prefWidth="42.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Centro Vaccinale" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label id="error" fx:id="error" alignment="CENTER" layoutX="80.0" layoutY="504.0" prefHeight="51.0" prefWidth="419.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="79.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

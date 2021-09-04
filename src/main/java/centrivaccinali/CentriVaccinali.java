@@ -94,7 +94,7 @@ public class CentriVaccinali {
         while (!exit){
             System.out.println("MENU Cittadini:");
             System.out.println("0 - Cerca centro Vaccinale");
-            System.out.println("1 - Registra nuovo vaccinato");
+            System.out.println("1 - Registrati");
             System.out.println("2 - Inserisci EventiAvversi");
             System.out.println("3 - Esci e torna alla Homepage");
             System.out.print("Enter op: ");

@@ -174,7 +174,7 @@
 }
 
 #welcome.label {
-	-fx-text-fill: linear-gradient(to right, rgb(167, 29, 36) 6%,rgb(238, 211, 58) 29%,rgba(238, 211, 58) 68%,rgba(167, 29, 36) 96%);
+	-fx-text-fill: linear-gradient(to right, rgb(167, 29, 36) 6%,rgb(26, 84, 243) 29%,rgb(58, 115, 238) 68%,rgba(167, 29, 36) 96%);
 }
 
 #tableTitles.label {
