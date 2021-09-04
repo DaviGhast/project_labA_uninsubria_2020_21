@@ -38,6 +38,10 @@ public class CentroVaccinale {
         this.cap = cap;
     }
 
+    public CentroVaccinale(){
+
+    }
+
     public short getId() {
         return id;
     }

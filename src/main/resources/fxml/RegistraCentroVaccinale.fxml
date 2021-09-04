@@ -5,6 +5,8 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -15,12 +17,12 @@
          <children>
             <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
                <children>
-                  <Label alignment="CENTER" layoutX="29.0" layoutY="33.0" prefHeight="29.0" prefWidth="238.0" text="Nome Centro Vaccinale" textAlignment="CENTER">
+                  <Label fx:id="nomeCentroLabel" alignment="CENTER" layoutX="29.0" layoutY="33.0" prefHeight="29.0" prefWidth="238.0" text="Nome Centro Vaccinale" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="registraVaccinato" contentDisplay="CENTER" layoutX="303.0" layoutY="342.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="163.0" text="Aziendale">
+                  <RadioButton fx:id="aziendale" contentDisplay="CENTER" layoutX="303.0" layoutY="342.0" mnemonicParsing="false" onAction="#check_info" prefHeight="36.0" prefWidth="163.0" text="Aziendale" toggleGroup="$views">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>
@@ -28,7 +30,7 @@
                         <ToggleGroup fx:id="views" />
                      </toggleGroup>
                   </RadioButton>
-                  <TextField fx:id="nomeCentro" layoutX="276.0" layoutY="29.0" prefHeight="38.0" prefWidth="291.0">
+                  <TextField fx:id="nomeCentro" accessibleHelp="ciao" layoutX="276.0" layoutY="29.0" prefHeight="38.0" prefWidth="291.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -43,7 +45,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="registraVaccinato1" contentDisplay="CENTER" layoutX="303.0" layoutY="298.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Ospedaliero">
+                  <RadioButton fx:id="ospedaliero" contentDisplay="CENTER" layoutX="303.0" layoutY="298.0" mnemonicParsing="false" onAction="#check_info" prefHeight="36.0" prefWidth="238.0" text="Ospedaliero" toggleGroup="$views">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>
@@ -51,7 +53,7 @@
                         <ToggleGroup fx:id="views1" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="registraVaccinato2" contentDisplay="CENTER" layoutX="470.0" layoutY="342.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="118.0" text="Hub">
+                  <RadioButton fx:id="hub" contentDisplay="CENTER" layoutX="470.0" layoutY="342.0" mnemonicParsing="false" onAction="#check_info" prefHeight="36.0" prefWidth="118.0" text="Hub" toggleGroup="$views">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>
@@ -59,17 +61,17 @@
                         <ToggleGroup fx:id="views2" />
                      </toggleGroup>
                   </RadioButton>
-                  <TextField layoutX="302.0" layoutY="127.0" prefHeight="38.0" prefWidth="238.0">
+                  <TextField fx:id="qualificatore" layoutX="302.0" layoutY="127.0" prefHeight="38.0" prefWidth="238.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="277.0" layoutY="178.0" prefHeight="38.0" prefWidth="244.0">
+                  <TextField fx:id="nomeIndirizzo" layoutX="277.0" layoutY="178.0" onMouseEntered="#viewRegex3" prefHeight="38.0" prefWidth="244.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="526.0" layoutY="178.0" prefHeight="38.0" prefWidth="42.0">
+                  <TextField fx:id="nCivico" layoutX="526.0" layoutY="178.0" onMouseEntered="#viewRegex4" prefHeight="38.0" prefWidth="42.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -104,6 +106,46 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
+                  <ImageView fx:id="cross" fitHeight="29.0" fitWidth="30.0" layoutX="567.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark" fitHeight="58.0" fitWidth="42.0" layoutX="561.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cross1" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark1" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cross2" fitHeight="29.0" fitWidth="30.0" layoutX="577.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark2" fitHeight="58.0" fitWidth="42.0" layoutX="571.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cross3" fitHeight="29.0" fitWidth="30.0" layoutX="577.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark3" fitHeight="58.0" fitWidth="42.0" layoutX="571.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Centro Vaccinale" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
@@ -111,15 +153,15 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label id="error" fx:id="error" alignment="CENTER" layoutX="80.0" layoutY="504.0" prefHeight="51.0" prefWidth="419.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="79.0">
+            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
-            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
-            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
-            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" wrapText="true">
+            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>

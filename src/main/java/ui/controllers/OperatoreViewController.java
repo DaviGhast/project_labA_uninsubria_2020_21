@@ -33,7 +33,7 @@ public class OperatoreViewController {
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
         if (registraCentro.isSelected()) {
-            MainUIController.setRoot("OperatoreView");
+            MainUIController.setRoot("RegistraCentroVaccinale");
         } else if (registraVaccinato.isSelected()) {
             MainUIController.setRoot("ContattiView");
         }

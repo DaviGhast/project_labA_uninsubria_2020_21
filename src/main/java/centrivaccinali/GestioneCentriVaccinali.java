@@ -6,13 +6,22 @@ import java.util.*;
 
 public class GestioneCentriVaccinali extends GestioneCsv {
 
+    private static GestioneCentriVaccinali istanza;
+
         /**
          * Metodo costruttore <code>GestioneCSV</code>
          *
          */
-    public GestioneCentriVaccinali() {
+    private GestioneCentriVaccinali() {
             super("CentriVaccinali.dati", new String[]{"Id","Nome Centro","Qual Indirizzo","Nome Indirizzo","Civico","Comune","Provincia","Cap","Tipologia"});
         }
+
+    public static GestioneCentriVaccinali getInstance(){
+        if (istanza == null) {
+            istanza = new GestioneCentriVaccinali();
+        }
+        return istanza;
+    }
 
     /**
      * <code>scrivi Centri Vaccinali</code>
@@ -43,6 +52,38 @@ public class GestioneCentriVaccinali extends GestioneCsv {
                 linea.append(SEPARATORE_CSV);
                 scritturaFile(linea.toString());
             }
+        }
+
+    public void registraCentriVaccinali(CentroVaccinale centroVaccinale) {
+            StringBuffer linea = new StringBuffer();
+            linea.append(centroVaccinale.getId());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getNomeCentroVaccinale());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getQualificatoreIndirizzo());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getNomeIndirizzo());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getNumeroCivico());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getComune());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getSiglaProvincia());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getCap());
+            linea.append(SEPARATORE_CSV);
+            linea.append(centroVaccinale.getTipologia());
+            linea.append(SEPARATORE_CSV);
+            scritturaFile(linea.toString());
+    }
+
+        public short nextId() {
+            //creazione e ricerca id libero
+            short id = 0;
+            while (ricercaIdEsiste(""+id)!=false){
+                id++;
+            }
+            return id;
         }
 
     /**
