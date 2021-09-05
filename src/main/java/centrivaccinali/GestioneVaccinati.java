@@ -11,15 +11,23 @@ import java.util.Vector;
 
 public class GestioneVaccinati extends GestioneCsv {
 
+    private static GestioneVaccinati istanza;
     private String nomeCentroVaccinale;
     /**
      * Metodo costruttore <code>GestioneCSV</code>
      * @param nomeCentroVaccinale
      */
-    public GestioneVaccinati(String nomeCentroVaccinale) {
+    private GestioneVaccinati(String nomeCentroVaccinale) {
         super("Vaccinati_"+nomeCentroVaccinale.replace(" ","_")+".dati",
                 new String[]{"Id","Nome Centro", "Nome Cittadino", "Cognome Cittadino", "CodiceFiscale", "Data", "Vaccino", "id Vaccinazione"});
         this.nomeCentroVaccinale = nomeCentroVaccinale;
+    }
+
+    public static GestioneVaccinati getInstance(String nomeCentroVaccinale){
+        if (istanza == null) {
+            istanza = new GestioneVaccinati(nomeCentroVaccinale);
+        }
+        return istanza;
     }
 
     /**
@@ -127,6 +135,16 @@ public class GestioneVaccinati extends GestioneCsv {
         return vaccinatiVector;
     }
 
+    public short nextIdUniv() {
+        GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+        vaccinati.verificaFile();
+        short idUniv = 0;
+        while (vaccinati.ricercaIdEsiste(""+idUniv)!=false){
+            idUniv++;
+        }
+        return idUniv;
+    }
+
     /**
      * il metodo inserisce un cittadinoVaccinato in vaccinatiVector
      * @param vaccinatiVector
@@ -152,6 +170,35 @@ public class GestioneVaccinati extends GestioneCsv {
             linea.append(SEPARATORE_CSV);
             scritturaFile(linea.toString());
         }
+    }
+
+    /**
+     * il metodo inserisce un cittadinoVaccinato in vaccinatiVector
+     * @param
+     */
+    public void registraVaccinato(CittadinoVaccinato cittadinoVaccinato) {
+            StringBuffer linea = new StringBuffer();
+            linea.append(cittadinoVaccinato.getId());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getNomeCentroVaccinale());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getNomeCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getCognomeCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getCodiceFiscaleCittadino());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getDataVaccinazione());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getVaccinoSomministrato());
+            linea.append(SEPARATORE_CSV);
+            linea.append(cittadinoVaccinato.getIdVaccinazione());
+            linea.append(SEPARATORE_CSV);
+            scritturaFile(linea.toString());
+        GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+        vaccinati.verificaFile();
+        //scrittura parallela dei dati univoci nel file Vaccinati.dati
+        vaccinati.scritturaFile(cittadinoVaccinato.getIdVaccinazione()+SEPARATORE_CSV+nomeCentroVaccinale+SEPARATORE_CSV+ cittadinoVaccinato.getId());
     }
 
 

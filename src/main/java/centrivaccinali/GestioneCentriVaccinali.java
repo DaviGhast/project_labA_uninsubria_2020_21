@@ -54,7 +54,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             }
         }
 
-    public void registraCentriVaccinali(CentroVaccinale centroVaccinale) {
+    public void registraCentroVaccinale(CentroVaccinale centroVaccinale) {
             StringBuffer linea = new StringBuffer();
             linea.append(centroVaccinale.getId());
             linea.append(SEPARATORE_CSV);
@@ -76,15 +76,6 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             linea.append(SEPARATORE_CSV);
             scritturaFile(linea.toString());
     }
-
-        public short nextId() {
-            //creazione e ricerca id libero
-            short id = 0;
-            while (ricercaIdEsiste(""+id)!=false){
-                id++;
-            }
-            return id;
-        }
 
     /**
      * il metodo permette di inserire nuovi centri vaccinali
@@ -154,20 +145,15 @@ public class GestioneCentriVaccinali extends GestioneCsv {
      * il metodo verifica l'esistenza di un centroVaccinale
      * @return esiste o non esiste
      */
-        public String cercaCentroEsiste(){
+        public Boolean cercaCentroEsiste(String nomeCentroVaccinale){
             Scanner in = new Scanner(System.in);
             boolean esci = false;
-            String nomeCentroVaccinale = "";
             while (!esci){
-                System.out.print("Inserisci nome Centro Vaccinale: ");
-                nomeCentroVaccinale = in.nextLine();
                 if (ricercaCentroEsistePerNome(nomeCentroVaccinale) == true){
                     esci = true;
-                } else {
-                    System.out.print("Centro inesistente, magari hai sbagliato a scrivere");
                 }
             }
-            return nomeCentroVaccinale;
+            return esci;
         }
 
     /**

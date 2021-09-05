@@ -35,7 +35,7 @@ public class OperatoreViewController {
         if (registraCentro.isSelected()) {
             MainUIController.setRoot("RegistraCentroVaccinale");
         } else if (registraVaccinato.isSelected()) {
-            MainUIController.setRoot("ContattiView");
+            MainUIController.setRoot("RegistraVaccinato");
         }
     }
 

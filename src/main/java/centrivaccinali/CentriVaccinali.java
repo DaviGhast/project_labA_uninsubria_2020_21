@@ -63,18 +63,18 @@ public class CentriVaccinali {
             int op = in.nextInt();
             switch (op){
                 case 0:
-                    gestioneCentrivaccinali = new GestioneCentriVaccinali();
-                    gestioneCentrivaccinali.verificaFile();
-                    gestioneCentrivaccinali.scriviCentriVaccinali(
-                            gestioneCentrivaccinali.registraCentroVaccinale());
-                    gestioneCentrivaccinali.letturaFile();
+                    //gestioneCentrivaccinali = new GestioneCentriVaccinali();
+                    //gestioneCentrivaccinali.verificaFile();
+                    //gestioneCentrivaccinali.scriviCentriVaccinali(
+                    //        gestioneCentrivaccinali.registraCentroVaccinale());
+                    //gestioneCentrivaccinali.letturaFile();
                     break;
                 case 1:
-                    gestioneCentrivaccinali = new GestioneCentriVaccinali();
-                    gestioneVaccinati = new GestioneVaccinati(gestioneCentrivaccinali.cercaCentroEsiste());
-                    gestioneVaccinati.verificaFile();
-                    gestioneVaccinati.scriviVaccinati(gestioneVaccinati.registraVaccinati());
-                    gestioneVaccinati.letturaFile();
+                    //gestioneCentrivaccinali = new GestioneCentriVaccinali();
+                    //gestioneVaccinati = new GestioneVaccinati(gestioneCentrivaccinali.cercaCentroEsiste());
+                    //gestioneVaccinati.verificaFile();
+                    //gestioneVaccinati.scriviVaccinati(gestioneVaccinati.registraVaccinati());
+                    //gestioneVaccinati.letturaFile();
                     break;
                 case 2:
                     exit = true;

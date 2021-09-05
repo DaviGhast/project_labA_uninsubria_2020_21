@@ -38,6 +38,10 @@ public class CittadinoVaccinato {
         this.idVaccinazione = idVaccinazione;
     }
 
+    public CittadinoVaccinato() {
+
+    }
+
     public String getNomeCentroVaccinale() {
 
      return nomeCentroVaccinale;

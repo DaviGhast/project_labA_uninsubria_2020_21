@@ -46,6 +46,15 @@ public class GestioneCsv {
         this.arrayNomiColonne = arrayNomiColonne;
     }
 
+    public short nextId() {
+        //creazione e ricerca id libero
+        short id = 0;
+        while (ricercaIdEsiste(""+id)!=false){
+            id++;
+        }
+        return id;
+    }
+
     /**
      * Metodo costruttore <code>strNomiColonne</code>
      * @return stringa dei nomi delle colonne, che sono stati estratti ed elaborati dall'array

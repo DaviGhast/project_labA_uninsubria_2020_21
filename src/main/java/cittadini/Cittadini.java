@@ -20,7 +20,7 @@ public class Cittadini {
 
     public void cercaCentroVaccinale(){
         Scanner in = new Scanner(System.in);
-        GestioneCentriVaccinali gestioneCentriVaccinali = new GestioneCentriVaccinali();
+        //GestioneCentriVaccinali gestioneCentriVaccinali = new GestioneCentriVaccinali();
         boolean exit = false;
         while (!exit){
             System.out.println("MENU Cerca centro Vaccinalie:");
@@ -31,10 +31,10 @@ public class Cittadini {
             int op = in.nextInt();
             switch (op){
                 case 0:
-                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerNome());
+                    //visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerNome());
                     break;
                 case 1:
-                    visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerComuneTipologia());
+                    //visualizzaInfoCentroVaccinale(gestioneCentriVaccinali.getCentroVaccinalePerComuneTipologia());
                     break;
                 case 2:
                     exit = true;
