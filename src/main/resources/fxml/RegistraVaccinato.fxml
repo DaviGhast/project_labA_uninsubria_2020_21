@@ -147,7 +147,7 @@
                         <Image url="@../images/check_mark.png" />
                      </image>
                   </ImageView>
-                  <DatePicker fx:id="dataVaccinazione" layoutX="277.0" layoutY="261.0" onMouseEntered="#viewRegex5" prefHeight="38.0" prefWidth="291.0" />
+                  <DatePicker fx:id="dataVaccinazione" layoutX="277.0" layoutY="261.0"  prefHeight="38.0" prefWidth="291.0" />
                   <RadioButton fx:id="moderna" contentDisplay="CENTER" layoutX="434.0" layoutY="307.0" mnemonicParsing="false" onAction="#check_info" prefHeight="36.0" prefWidth="136.0" text="Moderna" toggleGroup="$views">
                      <toggleGroup>
                         <ToggleGroup fx:id="views21" />
