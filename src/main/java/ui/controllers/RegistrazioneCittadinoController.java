@@ -3,6 +3,10 @@ package ui.controllers;
 import centrivaccinali.CittadinoVaccinato;
 import centrivaccinali.GestioneCentriVaccinali;
 import centrivaccinali.GestioneVaccinati;
+import cittadini.CittadinoRegistrato;
+import cittadini.GestioneCittadinoRegistrato;
+import criptazione.AlgoritmoMD5;
+import gestionefile.GestioneCsv;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,37 +22,19 @@ import java.util.regex.Pattern;
 
 public class RegistrazioneCittadinoController implements Initializable {
 
-    private CittadinoVaccinato cittadinoVaccinato;
-    private String vaccino;
+    private CittadinoRegistrato cittadinoRegistrato;
 
-    @FXML private RadioButton pfizer, moderna, astrazeneca, jandj;
-    @FXML private TextField nomeCentro, nomeCittadino, cognomeCittadino, codiceFiscale;
-    @FXML private DatePicker dataVaccinazione;
+    @FXML private TextField idVaccinazione, nomeCittadino, cognomeCittadino, codiceFiscale, userid, email;
+    @FXML private PasswordField password;
     @FXML private Label description, infoRegex;
     @FXML private Button confirm;
-    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4;
+    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4, cross5, checkmark5, cross6, checkmark6;
 
-    @FXML void check_info() {
-        if (!nomeCentro.getText().equals("") & !nomeCittadino.getText().equals("") & !cognomeCittadino.getText().equals("")
-                & !codiceFiscale.getText().equals("")){
-            if (pfizer.isSelected()) {
-                vaccino = pfizer.getText();
-                confirm.setDisable(false);
-            } else if (moderna.isSelected()) {
-                vaccino = moderna.getText();
-                confirm.setDisable(false);
-            } else if (astrazeneca.isSelected()) {
-                vaccino = astrazeneca.getText();
-                confirm.setDisable(false);
-            } else if (jandj.isSelected()) {
-                vaccino = jandj.getText();
-                confirm.setDisable(false);
-            }
-        }
-    }
 
     public boolean validatorfield1(){
-        if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,30}",nomeCentro.getText()) & GestioneCentriVaccinali.getInstance().cercaCentroEsiste(nomeCentro.getText())){
+        GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+        vaccinati.verificaFile();
+        if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaIdEsiste(idVaccinazione.getText())){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -91,23 +77,53 @@ public class RegistrazioneCittadinoController implements Initializable {
             return false;
         }
     }
+    public boolean validatorfield5(){
+        if (Pattern.matches("^[0-9]",userid.getText())){
+            cross4.setVisible(false);
+            checkmark4.setVisible(true);
+            return true;
+        } else {
+            checkmark4.setVisible(false);
+            cross4.setVisible(true);
+            return false;
+        }
+    }
+    public boolean validatorfield6(){
+        if (Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",email.getText())){
+            cross5.setVisible(false);
+            checkmark5.setVisible(true);
+            return true;
+        } else {
+            checkmark5.setVisible(false);
+            cross5.setVisible(true);
+            return false;
+        }
+    }
+    public boolean validatorfield7(){
+        if (Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",password.getText())){
+            cross6.setVisible(false);
+            checkmark6.setVisible(true);
+            return true;
+        } else {
+            checkmark6.setVisible(false);
+            cross6.setVisible(true);
+            return false;
+        }
+    }
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
-        if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4()){
-            cittadinoVaccinato = new CittadinoVaccinato();
-            GestioneVaccinati gestioneVaccinati = GestioneVaccinati.getInstance(nomeCentro.getText());
-            gestioneVaccinati.verificaFile();
-            cittadinoVaccinato.setId(gestioneVaccinati.nextId());
-            cittadinoVaccinato.setNomeCentroVaccinale(nomeCentro.getText());
-            cittadinoVaccinato.setNomeCittadino(nomeCittadino.getText());
-            cittadinoVaccinato.setCognomeCittadino(cognomeCittadino.getText());
-            cittadinoVaccinato.setCodiceFiscaleCittadino(codiceFiscale.getText());
-            cittadinoVaccinato.setDataVaccinazione(dataVaccinazione.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-            cittadinoVaccinato.setIdVaccinazione(gestioneVaccinati.nextIdUniv());
-            gestioneVaccinati.registraVaccinato(cittadinoVaccinato);
-            description.setText("Cittadino Vaccinato Registrato con Successo, mi raccomando comunica al cittadino il suo codice: "+cittadinoVaccinato.getIdVaccinazione());
+        if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4() & validatorfield5() & validatorfield6()){
+            cittadinoRegistrato = new CittadinoRegistrato();
+            cittadinoRegistrato.setIdVaccinazione(Short.parseShort(idVaccinazione.getText()));
+            cittadinoRegistrato.setNome(nomeCittadino.getText());
+            cittadinoRegistrato.setCognome(cognomeCittadino.getText());
+            cittadinoRegistrato.setUserid(userid.getText());
+            cittadinoRegistrato.setEmail(email.getText());
+            cittadinoRegistrato.setPassword(AlgoritmoMD5.converti(password.getText()));
+            GestioneCittadinoRegistrato.getInstance().registraCittadino(cittadinoRegistrato);
+            description.setText("Cittadino Registrato con Successo");
             confirm.setDisable(true);
-            cittadinoVaccinato = null;
+            cittadinoRegistrato = null;
         }
     }
 
@@ -136,7 +152,7 @@ public class RegistrazioneCittadinoController implements Initializable {
     }
 
     @FXML public void back_button(ActionEvent actionEvent) throws IOException {
-        MainUIController.setRoot("OperatoreView");
+        MainUIController.setRoot("CittadinoView");
     }
 
     @Override

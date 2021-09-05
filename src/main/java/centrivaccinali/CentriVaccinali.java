@@ -104,8 +104,8 @@ public class CentriVaccinali {
                     cittadini.cercaCentroVaccinale();
                     break;
                 case 1:
-                    GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
-                    gestioneCittadinoRegistrato.scriviCittadinoRegistrato(gestioneCittadinoRegistrato.registraCittadino());
+                    //GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
+                    //gestioneCittadinoRegistrato.scriviCittadinoRegistrato(gestioneCittadinoRegistrato.registraCittadino());
                     break;
                 case 2:
                     cittadini.login();

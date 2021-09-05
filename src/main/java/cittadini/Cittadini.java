@@ -70,18 +70,18 @@ public class Cittadini {
      * gestione credenziali per il login del cittadino
      */
     public void login(){
-        GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
+        //GestioneCittadinoRegistrato gestioneCittadinoRegistrato = new GestioneCittadinoRegistrato();
         Scanner in = new Scanner(System.in);
         System.out.print("Inserisci il tuo Userid ");
         String userid = in.nextLine();
         System.out.print("Inserisci la tua Password ");
         String password = in.nextLine();
-        if (gestioneCittadinoRegistrato.rispostaCittadinoEsiste(userid,password)){
+        //if (gestioneCittadinoRegistrato.rispostaCittadinoEsiste(userid,password)){
 
 
-        } else {
+        //} else {
             System.out.print("Login errato");
-        }
+        //}
     }
 
 

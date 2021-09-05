@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.LoginCittadinoController">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane layoutX="221.0" layoutY="138.0" prefHeight="332.0" prefWidth="614.0" styleClass="parent">
+               <children>
+                  <TextField fx:id="userid" layoutX="268.0" layoutY="112.0" onMouseEntered="#viewRegex4" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="cross" fitHeight="29.0" fitWidth="30.0" layoutX="570.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark" fitHeight="58.0" fitWidth="42.0" layoutX="564.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="23.0" layoutY="116.0" prefHeight="29.0" prefWidth="238.0" text="Userid" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="23.0" layoutY="198.0" prefHeight="29.0" prefWidth="238.0" text="Password" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="password" layoutX="269.0" layoutY="193.0" prefHeight="38.0" prefWidth="291.0" />
+                  <ImageView fx:id="cross2" fitHeight="29.0" fitWidth="30.0" layoutX="572.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark2" fitHeight="58.0" fitWidth="42.0" layoutX="566.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="188.0" layoutY="35.0" prefHeight="29.0" prefWidth="238.0" text="Effettua il Login" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Login per Cittadino" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirm" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

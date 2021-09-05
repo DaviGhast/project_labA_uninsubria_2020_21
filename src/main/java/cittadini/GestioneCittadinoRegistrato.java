@@ -1,5 +1,6 @@
 package cittadini;
 
+import centrivaccinali.GestioneCentriVaccinali;
 import criptazione.AlgoritmoMD5;
 import gestionefile.GestioneCsv;
 
@@ -7,19 +8,29 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class GestioneCittadinoRegistrato extends GestioneCsv {
+
+    private static GestioneCittadinoRegistrato istanza;
+
     /**
      * Metodo costruttore <code>GestioneCSV</code>
      */
-    public GestioneCittadinoRegistrato() {
+    private GestioneCittadinoRegistrato() {
         super("Cittadini_Registrati.dati", new String[]{"Nome","Cognome","Email","Userid","Password","idVaccinazione"});
         verificaFile();
+    }
+
+    public static GestioneCittadinoRegistrato getInstance(){
+        if (istanza == null) {
+            istanza = new GestioneCittadinoRegistrato();
+        }
+        return istanza;
     }
 
     /**
      * il metodo permette ad un cittadino di registrarsi inserendo i propri dati
      * @return CittadinoRegistrato
      */
-    public CittadinoRegistrato registraCittadino(){
+    public CittadinoRegistrato inserisciInfoCittadino(){
         Scanner in = new Scanner(System.in);
             //richieste info in input
             System.out.print("Inserisci il tuo nome: ");
@@ -41,7 +52,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         return new CittadinoRegistrato(nome,cognome,email,userid, AlgoritmoMD5.converti(password),Short.parseShort(idVaccinazione));
     }
 
-    public void scriviCittadinoRegistrato(CittadinoRegistrato cittadinoRegistrato) {
+    public void registraCittadino(CittadinoRegistrato cittadinoRegistrato) {
             StringBuffer linea = new StringBuffer();
             linea.append(cittadinoRegistrato.getNome());
             linea.append(SEPARATORE_CSV);
@@ -97,6 +108,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         if (useidEsistente(userid)){
             CittadinoRegistrato cittadinoRegistrato = getCittadinoRegistrato(userid);
             if (cittadinoRegistrato.getPassword().equals(AlgoritmoMD5.converti(password))){
+                System.out.print("login");
                 risposta = true;
             } else {
                 risposta = false;

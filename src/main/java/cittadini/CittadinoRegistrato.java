@@ -28,6 +28,10 @@ public class CittadinoRegistrato {
         this.idVaccinazione = idVaccinazione;
     }
 
+    public CittadinoRegistrato() {
+
+    }
+
     public String getNome() {
         return nome;
     }
