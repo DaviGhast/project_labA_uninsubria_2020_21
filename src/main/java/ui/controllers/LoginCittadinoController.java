@@ -59,21 +59,8 @@ public class LoginCittadinoController implements Initializable {
         }
     }
 
-    @FXML public void viewRegex1(){
-        infoRegex.setText("Nome Centro: Inserire da 1 a 30 caratteri, il centro deve esistere");
-    }
-    @FXML public void viewRegex2(){
-        infoRegex.setText("Qualificatore Indirizzo: Inserire da 1 a 10 caratteri alfabetici");
-    }
-    @FXML public void viewRegex3(){
-        infoRegex.setText("Indirizzo: Inserireda 2 a 30 caratteri");
-    }
-    @FXML public void viewRegex4(){
-        infoRegex.setText("Numero Civico: Inserire da 1 a 4 caratteri numerici");
-    }
-    @FXML public void viewRegex5(){
-        infoRegex.setText("Comune: Inserire da 1 a 50 caratteri alfabetici");
-    }
+
+
 
     /**
      * Closes the application.

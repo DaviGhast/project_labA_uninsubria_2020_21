@@ -113,20 +113,18 @@ public class RegistraVaccinatoController implements Initializable {
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("Nome Centro: Inserire da 1 a 30 caratteri, il centro deve esistere");
+        infoRegex.setText("Nome Centro: Inserire da 2 a 30 caratteri alfanumerici, il centro deve esistere");
     }
     @FXML public void viewRegex2(){
-        infoRegex.setText("Qualificatore Indirizzo: Inserire da 1 a 10 caratteri alfabetici");
+        infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex3(){
-        infoRegex.setText("Indirizzo: Inserireda 2 a 30 caratteri");
+        infoRegex.setText("Cognome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex4(){
-        infoRegex.setText("Numero Civico: Inserire da 1 a 4 caratteri numerici");
+        infoRegex.setText("Codice Fiscale: Inserire al massimo 16 caratteri alfanumerici");
     }
-    @FXML public void viewRegex5(){
-        infoRegex.setText("Comune: Inserire da 1 a 50 caratteri alfabetici");
-    }
+
 
     /**
      * Closes the application.

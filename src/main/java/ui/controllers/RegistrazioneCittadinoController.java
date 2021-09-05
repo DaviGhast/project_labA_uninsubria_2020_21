@@ -128,19 +128,25 @@ public class RegistrazioneCittadinoController implements Initializable {
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("Nome Centro: Inserire da 1 a 30 caratteri, il centro deve esistere");
+        infoRegex.setText("id Vaccinazione : Inserire da 0 a 9 caratteri numerici");
     }
     @FXML public void viewRegex2(){
-        infoRegex.setText("Qualificatore Indirizzo: Inserire da 1 a 10 caratteri alfabetici");
+        infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex3(){
-        infoRegex.setText("Indirizzo: Inserireda 2 a 30 caratteri");
+        infoRegex.setText("Cognome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex4(){
-        infoRegex.setText("Numero Civico: Inserire da 1 a 4 caratteri numerici");
+        infoRegex.setText("Codice Fiscale: Inserire al massimo 16 caratteri alfanumerici");
     }
     @FXML public void viewRegex5(){
-        infoRegex.setText("Comune: Inserire da 1 a 50 caratteri alfabetici");
+        infoRegex.setText("UserId: Inserire da 0 a 9 caratteri numerici");
+    }
+    @FXML public void viewRegex6(){
+        infoRegex.setText("Email: Inserire un'email valida");
+    }
+    @FXML public void viewRegex7(){
+        infoRegex.setText("Password: Inserire al minimo 8 caratteri: deve contenere almeno una lettera maiuscola, una lettera minuscola ed un carattere numerico. Sono ammessi caratteri speciali ");
     }
 
     /**
