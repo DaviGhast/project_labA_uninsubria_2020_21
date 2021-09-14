@@ -178,10 +178,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
      * creazione lista centriVaccinali tramite array
      * @return
      */
-        public ArrayList<CentroVaccinale> getCentroVaccinalePerNome(){
+        public ArrayList<CentroVaccinale> getCentroVaccinalePerNome(String nomeCentroVaccinale){
             Scanner in = new Scanner(System.in);
-            System.out.print("Inserisci nome Centro Vaccinale: ");
-            String nomeCentroVaccinale = in.nextLine();
+            //System.out.print("Inserisci nome Centro Vaccinale: ");
+            //String nomeCentroVaccinale = in.nextLine();
             ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();
             int count = numRisultatiPerCampoVisuliz(nomeCentroVaccinale,1);
             Vector<String[]> rows = ricercaRighePerCampoVisualiz(nomeCentroVaccinale,1);

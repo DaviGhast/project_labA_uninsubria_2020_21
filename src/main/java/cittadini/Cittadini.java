@@ -18,6 +18,15 @@ import java.util.Scanner;
  */
 public class Cittadini {
 
+    private static Cittadini istanza;
+
+    public static Cittadini getInstance(){
+        if (istanza == null) {
+            istanza = new Cittadini();
+        }
+        return istanza;
+    }
+
     public void cercaCentroVaccinale(){
         Scanner in = new Scanner(System.in);
         //GestioneCentriVaccinali gestioneCentriVaccinali = new GestioneCentriVaccinali();

@@ -114,19 +114,5 @@ public class CentroVaccinale {
         this.cap = cap;
     }
 
-    @Override
-    public String toString() {
-        return "CentroVaccinale{" +
-                "id=" + id +
-                ", nomeCentroVaccinale='" + nomeCentroVaccinale + '\'' +
-                ", qualificatoreIndirizzo='" + qualificatoreIndirizzo + '\'' +
-                ", nomeIndirizzo='" + nomeIndirizzo + '\'' +
-                ", comune='" + comune + '\'' +
-                ", siglaProvincia='" + siglaProvincia + '\'' +
-                ", tipologia='" + tipologia + '\'' +
-                ", numeroCivico=" + numeroCivico +
-                ", cap=" + cap +
-                '}';
-    }
 }
 
