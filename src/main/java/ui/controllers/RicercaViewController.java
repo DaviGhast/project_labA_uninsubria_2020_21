@@ -14,24 +14,24 @@ public class RicercaViewController {
     private final String REGISTRA_CENTRO_DESC = "Registra un nuovo Centro Vaccinale";
     private final String REGISTRA_VACCINATO_DESC = "Pannello di controllo per gli operatori sanitari";
 
-    @FXML private RadioButton registraCentro, registraVaccinato;
+    @FXML private RadioButton nome, comuneTipologia;
     @FXML private Label description;
     @FXML private Button confirm;
 
     @FXML void view_selection() {
-        if (registraCentro.isSelected()) {
+        if (nome.isSelected()) {
             description.setText(REGISTRA_CENTRO_DESC);
             confirm.setDisable(false);
-        } else if (registraVaccinato.isSelected()) {
+        } else if (comuneTipologia.isSelected()) {
             description.setText(REGISTRA_VACCINATO_DESC);
             confirm.setDisable(false);
         }
     }
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
-        if (registraCentro.isSelected()) {
+        if (nome.isSelected()) {
             MainUIController.setRoot("RicercaCentro1");
-        } else if (registraVaccinato.isSelected()) {
+        } else if (comuneTipologia.isSelected()) {
             MainUIController.setRoot("RicercaCentro2");
         }
     }

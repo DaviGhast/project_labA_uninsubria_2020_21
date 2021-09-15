@@ -73,7 +73,6 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             linea.append(centroVaccinale.getCap());
             linea.append(SEPARATORE_CSV);
             linea.append(centroVaccinale.getTipologia());
-            linea.append(SEPARATORE_CSV);
             scritturaFile(linea.toString());
     }
 
@@ -174,6 +173,36 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             return exist;
         }
 
+    public ArrayList<CentroVaccinale> getCentriVaccinali(){
+        ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();
+        ArrayList<String> listaRigheFile = letturaFile();
+        /*
+        Ricostruzione oggetti scritti nel file
+         */
+        for (String line: listaRigheFile) {
+            System.out.println(line);
+            String[] rawObject = line.split(SEPARATORE_CSV);
+            for (int i = 0; i < rawObject.length; i++) {
+                System.out.println(rawObject[i]);
+            }
+            CentroVaccinale centroVaccinale = new CentroVaccinale();
+            centroVaccinale.setId(Short.parseShort(rawObject[0]));
+            centroVaccinale.setNomeCentroVaccinale(rawObject[1]);
+            centroVaccinale.setQualificatoreIndirizzo(rawObject[2]);
+            centroVaccinale.setNomeIndirizzo(rawObject[3]);
+            centroVaccinale.setNumeroCivico(Integer.parseInt(rawObject[4]));
+            centroVaccinale.setComune(rawObject[5]);
+            centroVaccinale.setSiglaProvincia(rawObject[6]);
+            centroVaccinale.setCap(Integer.parseInt(rawObject[7]));
+            centroVaccinale.setTipologia(rawObject[8]);
+            listaCentriVaccinali.add(centroVaccinale);
+        }
+        for (int i = 0; i < listaCentriVaccinali.size(); i++) {
+            listaCentriVaccinali.get(i).toString();
+        }
+        return listaCentriVaccinali;
+    }
+
     /**
      * creazione lista centriVaccinali tramite array
      * @return
@@ -194,6 +223,17 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             }
             return listaCentriVaccinali;
         }
+
+    public ArrayList<CentroVaccinale> searchCentroByName(String nomeCentroVaccinale) {
+        ArrayList<CentroVaccinale> listaCentriVaccinali = getCentriVaccinali();
+        ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
+        for (CentroVaccinale centroVaccinale: listaCentriVaccinali) {
+            centroVaccinale.toString();
+            if (centroVaccinale.getNomeCentroVaccinale().contains(nomeCentroVaccinale))
+                listaRisultati.add(centroVaccinale);
+        }
+        return listaRisultati;
+    }
 
     /**
      * il metodo restituisce il centroVaccinale cercato per comune e tipologia
@@ -224,6 +264,16 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         listaCentriVaccinali.clear();
         listaCentriVaccinali.addAll(set);
         return listaCentriVaccinali;
+    }
+
+    public ArrayList<CentroVaccinale> searchCentroByComuneAndTipologia(String comune, String tipologia) {
+        ArrayList<CentroVaccinale> listaCentriVaccinali = getCentriVaccinali();
+        ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
+        for (CentroVaccinale centroVaccinale: listaCentriVaccinali) {
+            if (centroVaccinale.getComune().equals(comune) & centroVaccinale.getTipologia().equals(tipologia))
+                listaRisultati.add(centroVaccinale);
+        }
+        return listaRisultati;
     }
 
 }

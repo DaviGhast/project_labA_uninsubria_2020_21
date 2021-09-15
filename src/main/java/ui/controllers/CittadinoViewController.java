@@ -38,7 +38,7 @@ public class CittadinoViewController {
         } else if (segnaEventiAvversi.isSelected()) {
             MainUIController.setRoot("LoginCittadino");
         } else if (infoCentriVaccinali.isSelected()) {
-            MainUIController.setRoot("CercaCentroVaccinali");
+            MainUIController.setRoot("RicercaView");
         }
     }
 

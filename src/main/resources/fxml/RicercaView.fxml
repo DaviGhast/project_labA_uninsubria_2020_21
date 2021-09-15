@@ -21,7 +21,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="registraCentro" contentDisplay="CENTER" layoutX="92.0" layoutY="110.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Registra Centro" textAlignment="CENTER" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="91.0">
+                  <RadioButton fx:id="nome" contentDisplay="CENTER" layoutX="92.0" layoutY="110.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Cerca Per Nome" textAlignment="CENTER" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="91.0">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>
@@ -29,14 +29,14 @@
                         <ToggleGroup fx:id="views" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="registraVaccinato" contentDisplay="CENTER" layoutX="91.0" layoutY="174.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Registra Vaccinato" toggleGroup="$views">
+                  <RadioButton fx:id="comuneTipologia" contentDisplay="CENTER" layoutX="49.0" layoutY="174.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="321.0" text="Cerca per Comune e Tipo" toggleGroup="$views">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>
                   </RadioButton>
                </children>
             </AnchorPane>
-            <Label id="titles" alignment="CENTER" layoutX="44.0" layoutY="81.0" prefHeight="31.0" prefWidth="503.0" text="Pannello Controllo Centri Vaccinali" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="42.0">
+            <Label id="titles" alignment="CENTER" layoutX="44.0" layoutY="81.0" prefHeight="31.0" prefWidth="503.0" text="Pannello Ricerca Info Centri Vaccinali" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="42.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

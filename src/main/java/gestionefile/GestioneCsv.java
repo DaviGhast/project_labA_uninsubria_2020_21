@@ -1,6 +1,7 @@
 package gestionefile;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -164,27 +165,30 @@ public class GestioneCsv {
     }
 
     /**
-     * Metodo <code>controllaNomiColonne</code>
+     * Metodo <code>letturaFile</code>
      * <p>
      *     permette di leggere il file velocemente senza ricreare gli oggetti
      * </p>
      * @throws IOException
      */
-    public void letturaFile() {
+    public ArrayList<String> letturaFile() {
+        ArrayList<String> listaRighe = new ArrayList<String>();
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
+            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 if( line.trim().isEmpty() ) {
                     continue;
                 }
-                String[] row = line.split(SEPARATORE_CSV);
-                stampaCSV(row);
+                //
+                listaRighe.add(line);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return listaRighe;
     }
 
     /**
@@ -352,11 +356,11 @@ public class GestioneCsv {
         System.out.println();
         int count = numRisultatiPerTutto(dato);
         System.out.println("Ci sono"+count+" risultati per "+dato+" nell'elenco.");
-        stampaCSV(arrayNomiColonne);
+        //stampaCSV(arrayNomiColonne);
         Vector<String[]> rows = ricercaRighePerTutto(dato);
         for (int i = 0; i < count; i++) {
             String[] row = rows.elementAt(i);
-            stampaCSV(row);
+            //stampaCSV(row);
         }
     }
 
@@ -368,11 +372,11 @@ public class GestioneCsv {
         System.out.println();
         int count = numRisultatiPerCampo(dato,indexCampo);
         System.out.println("Ci sono "+count+" risultati per "+dato+" in "+campo+" .");
-        stampaCSV(arrayNomiColonne);
+        //stampaCSV(arrayNomiColonne);
         Vector<String[]> rows = ricercaRighePerCampo(dato,indexCampo);
         for (int i = 0; i < count; i++) {
             String[] row = rows.elementAt(i);
-            stampaCSV(row);
+            //stampaCSV(row);
         }
     }
 
@@ -396,93 +400,6 @@ public class GestioneCsv {
         return idExist;
     }
 
-    /**
-     * Metodo <code>cambiaDatiCampi</code>
-     * @throws IOException
-     */
-    public void cambiaDatiCampi() throws IOException {
-        letturaFile();
-        System.out.println();
-        Scanner in = new Scanner(System.in);
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line = "";
-        Vector<String> rows = new Vector<>();
-        String field = "", data = "", change = "";
-        System.out.print("Inserisci l'id al quale devi fare la modifica: ");
-        String id = in.next();
-        if (ricercaIdEsiste(id)){
-            try {
-                int index = 0;
-                String str = "";
-                while ((line = reader.readLine()) != null) {
-                    str = "";
-                    if( line.trim().isEmpty() ) {
-                        continue;
-                    }
-                    String[] row = line.split(SEPARATORE_CSV);
-                    if (row[0].equals(id)){
-                        System.out.print("Inserisci il campo da cambiare: ");
-                        field = in.next();
-                        field = field.substring(0,1).toUpperCase()+field.substring(1).toLowerCase();
-                        System.out.print("Inserisci il dato da modificare: ");
-                        data = in.next();
-                        data = data.substring(0,1).toUpperCase()+data.substring(1).toLowerCase();
-                        for (int i = 0; i < arrayNomiColonne.length; i++) {
-                            if (arrayNomiColonne[i].equals(field)){
-                                if (row[i].equals(data)){
-                                    System.out.print("Inserisci il nuovo dato: ");
-                                    change = in.next();
-                                    change = change.substring(0,1).toUpperCase()+change.substring(1).toLowerCase();
-                                    row[i] = change;
-                                }
-                            }
-                        }
-                    }
-                    for (int j = 0; j < row.length; j++) {
-                        if (j<row.length-1){
-                            str = str.concat(row[j]);
-                            str = str.concat(SEPARATORE_CSV);
-                        } else {
-                            str = str.concat(row[j]);
-                        }
-                    }
-                    rows.add(str);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                for (int x = 0; x < rows.size(); x++) {
-                    bw.write(rows.get(x));
-                    bw.newLine();
-                }
-                bw.close();
-                System.out.println("Il Campo "+field+" dell'id "+id+" è stato cambiato da "+data+" a "+change);
-                System.out.println();
-            } catch (IOException e) {
-                System.out.println("Si è verificato un errore.");
-                e.printStackTrace();
-            }
-
-        } else {
-            System.out.println("Errore l'id :"+id+" non esite.");
-        }
-        reader.close();
-    }
-
-    /**
-     * Metodo <code>stampaCSV</code>
-     * @param row
-     */
-    public void stampaCSV (String[] row){
-        for (String index : row) {
-            System.out.printf("%-25s", index);
-        }
-        System.out.println();
-    }
 
 
 
