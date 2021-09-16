@@ -28,13 +28,4 @@ public class EventoAvverso {
     public void setNote(String note) {
         this.note = note;
     }
-
-    @Override
-    public String toString() {
-        return "EventoAvverso{" +
-                "evento='" + evento + '\'' +
-                ", severità=" + severità +
-                ", note='" + note + '\'' +
-                '}';
-    }
 }

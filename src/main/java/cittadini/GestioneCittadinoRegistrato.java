@@ -26,32 +26,6 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         return istanza;
     }
 
-    /**
-     * il metodo permette ad un cittadino di registrarsi inserendo i propri dati
-     * @return CittadinoRegistrato
-     */
-    public CittadinoRegistrato inserisciInfoCittadino(){
-        Scanner in = new Scanner(System.in);
-            //richieste info in input
-            System.out.print("Inserisci il tuo nome: ");
-            String nome = in.nextLine();
-            System.out.print("Inserisci il tuo cognome: ");
-            String cognome = in.nextLine();
-            System.out.print("Inserisci la tua email: ");
-            String email = in.nextLine();
-            System.out.print("Inserisci un userid: ");
-            String userid = in.nextLine();
-            System.out.print("Inserisci una password: ");
-            String password = in.nextLine();
-            System.out.print("Inserisci idVaccinazione: ");
-            String idVaccinazione = in.nextLine();
-            while (useidEsistente(userid)) {
-                System.out.print("Inserisci un diverso userid: ");
-                userid = in.nextLine();
-            }
-        return new CittadinoRegistrato(nome,cognome,email,userid, AlgoritmoMD5.converti(password),Short.parseShort(idVaccinazione));
-    }
-
     public void registraCittadino(CittadinoRegistrato cittadinoRegistrato) {
             StringBuffer linea = new StringBuffer();
             linea.append(cittadinoRegistrato.getNome());
