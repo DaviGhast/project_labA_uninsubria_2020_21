@@ -20,18 +20,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class LoginCittadinoController implements Initializable {
+public class InserisciEventoAvversoController implements Initializable {
 
     private CittadinoRegistrato cittadinoRegistrato;
 
-    @FXML private TextField userid;
-    @FXML private PasswordField password;
+    @FXML private TextField idVaccinazione, evento, severita, note;
     @FXML private Label description, infoRegex;
     @FXML private Button confirm;
-    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2;
+    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4, cross5, checkmark5, cross6, checkmark6;
+
 
     public boolean validatorfield1(){
-        if (Pattern.matches("^[0-9]",userid.getText())){
+        GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
+        vaccinati.verificaFile();
+        if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaIdEsiste(idVaccinazione.getText())){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -41,22 +43,22 @@ public class LoginCittadinoController implements Initializable {
             return false;
         }
     }
-    public boolean validatorfield2(){
-        if (Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",password.getText())){
-            cross2.setVisible(false);
-            checkmark2.setVisible(true);
-            return true;
-        } else {
-            checkmark2.setVisible(false);
-            cross2.setVisible(true);
-            return false;
+
+
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+        if (validatorfield1() ){
+
         }
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
-        if (validatorfield1() & validatorfield2() & GestioneCittadinoRegistrato.getInstance().rispostaCittadinoEsiste(userid.getText(), password.getText())){
-            MainUIController.setRoot("EventiAvversi");
-        }
+    @FXML public void viewRegex1(){
+        infoRegex.setText("id Vaccinazione : Inserire da 0 a 9 caratteri numerici");
+    }
+    @FXML public void viewRegex2(){
+        infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
+    }
+    @FXML public void viewRegex3(){
+        infoRegex.setText("Cognome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
 
 

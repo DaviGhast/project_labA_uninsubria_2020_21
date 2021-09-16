@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.RicercaCentro2Controller">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane layoutX="44.0" layoutY="90.0" prefHeight="418.0" prefWidth="962.0" styleClass="parent">
+               <children>
+                  <TextField fx:id="comuneSearch" layoutX="368.0" layoutY="24.0" prefHeight="38.0" prefWidth="187.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="77.0" layoutY="28.0" prefHeight="29.0" prefWidth="283.0" text="Inserisci comune e tipologia per cercare" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tabella" layoutX="42.0" layoutY="74.0" onMouseClicked="#selectRow" prefHeight="324.0" prefWidth="889.0">
+                     <columns>
+                        <TableColumn fx:id="nome" editable="false" prefWidth="160.0" text="Nome Centro" />
+                        <TableColumn editable="false" prefWidth="630.0" resizable="false" text="Indirizzo">
+                           <columns>
+                              <TableColumn fx:id="qualificatoreIndirizzo" editable="false" prefWidth="60.0" text="Qualif." />
+                              <TableColumn fx:id="nomeIndirizzo" editable="false" prefWidth="202.0" text="Nome" />
+                              <TableColumn fx:id="civico" editable="false" prefWidth="57.0" text="Civico" />
+                              <TableColumn fx:id="comune" editable="false" prefWidth="206.0" text="Comune" />
+                              <TableColumn fx:id="provincia" editable="false" prefWidth="49.0" text="Prov." />
+                              <TableColumn fx:id="cap" editable="false" prefWidth="56.0" text="Cap" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="tipologia" editable="false" prefWidth="98.0" text="Tipologia" />
+                     </columns></TableView>
+                  <Button fx:id="search" layoutX="782.0" layoutY="23.0" mnemonicParsing="false" onAction="#search_button" prefHeight="38.0" prefWidth="103.0" text="Cerca" />
+                  <TextField fx:id="tipologiaSearch" layoutX="572.0" layoutY="24.0" prefHeight="38.0" prefWidth="187.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Ricerca Centro Vaccinale" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

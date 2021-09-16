@@ -2,6 +2,7 @@ package centrivaccinali;
 
 import gestionefile.GestioneCsv;
 
+import java.io.*;
 import java.util.*;
 
 public class GestioneCentriVaccinali extends GestioneCsv {
@@ -180,11 +181,8 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         Ricostruzione oggetti scritti nel file
          */
         for (String line: listaRigheFile) {
-            System.out.println(line);
+            //System.out.println(line);
             String[] rawObject = line.split(SEPARATORE_CSV);
-            for (int i = 0; i < rawObject.length; i++) {
-                System.out.println(rawObject[i]);
-            }
             CentroVaccinale centroVaccinale = new CentroVaccinale();
             centroVaccinale.setId(Short.parseShort(rawObject[0]));
             centroVaccinale.setNomeCentroVaccinale(rawObject[1]);
@@ -196,9 +194,6 @@ public class GestioneCentriVaccinali extends GestioneCsv {
             centroVaccinale.setCap(Integer.parseInt(rawObject[7]));
             centroVaccinale.setTipologia(rawObject[8]);
             listaCentriVaccinali.add(centroVaccinale);
-        }
-        for (int i = 0; i < listaCentriVaccinali.size(); i++) {
-            listaCentriVaccinali.get(i).toString();
         }
         return listaCentriVaccinali;
     }
@@ -229,7 +224,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
         for (CentroVaccinale centroVaccinale: listaCentriVaccinali) {
             centroVaccinale.toString();
-            if (centroVaccinale.getNomeCentroVaccinale().contains(nomeCentroVaccinale))
+            if (centroVaccinale.getNomeCentroVaccinale().toLowerCase().contains(nomeCentroVaccinale.toLowerCase()))
                 listaRisultati.add(centroVaccinale);
         }
         return listaRisultati;
@@ -270,7 +265,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         ArrayList<CentroVaccinale> listaCentriVaccinali = getCentriVaccinali();
         ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
         for (CentroVaccinale centroVaccinale: listaCentriVaccinali) {
-            if (centroVaccinale.getComune().equals(comune) & centroVaccinale.getTipologia().equals(tipologia))
+            if (centroVaccinale.getComune().toLowerCase().contains(comune.toLowerCase()) | centroVaccinale.getTipologia().toLowerCase().contains(tipologia.toLowerCase()))
                 listaRisultati.add(centroVaccinale);
         }
         return listaRisultati;

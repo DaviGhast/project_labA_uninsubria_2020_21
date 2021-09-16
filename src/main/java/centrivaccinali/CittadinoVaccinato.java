@@ -1,5 +1,9 @@
 package centrivaccinali;
 
+import cittadini.EventoAvverso;
+
+import java.util.ArrayList;
+
 /**
  * @author Davide Mainardi
  * @author Marc Cepraga
@@ -9,10 +13,10 @@ package centrivaccinali;
 
 public class CittadinoVaccinato {
 
-    String nomeCentroVaccinale, nomeCittadino, cognomeCittadino, codiceFiscaleCittadino, dataVaccinazione, vaccinoSomministrato;
-    short id, idVaccinazione;
+    private String nomeCentroVaccinale, nomeCittadino, cognomeCittadino, codiceFiscaleCittadino, dataVaccinazione, vaccinoSomministrato;
+    private short id, idVaccinazione;
+    private ArrayList<EventoAvverso> eventiAvversi = new ArrayList<>();
 
-    //TODO modifica vaccino sarà un Enum
 
     /**
      * Metodo costruttore per le istanze della classe CittadinoVaccinato
@@ -105,6 +109,14 @@ public class CittadinoVaccinato {
 
     public void setIdVaccinazione(short idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
+    }
+
+    public ArrayList<EventoAvverso> getEventiAvversi() {
+        return eventiAvversi;
+    }
+
+    public void setEventiAvversi(ArrayList<EventoAvverso> eventiAvversi) {
+        this.eventiAvversi = eventiAvversi;
     }
 }
 

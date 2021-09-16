@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.InserisciEventoAvversoController">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
+               <children>
+                  <Label fx:id="nomeCentroLabel" alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="29.0" prefWidth="238.0" text="Id Vaccinazione" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idVaccinazione" accessibleHelp="ciao" editable="false" layoutX="262.0" layoutY="59.0" onMouseEntered="#viewRegex1" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="evento" layoutX="260.0" layoutY="142.0" onMouseEntered="#viewRegex2" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="severita" layoutX="260.0" layoutY="215.0" onMouseEntered="#viewRegex3" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="147.0" prefHeight="29.0" prefWidth="238.0" text="Evento da segnalare" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="12.0" layoutY="220.0" prefHeight="29.0" prefWidth="238.0" text="Severita" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="cross" fitHeight="29.0" fitWidth="30.0" layoutX="553.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark" fitHeight="58.0" fitWidth="42.0" layoutX="547.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cross1" fitHeight="29.0" fitWidth="30.0" layoutX="554.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark1" fitHeight="58.0" fitWidth="42.0" layoutX="548.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cross2" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark2" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="note" layoutX="261.0" layoutY="290.0" onMouseEntered="#viewRegex2" prefHeight="38.0" prefWidth="291.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="295.0" prefHeight="29.0" prefWidth="238.0" text="Note" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="cross11" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/cross.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="checkmark11" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/check_mark.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Inserisci Evento Avverso" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirm" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

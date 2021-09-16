@@ -400,7 +400,10 @@ public class GestioneCsv {
         return idExist;
     }
 
-
+    public void deleteAndCreate() {
+        file.delete();
+        verificaFile();
+    }
 
 
 }

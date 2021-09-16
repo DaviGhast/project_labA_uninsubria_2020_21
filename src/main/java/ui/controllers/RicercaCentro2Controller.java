@@ -2,31 +2,21 @@ package ui.controllers;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.GestioneCentriVaccinali;
-import cittadini.CittadinoRegistrato;
-import cittadini.GestioneCittadinoRegistrato;
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
-public class RicercaCentro1Controller {
+public class RicercaCentro2Controller {
 
     private CentroVaccinale centroVaccinale;
 
-    @FXML private TextField nomeCentro;
+    @FXML private TextField comuneSearch, tipologiaSearch;
     @FXML private Label description;
     @FXML private Button confirm;
     @FXML private Button search;
@@ -42,7 +32,7 @@ public class RicercaCentro1Controller {
 
     @FXML void search_button() {
         ObservableList<CentroVaccinale> list = FXCollections.observableArrayList(
-                GestioneCentriVaccinali.getInstance().searchCentroByName(nomeCentro.getText())
+                GestioneCentriVaccinali.getInstance().searchCentroByComuneAndTipologia(comuneSearch.getText(), tipologiaSearch.getText())
         );
 
         nome.setCellValueFactory(new PropertyValueFactory<CentroVaccinale,String>("nomeCentroVaccinale"));
