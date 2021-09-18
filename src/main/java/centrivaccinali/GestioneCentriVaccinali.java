@@ -50,34 +50,15 @@ public class GestioneCentriVaccinali extends GestioneCsv {
      * il metodo verifica l'esistenza di un centroVaccinale
      * @return esiste o non esiste
      */
-        public Boolean cercaCentroEsiste(String nomeCentroVaccinale){
-            Scanner in = new Scanner(System.in);
-            boolean esci = false;
-            while (!esci){
-                if (ricercaCentroEsistePerNome(nomeCentroVaccinale) == true){
-                    esci = true;
-                }
-            }
-            return esci;
+    public boolean cercaCentroEsiste(String nomeCentroVaccinale){
+        boolean exist = false;
+        ArrayList<CentroVaccinale> lista = searchCentroByName(nomeCentroVaccinale);
+        for (CentroVaccinale centroVaccinale: lista) {
+            if (centroVaccinale.getNomeCentroVaccinale().equals(nomeCentroVaccinale))
+                exist = true;
         }
-
-    /**
-     * il metodo verifica l'esistenza di un centro vaccinale tramite il suo nome
-     * @param nomeCentroVaccinale
-     * @return esiste o non esiste
-     */
-        public boolean ricercaCentroEsistePerNome(String nomeCentroVaccinale) {
-            boolean exist = false;
-            int count = numRisultatiPerCampo(nomeCentroVaccinale,1);
-            Vector<String[]> rows = ricercaRighePerCampo(nomeCentroVaccinale,1);
-            for (int i = 0; i < count; i++) {
-                String[] row = rows.elementAt(i);
-                if (row[1].equals(nomeCentroVaccinale)){
-                    exist = true;
-                }
-            }
-            return exist;
-        }
+        return exist;
+    }
 
     public ArrayList<CentroVaccinale> getCentriVaccinali(){
         ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();

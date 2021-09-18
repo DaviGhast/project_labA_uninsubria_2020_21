@@ -1,9 +1,11 @@
 package cittadini;
 
+import centrivaccinali.CentroVaccinale;
 import centrivaccinali.GestioneCentriVaccinali;
 import criptazione.AlgoritmoMD5;
 import gestionefile.GestioneCsv;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -43,6 +45,27 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
             scritturaFile(linea.toString());
     }
 
+    public ArrayList<CittadinoRegistrato> getCittadiniRegistrati(){
+        ArrayList<CittadinoRegistrato> listaCittadiniRegistrati = new ArrayList<>();
+        ArrayList<String> listaRigheFile = letturaFile();
+        /*
+        Ricostruzione oggetti scritti nel file
+         */
+        for (String line: listaRigheFile) {
+            //System.out.println(line);
+            String[] rawObject = line.split(SEPARATORE_CSV);
+            CittadinoRegistrato cittadinoRegistrato = new CittadinoRegistrato();
+            cittadinoRegistrato.setNome(rawObject[0]);
+            cittadinoRegistrato.setCognome(rawObject[1]);
+            cittadinoRegistrato.setEmail(rawObject[2]);
+            cittadinoRegistrato.setUserid(rawObject[3]);
+            cittadinoRegistrato.setPassword(rawObject[4]);
+            cittadinoRegistrato.setIdVaccinazione(Short.parseShort(rawObject[5]));
+            listaCittadiniRegistrati.add(cittadinoRegistrato);
+        }
+        return listaCittadiniRegistrati;
+    }
+
     /**
      * il metodo restituisce un cittadino registrato tramite id
      * @param userid
@@ -50,36 +73,17 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
      */
     public CittadinoRegistrato getCittadinoRegistrato (String userid){
         CittadinoRegistrato cittadinoRegistrato = null;
-        int count = numRisultatiPerCampo(userid,3);
-        Vector<String[]> rows = ricercaRighePerCampo(userid, 3);
-        for (int i = 0; i < count; i++) {
-            String[] row = rows.elementAt(i);
-            cittadinoRegistrato = new CittadinoRegistrato(row[0],row[1],row[2],row[3],row[4],Short.parseShort(row[5]));
+        ArrayList<CittadinoRegistrato> lista = getCittadiniRegistrati();
+        for (CittadinoRegistrato cittadinoRegistratoDaLista: lista) {
+            if (cittadinoRegistratoDaLista.getUserid().equals(userid))
+                cittadinoRegistrato = cittadinoRegistratoDaLista;
         }
         return cittadinoRegistrato;
     }
 
-    /**
-     * il metodo verifica l'esistenza di un userid
-     * @param userid
-     * @return esiste o non esiste
-     */
-    public boolean useidEsistente(String userid){
-        boolean exist = false;
-        int count = numRisultatiPerCampo(userid,3);
-        Vector<String[]> rows = ricercaRighePerCampo(userid, 3);
-        for (int i = 0; i < count; i++) {
-            String[] row = rows.elementAt(i);
-            if (row[3].equals(userid)){
-                exist = true;
-            }
-        }
-        return exist;
-    }
-
     public boolean rispostaCittadinoEsiste(String userid, String password){
         boolean risposta = false;
-        if (useidEsistente(userid)){
+        if (useridEsistente(userid)){
             CittadinoRegistrato cittadinoRegistrato = getCittadinoRegistrato(userid);
             if (cittadinoRegistrato.getPassword().equals(AlgoritmoMD5.converti(password))){
                 System.out.print("login");

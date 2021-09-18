@@ -215,172 +215,6 @@ public class GestioneCsv {
     }
 
     /**
-     * Metodo <code>numRisultatiPerCampo</code>
-     * @param dato
-     * @return
-     */
-    public int numRisultatiPerTutto(String dato) {
-        String line = "";
-        int count = 0;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                for (String index : row) {
-                    if (index.equals(dato)) {
-                        count++;
-                    }
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    /**
-     * Metodo <code>numRisultatiPerCampo</code>
-     * @param dato
-     * @param indexCampo
-     * @return
-     */
-    public int numRisultatiPerCampo(String dato, int indexCampo) {
-        String line = "";
-        int count = 0;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                if (row[indexCampo].equals(dato)){
-                    count++;
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    public int numRisultatiPerCampoVisuliz(String dato, int indexCampo) {
-        String line = "";
-        int count = 0;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                if (row[indexCampo].contains(dato)){
-                    count++;
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    /**
-     * Metodo <code>ricercaRighePerTutto</code>
-     * @param dato
-     * @return
-     */
-    public Vector<String[]> ricercaRighePerTutto(String dato) {
-        Vector<String[]> rows = new Vector<String[]>();
-        String line = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                for (String index : row) {
-                    if (index.equals(dato)) {
-                        rows.add(row);
-                    }
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return rows;
-    }
-
-    /**
-     * Metodo <code>ricercaRighePerCampo</code>
-     * @param dato
-     * @param indexCampo
-     * @return
-     */
-    public Vector<String[]> ricercaRighePerCampo(String dato, int indexCampo) {
-        Vector<String[]> rows = new Vector<String[]>();
-        String line = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                if (row[indexCampo].equals(dato)){
-                    rows.add(row);
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return rows;
-    }
-
-    public Vector<String[]> ricercaRighePerCampoVisualiz(String dato, int indexCampo) {
-        Vector<String[]> rows = new Vector<String[]>();
-        String line = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                if (row[indexCampo].contains(dato)){
-                    rows.add(row);
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return rows;
-    }
-
-    /**
-     * Metodo <code>cercaPerTutto</code>
-     * @param dato
-     */
-    public void cercaPerTutto (String dato) {
-        System.out.println();
-        int count = numRisultatiPerTutto(dato);
-        System.out.println("Ci sono"+count+" risultati per "+dato+" nell'elenco.");
-        //stampaCSV(arrayNomiColonne);
-        Vector<String[]> rows = ricercaRighePerTutto(dato);
-        for (int i = 0; i < count; i++) {
-            String[] row = rows.elementAt(i);
-            //stampaCSV(row);
-        }
-    }
-
-    /**
-     * Metodo <code>cercaPerCampo</code>
-     * @param dato
-     */
-    public void cercaPerCampo(String dato, String campo, int indexCampo) {
-        System.out.println();
-        int count = numRisultatiPerCampo(dato,indexCampo);
-        System.out.println("Ci sono "+count+" risultati per "+dato+" in "+campo+" .");
-        //stampaCSV(arrayNomiColonne);
-        Vector<String[]> rows = ricercaRighePerCampo(dato,indexCampo);
-        for (int i = 0; i < count; i++) {
-            String[] row = rows.elementAt(i);
-            //stampaCSV(row);
-        }
-    }
-
-    /**
      * Metodo <code>ricercaIdEsiste</code>
      * <p>
      *
@@ -388,14 +222,42 @@ public class GestioneCsv {
      * @param id
      */
     public boolean ricercaIdEsiste(String id) {
-        Boolean idExist = false;
-        int count = numRisultatiPerTutto(id);
-        Vector<String[]> rows = ricercaRighePerTutto(id);
-        for (int i = 0; i < count; i++) {
-            String[] row = rows.elementAt(i);
-            if (row[0].equals(id)){
-                idExist = true;
+        boolean idExist = false;
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(SEPARATORE_CSV);
+                if (row[0].equals(id)){
+                    idExist = true;
+                }
             }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return idExist;
+    }
+
+    /**
+     * il metodo verifica l'esistenza di un userid
+     * @param userid
+     * @return esiste o non esiste
+     */
+    public boolean useridEsistente(String userid){
+        boolean idExist = false;
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(SEPARATORE_CSV);
+                if (row[3].equals(userid)){
+                    idExist = true;
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return idExist;
     }
