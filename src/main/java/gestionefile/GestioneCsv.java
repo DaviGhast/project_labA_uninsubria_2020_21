@@ -262,6 +262,24 @@ public class GestioneCsv {
         return idExist;
     }
 
+    public String getNomeCentroByIdVaccinato(Short idVaccinato){
+        String line = "";
+        String nomeCentro = new String();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(SEPARATORE_CSV);
+                if (row[0].equals(idVaccinato)){
+                     nomeCentro = row[1];
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nomeCentro;
+    }
+
     public void deleteAndCreate() {
         file.delete();
         verificaFile();

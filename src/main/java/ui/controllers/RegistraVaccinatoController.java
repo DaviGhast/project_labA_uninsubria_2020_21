@@ -99,10 +99,10 @@ public class RegistraVaccinatoController implements Initializable {
             GestioneVaccinati gestioneVaccinati = GestioneVaccinati.getInstance(nomeCentro.getText());
             gestioneVaccinati.verificaFile();
             cittadinoVaccinato.setId(gestioneVaccinati.nextId());
-            cittadinoVaccinato.setNomeCentroVaccinale(nomeCentro.getText());
-            cittadinoVaccinato.setNomeCittadino(nomeCittadino.getText());
-            cittadinoVaccinato.setCognomeCittadino(cognomeCittadino.getText());
-            cittadinoVaccinato.setCodiceFiscaleCittadino(codiceFiscale.getText());
+            cittadinoVaccinato.setNomeCentroVaccinale(FixInput.getInstance().fixString(nomeCentro.getText()));
+            cittadinoVaccinato.setNomeCittadino(FixInput.getInstance().fixString(nomeCittadino.getText()));
+            cittadinoVaccinato.setCognomeCittadino(FixInput.getInstance().fixString(cognomeCittadino.getText()));
+            cittadinoVaccinato.setCodiceFiscaleCittadino(codiceFiscale.getText().toUpperCase());
             cittadinoVaccinato.setDataVaccinazione(dataVaccinazione.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             cittadinoVaccinato.setIdVaccinazione(gestioneVaccinati.nextIdUniv());
             gestioneVaccinati.registraVaccinato(cittadinoVaccinato);

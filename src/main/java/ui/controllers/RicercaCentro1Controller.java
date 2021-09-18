@@ -62,7 +62,8 @@ public class RicercaCentro1Controller {
         if (tabella.getSelectionModel().getSelectedIndex() >= 0) {
             centroVaccinale = tabella.getSelectionModel().getSelectedItem();
             confirm.setDisable(false);
-            description.setText("hai selezionato il centro:" + centroVaccinale.getNomeCentroVaccinale() + "nella riga " + tabella.getSelectionModel().getSelectedIndex()+1);
+            int index = tabella.getSelectionModel().getSelectedIndex();
+            description.setText("hai selezionato il centro:" + centroVaccinale.getNomeCentroVaccinale() + "nella riga " + index++);
         }
 
     }

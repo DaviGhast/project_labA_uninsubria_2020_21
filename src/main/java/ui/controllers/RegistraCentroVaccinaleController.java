@@ -27,7 +27,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
     @FXML private TextField nomeCentro, qualificatore, nomeIndirizzo, nCivico, comune, provincia, cap;
     @FXML private Label description, infoRegex;
     @FXML private Button confirm;
-    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2;
+    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3;
 
     @FXML void check_info() {
         if (!nomeCentro.getText().equals("") & !qualificatore.getText().equals("") & !nomeIndirizzo.getText().equals("") & !nCivico.getText().equals("") ){
@@ -80,12 +80,12 @@ public class RegistraCentroVaccinaleController implements Initializable {
     }
     public boolean validatorfield5and6and7(){
         if (Pattern.matches("^[a-zA-Z ']{2,50}",comune.getText()) & Pattern.matches("^[a-zA-Z]{2}",provincia.getText()) &Pattern.matches("^[0-9]{5}",cap.getText())){
-            cross2.setVisible(false);
-            checkmark2.setVisible(true);
+            cross3.setVisible(false);
+            checkmark3.setVisible(true);
             return true;
         } else {
-            checkmark2.setVisible(false);
-            cross2.setVisible(true);
+            checkmark3.setVisible(false);
+            cross3.setVisible(true);
             return false;
         }
     }
@@ -94,12 +94,12 @@ public class RegistraCentroVaccinaleController implements Initializable {
         if (validatorfield1() & validatorfield2() & validatorfield3and4() & validatorfield5and6and7()){
             centroVaccinale = new CentroVaccinale();
             centroVaccinale.setId(GestioneCentriVaccinali.getInstance().nextId());
-            centroVaccinale.setNomeCentroVaccinale(nomeCentro.getText());
-            centroVaccinale.setQualificatoreIndirizzo(qualificatore.getText());
-            centroVaccinale.setNomeIndirizzo(nomeIndirizzo.getText());
+            centroVaccinale.setNomeCentroVaccinale(FixInput.getInstance().fixString(nomeCentro.getText()));
+            centroVaccinale.setQualificatoreIndirizzo(FixInput.getInstance().fixString(qualificatore.getText()));
+            centroVaccinale.setNomeIndirizzo(FixInput.getInstance().fixString(nomeIndirizzo.getText()));
             centroVaccinale.setNumeroCivico(Integer.parseInt(nCivico.getText()));
-            centroVaccinale.setComune(comune.getText());
-            centroVaccinale.setSiglaProvincia(provincia.getText());
+            centroVaccinale.setComune(FixInput.getInstance().fixString(comune.getText()));
+            centroVaccinale.setSiglaProvincia(provincia.getText().toUpperCase());
             centroVaccinale.setCap(Integer.parseInt(cap.getText()));
             centroVaccinale.setTipologia(tipologia);
             GestioneCentriVaccinali.getInstance().registraCentroVaccinale(centroVaccinale);

@@ -1,8 +1,6 @@
 package ui.controllers;
 
-import centrivaccinali.CittadinoVaccinato;
 import centrivaccinali.GestioneCentriVaccinali;
-import centrivaccinali.GestioneVaccinati;
 import cittadini.CittadinoRegistrato;
 import cittadini.GestioneCittadinoRegistrato;
 import criptazione.AlgoritmoMD5;
@@ -16,7 +14,6 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -115,15 +112,17 @@ public class RegistrazioneCittadinoController implements Initializable {
         if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4() & validatorfield5() & validatorfield6()){
             cittadinoRegistrato = new CittadinoRegistrato();
             cittadinoRegistrato.setIdVaccinazione(Short.parseShort(idVaccinazione.getText()));
-            cittadinoRegistrato.setNome(nomeCittadino.getText());
-            cittadinoRegistrato.setCognome(cognomeCittadino.getText());
+            cittadinoRegistrato.setNome(FixInput.getInstance().fixString(nomeCittadino.getText()));
+            cittadinoRegistrato.setCognome(FixInput.getInstance().fixString(cognomeCittadino.getText()));
             cittadinoRegistrato.setUserid(userid.getText());
             cittadinoRegistrato.setEmail(email.getText());
             cittadinoRegistrato.setPassword(AlgoritmoMD5.converti(password.getText()));
             GestioneCittadinoRegistrato.getInstance().registraCittadino(cittadinoRegistrato);
             description.setText("Cittadino Registrato con Successo");
             confirm.setDisable(true);
+            FixInput.getInstance().setDataBuffer(cittadinoRegistrato.getIdVaccinazione());
             cittadinoRegistrato = null;
+            MainUIController.setRoot("InserisciEventoAvverso");
         }
     }
 

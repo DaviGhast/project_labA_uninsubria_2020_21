@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 
 public class LoginCittadinoController implements Initializable {
 
-    private CittadinoRegistrato cittadinoRegistrato;
-
     @FXML private TextField userid;
     @FXML private PasswordField password;
     @FXML private Label description, infoRegex;
@@ -55,7 +53,8 @@ public class LoginCittadinoController implements Initializable {
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
         if (validatorfield1() & validatorfield2() & GestioneCittadinoRegistrato.getInstance().rispostaCittadinoEsiste(userid.getText(), password.getText())){
-            MainUIController.setRoot("EventiAvversi");
+            FixInput.getInstance().setDataBuffer(GestioneCittadinoRegistrato.getInstance().getCittadinoRegistrato(userid.getText()).getIdVaccinazione());
+            MainUIController.setRoot("InserisciEventoAvverso");
         }
     }
 

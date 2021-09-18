@@ -2,7 +2,7 @@ package cittadini;
 
 public class EventoAvverso {
     private String evento;
-    private byte severità;
+    private byte severita;
     private String note;
 
     public String getEvento() {
@@ -13,12 +13,12 @@ public class EventoAvverso {
         this.evento = evento;
     }
 
-    public byte getSeverità() {
-        return severità;
+    public byte getSeverita() {
+        return severita;
     }
 
-    public void setSeverità(byte severità) {
-        this.severità = severità;
+    public void setSeverita(byte severita) {
+        this.severita = severita;
     }
 
     public String getNote() {

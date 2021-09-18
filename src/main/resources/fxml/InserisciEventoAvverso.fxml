@@ -15,16 +15,6 @@
          <children>
             <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
                <children>
-                  <Label fx:id="nomeCentroLabel" alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="29.0" prefWidth="238.0" text="Id Vaccinazione" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="idVaccinazione" accessibleHelp="ciao" editable="false" layoutX="262.0" layoutY="59.0" onMouseEntered="#viewRegex1" prefHeight="38.0" prefWidth="291.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
                   <TextField fx:id="evento" layoutX="260.0" layoutY="142.0" onMouseEntered="#viewRegex2" prefHeight="38.0" prefWidth="291.0">
                      <font>
                         <Font size="18.0" />
@@ -45,32 +35,22 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cross" fitHeight="29.0" fitWidth="30.0" layoutX="553.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="cross" fitHeight="29.0" fitWidth="30.0" layoutX="554.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/cross.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="checkmark" fitHeight="58.0" fitWidth="42.0" layoutX="547.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="checkmark" fitHeight="58.0" fitWidth="42.0" layoutX="548.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/check_mark.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="cross1" fitHeight="29.0" fitWidth="30.0" layoutX="554.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="cross1" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/cross.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="checkmark1" fitHeight="58.0" fitWidth="42.0" layoutX="548.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/check_mark.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="cross2" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/cross.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="checkmark2" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="checkmark1" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/check_mark.png" />
                      </image>
@@ -85,12 +65,12 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cross11" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="cross2" fitHeight="29.0" fitWidth="30.0" layoutX="555.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/cross.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="checkmark11" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="checkmark2" fitHeight="58.0" fitWidth="42.0" layoutX="549.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../images/check_mark.png" />
                      </image>

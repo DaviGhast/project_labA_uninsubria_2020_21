@@ -3,8 +3,6 @@ package centrivaccinali;
 import cittadini.EventoAvverso;
 import gestionefile.GestioneCsv;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GestioneVaccinati extends GestioneCsv {
@@ -60,7 +58,9 @@ public class GestioneVaccinati extends GestioneCsv {
             linea.append(SEPARATORE_CSV);
             linea.append(cittadinoVaccinato.getIdVaccinazione());
             linea.append(SEPARATORE_CSV);
-            linea.append(eventiAvversiToString(new ArrayList<EventoAvverso>()));
+            ArrayList<EventoAvverso> eventiAvversi = new ArrayList<EventoAvverso>();
+            eventiAvversi.add(new EventoAvverso());
+            linea.append(eventiAvversiToString(eventiAvversi));
             scritturaFile(linea.toString());
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
@@ -68,40 +68,38 @@ public class GestioneVaccinati extends GestioneCsv {
         vaccinati.scritturaFile(cittadinoVaccinato.getIdVaccinazione()+SEPARATORE_CSV+nomeCentroVaccinale+SEPARATORE_CSV+ cittadinoVaccinato.getId());
     }
 
-    public void inserisciEventiAvversi(int index, EventoAvverso eventoAvverso) {
-        ArrayList<CittadinoVaccinato> listaCittadinoVaccinato = getCittadiniVaccinati();
+    public void inserisciEventiAvversi(short idVaccinato, EventoAvverso eventoAvverso) {
+        ArrayList<CittadinoVaccinato> listaCittadiniVaccinati = getCittadiniVaccinati();
         deleteAndCreate();
-        for (int i = 0; i < listaCittadinoVaccinato.size(); i++) {
+        for (CittadinoVaccinato cittadinoVaccinato: listaCittadiniVaccinati) {
             StringBuffer linea = new StringBuffer();
-            linea.append(listaCittadinoVaccinato.get(i).getId());
+            linea.append(cittadinoVaccinato.getId());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getNomeCentroVaccinale());
+            linea.append(cittadinoVaccinato.getNomeCentroVaccinale());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getNomeCittadino());
+            linea.append(cittadinoVaccinato.getNomeCittadino());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getCognomeCittadino());
+            linea.append(cittadinoVaccinato.getCognomeCittadino());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getCodiceFiscaleCittadino());
+            linea.append(cittadinoVaccinato.getCodiceFiscaleCittadino());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getDataVaccinazione());
+            linea.append(cittadinoVaccinato.getDataVaccinazione());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getVaccinoSomministrato());
+            linea.append(cittadinoVaccinato.getVaccinoSomministrato());
             linea.append(SEPARATORE_CSV);
-            linea.append(listaCittadinoVaccinato.get(i).getIdVaccinazione());
+            linea.append(cittadinoVaccinato.getIdVaccinazione());
             linea.append(SEPARATORE_CSV);
-            if (index == i) {
-                ArrayList<EventoAvverso> eventoAvversi = new ArrayList<>();
-                eventoAvversi.add(eventoAvverso);
-                linea.append(eventiAvversiToString(eventoAvversi));
-            } else {
-                linea.append(eventiAvversiToString(listaCittadinoVaccinato.get(i).getEventiAvversi()));
+            ArrayList<EventoAvverso> eventiAvversi = cittadinoVaccinato.getEventiAvversi();
+            if (cittadinoVaccinato.getIdVaccinazione() == idVaccinato){
+                eventiAvversi.add(eventoAvverso);
             }
+            linea.append(eventiAvversi);
             scritturaFile(linea.toString());
         }
     }
 
     public ArrayList<CittadinoVaccinato> getCittadiniVaccinati() {
-        ArrayList<CittadinoVaccinato> listaCittadinoVaccinato = new ArrayList<>();
+        ArrayList<CittadinoVaccinato> listaCittadiniVaccinati = new ArrayList<>();
         ArrayList<String> listaRigheFile = letturaFile();
         /*
         Ricostruzione oggetti scritti nel file
@@ -119,9 +117,9 @@ public class GestioneVaccinati extends GestioneCsv {
             cittadinoVaccinato.setVaccinoSomministrato(rawObject[6]);
             cittadinoVaccinato.setIdVaccinazione(Short.parseShort(rawObject[7]));
             cittadinoVaccinato.setEventiAvversi(eventiAvversiToArray(rawObject[8]));
-            listaCittadinoVaccinato.add(cittadinoVaccinato);
+            listaCittadiniVaccinati.add(cittadinoVaccinato);
         }
-        return listaCittadinoVaccinato;
+        return listaCittadiniVaccinati;
     }
 
     public String eventiAvversiToString (ArrayList<EventoAvverso> eventiAvversi) {
@@ -129,7 +127,7 @@ public class GestioneVaccinati extends GestioneCsv {
         for (EventoAvverso eventoAvverso: eventiAvversi) {
             linea.append(eventoAvverso.getEvento());
             linea.append(".");
-            linea.append(eventoAvverso.getSeverità());
+            linea.append(eventoAvverso.getSeverita());
             linea.append(".");
             linea.append(eventoAvverso.getNote());
             linea.append("|");
@@ -144,7 +142,7 @@ public class GestioneVaccinati extends GestioneCsv {
             String[] rawObject = evento.split(".");
             EventoAvverso eventoAvverso = new EventoAvverso();
             eventoAvverso.setEvento(rawObject[0]);
-            eventoAvverso.setSeverità(Byte.parseByte(rawObject[1]));
+            eventoAvverso.setSeverita(Byte.parseByte(rawObject[1]));
             eventoAvverso.setNote(rawObject[2]);
             eventiAvversi.add(eventoAvverso);
         }

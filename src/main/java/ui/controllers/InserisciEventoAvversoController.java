@@ -1,17 +1,15 @@
 package ui.controllers;
 
 import centrivaccinali.GestioneCentriVaccinali;
+import centrivaccinali.GestioneVaccinati;
 import cittadini.CittadinoRegistrato;
-import cittadini.GestioneCittadinoRegistrato;
-import criptazione.AlgoritmoMD5;
-import gestionefile.GestioneCsv;
+import cittadini.EventoAvverso;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -22,18 +20,16 @@ import java.util.regex.Pattern;
 
 public class InserisciEventoAvversoController implements Initializable {
 
-    private CittadinoRegistrato cittadinoRegistrato;
+    private EventoAvverso eventoAvverso;
 
-    @FXML private TextField idVaccinazione, evento, severita, note;
+    @FXML private TextField evento, severita, note;
     @FXML private Label description, infoRegex;
     @FXML private Button confirm;
-    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4, cross5, checkmark5, cross6, checkmark6;
+    @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2;
 
 
     public boolean validatorfield1(){
-        GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
-        vaccinati.verificaFile();
-        if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaIdEsiste(idVaccinazione.getText())){
+        if (Pattern.matches("^[a-zA-Z ]{2,30}",evento.getText())){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -43,11 +39,48 @@ public class InserisciEventoAvversoController implements Initializable {
             return false;
         }
     }
+    public boolean validatorfield2(){
+        if (Pattern.matches("^[0-5]",severita.getText())){
+            cross1.setVisible(false);
+            checkmark1.setVisible(true);
+            return true;
+        } else {
+            checkmark1.setVisible(false);
+            cross1.setVisible(true);
+            return false;
+        }
+    }
+    public boolean validatorfield3(){
+        if (Pattern.matches("^[a-zA-Z ,.-]{0,256}",note.getText())){
+            cross2.setVisible(false);
+            checkmark2.setVisible(true);
+            return true;
+        } else {
+            checkmark2.setVisible(false);
+            cross2.setVisible(true);
+            return false;
+        }
+    }
 
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
-        if (validatorfield1() ){
-
+        if (validatorfield1() & validatorfield2() & validatorfield3()){
+            eventoAvverso = new EventoAvverso();
+            eventoAvverso.setEvento(FixInput.getInstance().fixString(evento.getText()));
+            eventoAvverso.setSeverita(Byte.parseByte(severita.getText()));
+            if (note.getText().equals("") | note.getText().equals(" ")) {
+                eventoAvverso.setNote(note.getText());
+            } else {
+                eventoAvverso.setNote(FixInput.getInstance().fixString(note.getText()));
+            }
+            GestioneVaccinati.getInstance(GestioneCentriVaccinali.getInstance().getNomeCentroByIdVaccinato((short)
+                    FixInput.getInstance().getDataBuffer())).inserisciEventiAvversi((short)
+                    FixInput.getInstance().getDataBuffer(),eventoAvverso);
+            description.setText("Evento Avverso Registrato con Successo");
+            confirm.setDisable(true);
+            eventoAvverso = null;
+            MainUIController.setRoot("InserisciEventoAvverso");
+            FixInput.getInstance().setDataBuffer(FixInput.getInstance().getDataBuffer());
         }
     }
 
