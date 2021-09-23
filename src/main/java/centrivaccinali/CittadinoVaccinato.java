@@ -1,7 +1,5 @@
 package centrivaccinali;
 
-import cittadini.EventoAvverso;
-
 import java.util.ArrayList;
 
 /**

@@ -2,8 +2,7 @@ package ui.controllers;
 
 import centrivaccinali.GestioneCentriVaccinali;
 import centrivaccinali.GestioneVaccinati;
-import cittadini.CittadinoRegistrato;
-import cittadini.EventoAvverso;
+import centrivaccinali.EventoAvverso;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

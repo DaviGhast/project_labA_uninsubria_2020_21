@@ -1,4 +1,4 @@
-package cittadini;
+package centrivaccinali;
 
 public class EventoAvverso {
     private String evento;

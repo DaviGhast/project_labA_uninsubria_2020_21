@@ -57,8 +57,9 @@ public class RicercaCentro2Controller {
 
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) {
-
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+        FixInput.getInstance().setDataBuffer(centroVaccinale.getNomeCentroVaccinale());
+        MainUIController.setRoot("VisualizzaInfo");
     }
 
     /**

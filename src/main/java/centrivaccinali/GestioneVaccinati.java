@@ -1,6 +1,5 @@
 package centrivaccinali;
 
-import cittadini.EventoAvverso;
 import gestionefile.GestioneCsv;
 
 import java.util.*;
@@ -137,6 +136,7 @@ public class GestioneVaccinati extends GestioneCsv {
             linea.append(eventoAvverso.getSeverita());
             linea.append("#");
             linea.append(eventoAvverso.getNote());
+            linea.append("#");
             linea.append("/");
         }
         return linea.toString();
@@ -157,6 +157,22 @@ public class GestioneVaccinati extends GestioneCsv {
             eventiAvversi.add(eventoAvverso);
         }
         return eventiAvversi;
+    }
+
+    public ArrayList<InfoEventoAvversoAnonimo> getAllEventiAvversi (ArrayList<CittadinoVaccinato> listaCittadiniVaccinati) {
+        ArrayList<InfoEventoAvversoAnonimo> listaEventiAvversi = new ArrayList<>();
+        InfoEventoAvversoAnonimo infoEventoAvversoAnonimo;
+        for (CittadinoVaccinato cittadinoVaccinato: listaCittadiniVaccinati) {
+            for (EventoAvverso eventoAvverso: cittadinoVaccinato.getEventiAvversi()) {
+                infoEventoAvversoAnonimo = new InfoEventoAvversoAnonimo();
+                infoEventoAvversoAnonimo.setVaccinoSomministrato(cittadinoVaccinato.getVaccinoSomministrato());
+                infoEventoAvversoAnonimo.setEvento(eventoAvverso.getEvento());
+                infoEventoAvversoAnonimo.setSeverita(eventoAvverso.getSeverita());
+                infoEventoAvversoAnonimo.setNote(eventoAvverso.getNote());
+                listaEventiAvversi.add(infoEventoAvversoAnonimo);
+            }
+        }
+        return listaEventiAvversi;
     }
 
 }
