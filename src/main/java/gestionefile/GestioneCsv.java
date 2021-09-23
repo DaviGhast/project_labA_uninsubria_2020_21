@@ -269,8 +269,10 @@ public class GestioneCsv {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(SEPARATORE_CSV);
-                if (row[0].equals(idVaccinato)){
-                     nomeCentro = row[1];
+                if (!row[0].contains("Id")) {
+                    if (Short.parseShort(row[0]) == idVaccinato){
+                        nomeCentro = row[1];
+                    }
                 }
             }
             reader.close();

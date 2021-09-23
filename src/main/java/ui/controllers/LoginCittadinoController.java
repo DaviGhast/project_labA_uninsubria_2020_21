@@ -53,7 +53,8 @@ public class LoginCittadinoController implements Initializable {
 
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
         if (validatorfield1() & validatorfield2() & GestioneCittadinoRegistrato.getInstance().rispostaCittadinoEsiste(userid.getText(), password.getText())){
-            FixInput.getInstance().setDataBuffer(GestioneCittadinoRegistrato.getInstance().getCittadinoRegistrato(userid.getText()).getIdVaccinazione());
+            short idVaccinazione = GestioneCittadinoRegistrato.getInstance().getCittadinoRegistrato(userid.getText()).getIdVaccinazione();
+            FixInput.getInstance().setDataBuffer(idVaccinazione);
             MainUIController.setRoot("InserisciEventoAvverso");
         }
     }

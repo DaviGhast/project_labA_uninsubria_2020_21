@@ -93,7 +93,7 @@ public class GestioneVaccinati extends GestioneCsv {
             if (cittadinoVaccinato.getIdVaccinazione() == idVaccinato){
                 eventiAvversi.add(eventoAvverso);
             }
-            linea.append(eventiAvversi);
+            linea.append(eventiAvversiToString(eventiAvversi));
             scritturaFile(linea.toString());
         }
     }
@@ -116,7 +116,14 @@ public class GestioneVaccinati extends GestioneCsv {
             cittadinoVaccinato.setDataVaccinazione(rawObject[5]);
             cittadinoVaccinato.setVaccinoSomministrato(rawObject[6]);
             cittadinoVaccinato.setIdVaccinazione(Short.parseShort(rawObject[7]));
-            cittadinoVaccinato.setEventiAvversi(eventiAvversiToArray(rawObject[8]));
+            //System.out.println(rawObject[8]);
+            if (rawObject[8].contains("null")){
+                ArrayList<EventoAvverso> eventiAvversi = eventiAvversiToArray(rawObject[8]);
+                eventiAvversi.clear();
+                cittadinoVaccinato.setEventiAvversi(eventiAvversi);
+            } else {
+                cittadinoVaccinato.setEventiAvversi(eventiAvversiToArray(rawObject[8]));
+            }
             listaCittadiniVaccinati.add(cittadinoVaccinato);
         }
         return listaCittadiniVaccinati;
@@ -126,21 +133,24 @@ public class GestioneVaccinati extends GestioneCsv {
         StringBuffer linea = new StringBuffer();
         for (EventoAvverso eventoAvverso: eventiAvversi) {
             linea.append(eventoAvverso.getEvento());
-            linea.append(".");
+            linea.append("#");
             linea.append(eventoAvverso.getSeverita());
-            linea.append(".");
+            linea.append("#");
             linea.append(eventoAvverso.getNote());
-            linea.append("|");
+            linea.append("/");
         }
         return linea.toString();
     }
 
     public ArrayList<EventoAvverso> eventiAvversiToArray (String eventi) {
         ArrayList<EventoAvverso> eventiAvversi = new ArrayList<>();
-        String[] rawList = eventi.split("|");
+        //System.out.println(eventi);
+        String[] rawList = eventi.split("/");
         for (String evento: rawList) {
-            String[] rawObject = evento.split(".");
+            //System.out.println(evento);
+            String[] rawObject = evento.split("#");
             EventoAvverso eventoAvverso = new EventoAvverso();
+            //System.out.println(rawObject[0]);
             eventoAvverso.setEvento(rawObject[0]);
             eventoAvverso.setSeverita(Byte.parseByte(rawObject[1]));
             eventoAvverso.setNote(rawObject[2]);

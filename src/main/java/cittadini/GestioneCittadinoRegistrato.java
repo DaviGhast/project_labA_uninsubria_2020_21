@@ -41,7 +41,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
             linea.append(cittadinoRegistrato.getPassword());
             linea.append(SEPARATORE_CSV);
             linea.append(cittadinoRegistrato.getIdVaccinazione());
-            linea.append(SEPARATORE_CSV);
+            //linea.append(SEPARATORE_CSV);
             scritturaFile(linea.toString());
     }
 

@@ -104,6 +104,7 @@ public class RegistraVaccinatoController implements Initializable {
             cittadinoVaccinato.setCognomeCittadino(FixInput.getInstance().fixString(cognomeCittadino.getText()));
             cittadinoVaccinato.setCodiceFiscaleCittadino(codiceFiscale.getText().toUpperCase());
             cittadinoVaccinato.setDataVaccinazione(dataVaccinazione.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            cittadinoVaccinato.setVaccinoSomministrato(vaccino);
             cittadinoVaccinato.setIdVaccinazione(gestioneVaccinati.nextIdUniv());
             gestioneVaccinati.registraVaccinato(cittadinoVaccinato);
             description.setText("Cittadino Vaccinato Registrato con Successo, mi raccomando comunica al cittadino il suo codice: "+cittadinoVaccinato.getIdVaccinazione());

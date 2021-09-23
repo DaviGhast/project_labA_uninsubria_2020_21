@@ -69,7 +69,7 @@ public class InserisciEventoAvversoController implements Initializable {
             eventoAvverso.setEvento(FixInput.getInstance().fixString(evento.getText()));
             eventoAvverso.setSeverita(Byte.parseByte(severita.getText()));
             if (note.getText().equals("") | note.getText().equals(" ")) {
-                eventoAvverso.setNote(note.getText());
+                eventoAvverso.setNote(" ");
             } else {
                 eventoAvverso.setNote(FixInput.getInstance().fixString(note.getText()));
             }
