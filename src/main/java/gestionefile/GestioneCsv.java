@@ -27,7 +27,7 @@ public class GestioneCsv {
      *     è una stringa che contine la directory dei file CSV
      * </p>
      */
-    private String pathFile = "../project_labA_uninsubria_2020_21/data";
+    private String pathFile = "..//project_labA_uninsubria_2020_21//data";
     private String[] arrayNomiColonne = null;
     private File file;
     //CSV separator because "," is their digit separator
@@ -40,7 +40,7 @@ public class GestioneCsv {
      * @param arrayNomiColonne array di stringhe che descrive il nome delle varie colonne
      */
     public GestioneCsv(String filename, String[] arrayNomiColonne) {
-        filename = "/"+filename.concat(ESTENSIONE_CSV);
+        filename = "//"+filename.concat(ESTENSIONE_CSV);
         pathFile = pathFile.concat(filename);
         System.out.println(pathFile);
         file = new File(pathFile);
