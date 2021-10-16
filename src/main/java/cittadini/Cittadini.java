@@ -18,8 +18,15 @@ import java.util.Scanner;
  */
 public class Cittadini {
 
+    /**
+     * il nome dell'<code>istanza</code> del cittadino
+     */
     private static Cittadini istanza;
 
+    /**
+     * pattern singleton del metodo <code>getistance</code>
+     * @return l'istanza della classe cittadini
+     */
     public static Cittadini getInstance(){
         if (istanza == null) {
             istanza = new Cittadini();
@@ -27,6 +34,9 @@ public class Cittadini {
         return istanza;
     }
 
+    /**
+     * e' un metodo che fornisce un menu'per le opzioni dell'area centro vaccinale
+     */
     public void cercaCentroVaccinale(){
         Scanner in = new Scanner(System.in);
         //GestioneCentriVaccinali gestioneCentriVaccinali = new GestioneCentriVaccinali();

@@ -4,13 +4,27 @@ import gestionefile.GestioneCsv;
 
 import java.util.*;
 
+/**
+ * la classe gestisce i cittadini vaccinati
+ *  @author Davide Mainardi
+ *  @author Marc Cepraga
+ *  @author Luca Muggiasca
+ *  @author Brenno Re
+ */
 public class GestioneVaccinati extends GestioneCsv {
 
+    /**
+     * l' <code>istanza</code> della classe gestione vaccinati
+     */
     private static GestioneVaccinati istanza;
+
+    /**
+     * il <code>nomeCentroVaccinale</code> e' il nome del centro vaccinale
+     */
     private String nomeCentroVaccinale;
     /**
-     * Metodo costruttore <code>GestioneCSV</code>
-     * @param nomeCentroVaccinale
+     * Costruttore <code>GestioneVaccinati</code> che richiama il costruttore della superclasse
+     * @param nomeCentroVaccinale e' il nome del centro vaccinale
      */
     private GestioneVaccinati(String nomeCentroVaccinale) {
         super("Vaccinati_"+nomeCentroVaccinale.replace(" ","_")+".dati",
@@ -18,6 +32,11 @@ public class GestioneVaccinati extends GestioneCsv {
         this.nomeCentroVaccinale = nomeCentroVaccinale;
     }
 
+    /**
+     * pattern singleton
+     * @param nomeCentroVaccinale e' il nome del centro vaccinale
+     * @return l'oggetto della classe GestioneVaccinati
+     */
     public static GestioneVaccinati getInstance(String nomeCentroVaccinale){
         if (istanza == null) {
             istanza = new GestioneVaccinati(nomeCentroVaccinale);
@@ -25,6 +44,10 @@ public class GestioneVaccinati extends GestioneCsv {
         return istanza;
     }
 
+    /**
+     * il metodo controlla l'ultimo id inserito e crea l'id successivo
+     * @return idUniv e' l'id univoco di vaccinazione
+     */
     public short nextIdUniv() {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
@@ -36,8 +59,8 @@ public class GestioneVaccinati extends GestioneCsv {
     }
 
     /**
-     * il metodo inserisce un cittadinoVaccinato in vaccinatiVector
-     * @param
+     * il metodo inserisce gli oggetti cittadinoVaccinato nello StringBuffer per poi inserirli in vaccinati.csv
+     *  @param cittadinoVaccinato e' l'oggetto della classe CittadinoVaccinato
      */
     public void registraVaccinato(CittadinoVaccinato cittadinoVaccinato) {
             StringBuffer linea = new StringBuffer();
@@ -67,6 +90,11 @@ public class GestioneVaccinati extends GestioneCsv {
         vaccinati.scritturaFile(cittadinoVaccinato.getIdVaccinazione()+SEPARATORE_CSV+nomeCentroVaccinale+SEPARATORE_CSV+ cittadinoVaccinato.getId());
     }
 
+    /**
+     * questo metodo inserisce gli oggetti evento avverso nello stringbuffer per poi inserirli in Vaccinati_NomeCentroVaccinale.csv
+     * @param idVaccinato e' l'id univoco che individua il vaccinato
+     * @param eventoAvverso e' il nome dell'evento avverso
+     */
     public void inserisciEventiAvversi(short idVaccinato, EventoAvverso eventoAvverso) {
         ArrayList<CittadinoVaccinato> listaCittadiniVaccinati = getCittadiniVaccinati();
         deleteAndCreate();
@@ -97,6 +125,10 @@ public class GestioneVaccinati extends GestioneCsv {
         }
     }
 
+    /**
+     * il metodo restituisce l'elenco dei cittadini vaccinati
+     * @return ArrayList di cittadini vaccinati
+     */
     public ArrayList<CittadinoVaccinato> getCittadiniVaccinati() {
         ArrayList<CittadinoVaccinato> listaCittadiniVaccinati = new ArrayList<>();
         ArrayList<String> listaRigheFile = letturaFile();
@@ -128,6 +160,11 @@ public class GestioneVaccinati extends GestioneCsv {
         return listaCittadiniVaccinati;
     }
 
+    /**
+     *questo metodo è utile per formattare correttamente gli eventi avversi prima di inserirli nel file
+     * @param eventiAvversi e' il nome degli eventi avversi
+     * @return eventiAvversiToString e' il nome dell'evento avverso formattato
+     */
     public String eventiAvversiToString (ArrayList<EventoAvverso> eventiAvversi) {
         StringBuffer linea = new StringBuffer();
         for (EventoAvverso eventoAvverso: eventiAvversi) {
@@ -142,6 +179,11 @@ public class GestioneVaccinati extends GestioneCsv {
         return linea.toString();
     }
 
+    /**
+     * Questo metodo converte gli eventi avversi in un array
+     * @param eventi è una stringa di eventi avversi
+     * @return eventiAvversi è' il nome degli eventi avversi
+     */
     public ArrayList<EventoAvverso> eventiAvversiToArray (String eventi) {
         ArrayList<EventoAvverso> eventiAvversi = new ArrayList<>();
         //System.out.println(eventi);
@@ -159,6 +201,11 @@ public class GestioneVaccinati extends GestioneCsv {
         return eventiAvversi;
     }
 
+    /**
+     * questo metodo restituisce le info degli eventi avversi estrapolati dal parametro listaCittadiniVaccinati
+     * @param listaCittadiniVaccinati contiene i nomi dei vaccinati
+     * @return listaEventiAvversi contiene i nomi degli eventi avversi
+     */
     public ArrayList<InfoEventoAvversoAnonimo> getAllEventiAvversi (ArrayList<CittadinoVaccinato> listaCittadiniVaccinati) {
         ArrayList<InfoEventoAvversoAnonimo> listaEventiAvversi = new ArrayList<>();
         InfoEventoAvversoAnonimo infoEventoAvversoAnonimo;

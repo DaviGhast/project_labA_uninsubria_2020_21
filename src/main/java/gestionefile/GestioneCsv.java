@@ -20,18 +20,29 @@ import java.util.Vector;
  * @author Brenno Re
  */
 public class GestioneCsv {
-
     /**
-     * Attributo <code>pathFile</code>
-     * <p>
-     *     è una stringa che contine la directory dei file CSV
-     * </p>
+     *<code>pathFile</code> il percorso relativo della cartella del file CSV
      */
     private String pathFile = "..//project_labA_uninsubria_2020_21//data";
+
+    /**
+     * il nome dell'<code>arrayNomiColonne</code> del file.CSV
+     */
     private String[] arrayNomiColonne = null;
+
+    /**
+     *<code>File</code> è la struttura file che conterrà il file CSV
+     */
     private File file;
-    //CSV separator because "," is their digit separator
+
+    /**
+     *<code>SEPARATORE_CSV</code> contentente la " , " e' il separatore usato per separare un elemento da un altro, appartenente a colonne diverse
+     */
     public static final String SEPARATORE_CSV = ",";
+
+    /**
+     *<code>ESTENSIONE_CSV</code> contentente la " .csv " e' il separatore usato per dare l'estensione e il formato del file
+     */
     private static final String ESTENSIONE_CSV = ".csv";
 
     /**
@@ -47,6 +58,10 @@ public class GestioneCsv {
         this.arrayNomiColonne = arrayNomiColonne;
     }
 
+    /**
+     * metodo per la creazione e ricerca di un id libero
+     * @return id
+     */
     public short nextId() {
         //creazione e ricerca id libero
         short id = 0;
@@ -194,7 +209,7 @@ public class GestioneCsv {
     /**
      * Metodo <code>controllaNomiColonne</code>
      * <p>
-     *     permette di leggere il file velocemente senza ricreare gli oggetti
+     *    Scrive sul file la stringa che contiene le informazioni da scrivere sul file
      * </p>
      * @param dato stringa da
      * @throws IOException
@@ -217,7 +232,7 @@ public class GestioneCsv {
     /**
      * Metodo <code>ricercaIdEsiste</code>
      * <p>
-     *
+     * ricerca id esistente
      * </p>
      * @param id
      */
@@ -262,6 +277,11 @@ public class GestioneCsv {
         return idExist;
     }
 
+    /**
+     * il metodo recupera il nome del centro vaccinale attraverso l'id del vaccinato
+     * @param idVaccinato
+     * @return  nomeCentro
+     */
     public String getNomeCentroByIdVaccinato(Short idVaccinato){
         String line = "";
         String nomeCentro = new String();
@@ -282,6 +302,9 @@ public class GestioneCsv {
         return nomeCentro;
     }
 
+    /**
+     * il metodo si occupa di cancellare e creare un file verificando se esista o meno
+     */
     public void deleteAndCreate() {
         file.delete();
         verificaFile();

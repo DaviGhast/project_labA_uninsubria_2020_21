@@ -5,18 +5,31 @@ import gestionefile.GestioneCsv;
 import java.io.*;
 import java.util.*;
 
+/**
+ * la classe si occupa di gestire i centri vaccinali
+ * @author Davide Mainardi
+ * @author Marc Cepraga
+ * @author Luca Muggiasca
+ * @author Brenno Re
+ */
 public class GestioneCentriVaccinali extends GestioneCsv {
 
+    /**
+     *l' <code>istanza</code> indica l'oggetto della classe GestioneCentriVaccinali
+     */
     private static GestioneCentriVaccinali istanza;
 
         /**
-         * Metodo costruttore <code>GestioneCSV</code>
-         *
+         * Costruttore per le istanze della classe GestioneCentriVaccinali
          */
     private GestioneCentriVaccinali() {
             super("CentriVaccinali.dati", new String[]{"Id","Nome Centro","Qual Indirizzo","Nome Indirizzo","Civico","Comune","Provincia","Cap","Tipologia"});
         }
 
+    /**
+     * design pattern singleton
+     * @return istanza di GestioneCentriVaccinali
+     */
     public static GestioneCentriVaccinali getInstance(){
         if (istanza == null) {
             istanza = new GestioneCentriVaccinali();
@@ -24,6 +37,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         return istanza;
     }
 
+    /**
+     * il metodo serve all'operatore per registrare un nuovon centro vaccinale
+     * @param centroVaccinale
+     */
     public void registraCentroVaccinale(CentroVaccinale centroVaccinale) {
             StringBuffer linea = new StringBuffer();
             linea.append(centroVaccinale.getId());
@@ -48,6 +65,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
 
     /**
      * il metodo verifica l'esistenza di un centroVaccinale
+     * @param nomeCentroVaccinale
      * @return esiste o non esiste
      */
     public boolean cercaCentroEsiste(String nomeCentroVaccinale){
@@ -60,6 +78,10 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         return exist;
     }
 
+    /**
+     * legge ogni riga dal file centroVaccinale.csv e per ognuna di essa istanzia oggetti di tipo centroVaccinale
+     * @return listaCentriVaccinali e' una lista di CentriVaccinLI
+     */
     public ArrayList<CentroVaccinale> getCentriVaccinali(){
         ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();
         ArrayList<String> listaRigheFile = letturaFile();
@@ -84,6 +106,12 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         return listaCentriVaccinali;
     }
 
+    /**
+     * il metodo cerca all'interno del file centro Vaccinale utilizzando come parametro di ricerca il nome del centro vaccinale stesso
+     * @param nomeCentroVaccinale è il parametro di ricerca
+     * @return ListaRisultati centri vaccinali trovati nel file csv
+     */
+
     public ArrayList<CentroVaccinale> searchCentroByName(String nomeCentroVaccinale) {
         ArrayList<CentroVaccinale> listaCentriVaccinali = getCentriVaccinali();
         ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
@@ -95,6 +123,12 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         return listaRisultati;
     }
 
+    /**
+     * il metodo si occupa di cercare il centro vaccinale di interesse tramite comune e tipologia all'interno del file csv
+     * @param comune il nome dell comune
+     * @param tipologia il nome della tipologia
+     * @return listarisultati contiene i centri vaccinali trovati
+     */
     public ArrayList<CentroVaccinale> searchCentroByComuneAndTipologia(String comune, String tipologia) {
         ArrayList<CentroVaccinale> listaCentriVaccinali = getCentriVaccinali();
         ArrayList<CentroVaccinale> listaRisultati = new ArrayList<>();
@@ -106,4 +140,5 @@ public class GestioneCentriVaccinali extends GestioneCsv {
     }
 
 }
+
 

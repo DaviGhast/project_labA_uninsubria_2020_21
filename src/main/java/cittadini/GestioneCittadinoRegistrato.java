@@ -9,8 +9,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+ * contiene tutti i metodi per la gestione del CittadinoRegistrato
+ */
 public class GestioneCittadinoRegistrato extends GestioneCsv {
 
+    /**
+     * il nome dell'<code>oggetto</code> del cittadino
+     */
     private static GestioneCittadinoRegistrato istanza;
 
     /**
@@ -20,14 +26,20 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         super("Cittadini_Registrati.dati", new String[]{"Nome","Cognome","Email","Userid","Password","idVaccinazione"});
         verificaFile();
     }
-
+    /**
+     * pattern singleton del metodo <code>getistance</code>
+     * @return l'oggetto della classe GestioneCittadinoRegistrato
+     */
     public static GestioneCittadinoRegistrato getInstance(){
         if (istanza == null) {
             istanza = new GestioneCittadinoRegistrato();
         }
         return istanza;
     }
-
+    /**
+     * il metodo inserisce gli oggetti cittadinoVanello StringBuffer per poi inserirli in Vaccinati_NomeCentroVaccinale.csv
+     *  @param cittadinoRegistrato e' l'oggetto della classe CittadinoRegistrato
+     */
     public void registraCittadino(CittadinoRegistrato cittadinoRegistrato) {
             StringBuffer linea = new StringBuffer();
             linea.append(cittadinoRegistrato.getNome());
@@ -44,7 +56,10 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
             //linea.append(SEPARATORE_CSV);
             scritturaFile(linea.toString());
     }
-
+    /**
+     * questo metodo inserisce gli oggetti cittadinoRegistrato nello stringbuffer per poi inserirli in Cittadini_Registrati.csv
+     * @return listaCittadiniRegistrati e' la lista dei cittadini registrati
+     */
     public ArrayList<CittadinoRegistrato> getCittadiniRegistrati(){
         ArrayList<CittadinoRegistrato> listaCittadiniRegistrati = new ArrayList<>();
         ArrayList<String> listaRigheFile = letturaFile();
@@ -68,8 +83,8 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
 
     /**
      * il metodo restituisce un cittadino registrato tramite id
-     * @param userid
-     * @return cittadinoRegistrato
+     * @param userid e' la userid del cittadino registrato
+     * @return cittadinoRegistrato l'oggetto cittadinoRegistrato
      */
     public CittadinoRegistrato getCittadinoRegistrato (String userid){
         CittadinoRegistrato cittadinoRegistrato = null;
@@ -81,6 +96,12 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
         return cittadinoRegistrato;
     }
 
+    /**
+     * al momento dell'autenticazione controlla che lo userid del cittadino esista o meno
+     * @param userid e' lo userid
+     * @param password e la password
+     * @return risposta riguardo l'esistenza dello userid
+     */
     public boolean rispostaCittadinoEsiste(String userid, String password){
         boolean risposta = false;
         if (useridEsistente(userid)){
