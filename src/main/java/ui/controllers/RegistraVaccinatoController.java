@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -48,7 +49,7 @@ public class RegistraVaccinatoController implements Initializable {
         }
     }
 
-    public boolean validatorfield1(){
+    public boolean validatorfield1() throws URISyntaxException {
         if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,30}",nomeCentro.getText()) & GestioneCentriVaccinali.getInstance().cercaCentroEsiste(nomeCentro.getText())){
             cross.setVisible(false);
             checkmark.setVisible(true);
@@ -93,7 +94,7 @@ public class RegistraVaccinatoController implements Initializable {
         }
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4()){
             cittadinoVaccinato = new CittadinoVaccinato();
             GestioneVaccinati gestioneVaccinati = GestioneVaccinati.getInstance(nomeCentro.getText());
@@ -141,6 +142,10 @@ public class RegistraVaccinatoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GestioneCentriVaccinali.getInstance().verificaFile();
+        try {
+            GestioneCentriVaccinali.getInstance().verificaFile();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

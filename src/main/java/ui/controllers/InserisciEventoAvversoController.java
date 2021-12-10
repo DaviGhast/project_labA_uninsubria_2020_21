@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -62,7 +63,7 @@ public class InserisciEventoAvversoController implements Initializable {
     }
 
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if (validatorfield1() & validatorfield2() & validatorfield3()){
             eventoAvverso = new EventoAvverso();
             eventoAvverso.setEvento(FixInput.getInstance().fixString(evento.getText()));
@@ -108,6 +109,10 @@ public class InserisciEventoAvversoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GestioneCentriVaccinali.getInstance().verificaFile();
+        try {
+            GestioneCentriVaccinali.getInstance().verificaFile();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -3,6 +3,7 @@ package centrivaccinali;
 import gestionefile.GestioneCsv;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.*;
 
 /**
@@ -22,7 +23,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
         /**
          * Costruttore per le istanze della classe GestioneCentriVaccinali
          */
-    private GestioneCentriVaccinali() {
+    private GestioneCentriVaccinali() throws URISyntaxException {
             super("CentriVaccinali.dati", new String[]{"Id","Nome Centro","Qual Indirizzo","Nome Indirizzo","Civico","Comune","Provincia","Cap","Tipologia"});
         }
 
@@ -30,7 +31,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
      * design pattern singleton
      * @return istanza di GestioneCentriVaccinali
      */
-    public static GestioneCentriVaccinali getInstance(){
+    public static GestioneCentriVaccinali getInstance() throws URISyntaxException {
         if (istanza == null) {
             istanza = new GestioneCentriVaccinali();
         }

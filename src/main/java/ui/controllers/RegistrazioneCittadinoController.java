@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -28,7 +29,7 @@ public class RegistrazioneCittadinoController implements Initializable {
     @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4, cross5, checkmark5, cross6, checkmark6;
 
 
-    public boolean validatorfield1(){
+    public boolean validatorfield1() throws URISyntaxException {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
         if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaIdEsiste(idVaccinazione.getText())){
@@ -108,7 +109,7 @@ public class RegistrazioneCittadinoController implements Initializable {
         }
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4() & validatorfield5() & validatorfield6()){
             cittadinoRegistrato = new CittadinoRegistrato();
             cittadinoRegistrato.setIdVaccinazione(Short.parseShort(idVaccinazione.getText()));
@@ -162,6 +163,10 @@ public class RegistrazioneCittadinoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GestioneCentriVaccinali.getInstance().verificaFile();
+        try {
+            GestioneCentriVaccinali.getInstance().verificaFile();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

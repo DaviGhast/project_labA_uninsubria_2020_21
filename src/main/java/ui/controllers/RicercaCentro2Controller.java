@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class RicercaCentro2Controller {
 
@@ -30,7 +31,7 @@ public class RicercaCentro2Controller {
     @FXML private TableColumn<CentroVaccinale, Integer> cap;
     @FXML private TableColumn<CentroVaccinale, String> tipologia;
 
-    @FXML void search_button() {
+    @FXML void search_button() throws URISyntaxException {
         ObservableList<CentroVaccinale> list = FXCollections.observableArrayList(
                 GestioneCentriVaccinali.getInstance().searchCentroByComuneAndTipologia(comuneSearch.getText(), tipologiaSearch.getText())
         );

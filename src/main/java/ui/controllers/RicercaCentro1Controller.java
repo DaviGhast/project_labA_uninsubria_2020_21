@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -40,7 +41,7 @@ public class RicercaCentro1Controller {
     @FXML private TableColumn<CentroVaccinale, Integer> cap;
     @FXML private TableColumn<CentroVaccinale, String> tipologia;
 
-    @FXML void search_button() {
+    @FXML void search_button() throws URISyntaxException {
         ObservableList<CentroVaccinale> list = FXCollections.observableArrayList(
                 GestioneCentriVaccinali.getInstance().searchCentroByName(nomeCentro.getText())
         );

@@ -2,6 +2,7 @@ package centrivaccinali;
 
 import gestionefile.GestioneCsv;
 
+import java.net.URISyntaxException;
 import java.util.*;
 
 /**
@@ -26,7 +27,7 @@ public class GestioneVaccinati extends GestioneCsv {
      * Costruttore <code>GestioneVaccinati</code> che richiama il costruttore della superclasse
      * @param nomeCentroVaccinale e' il nome del centro vaccinale
      */
-    private GestioneVaccinati(String nomeCentroVaccinale) {
+    private GestioneVaccinati(String nomeCentroVaccinale) throws URISyntaxException {
         super("Vaccinati_"+nomeCentroVaccinale.replace(" ","_")+".dati",
                 new String[]{"Id","Nome Centro", "Nome Cittadino", "Cognome Cittadino", "CodiceFiscale", "Data", "Vaccino", "id Vaccinazione", "EventiAvversi"});
         this.nomeCentroVaccinale = nomeCentroVaccinale;
@@ -37,7 +38,7 @@ public class GestioneVaccinati extends GestioneCsv {
      * @param nomeCentroVaccinale e' il nome del centro vaccinale
      * @return l'oggetto della classe GestioneVaccinati
      */
-    public static GestioneVaccinati getInstance(String nomeCentroVaccinale){
+    public static GestioneVaccinati getInstance(String nomeCentroVaccinale) throws URISyntaxException {
         if (istanza == null) {
             istanza = new GestioneVaccinati(nomeCentroVaccinale);
         }
@@ -48,7 +49,7 @@ public class GestioneVaccinati extends GestioneCsv {
      * il metodo controlla l'ultimo id inserito e crea l'id successivo
      * @return idUniv e' l'id univoco di vaccinazione
      */
-    public short nextIdUniv() {
+    public short nextIdUniv() throws URISyntaxException {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
         short idUniv = 0;
@@ -62,7 +63,7 @@ public class GestioneVaccinati extends GestioneCsv {
      * il metodo inserisce gli oggetti cittadinoVaccinato nello StringBuffer per poi inserirli in vaccinati.csv
      *  @param cittadinoVaccinato e' l'oggetto della classe CittadinoVaccinato
      */
-    public void registraVaccinato(CittadinoVaccinato cittadinoVaccinato) {
+    public void registraVaccinato(CittadinoVaccinato cittadinoVaccinato) throws URISyntaxException {
             StringBuffer linea = new StringBuffer();
             linea.append(cittadinoVaccinato.getId());
             linea.append(SEPARATORE_CSV);

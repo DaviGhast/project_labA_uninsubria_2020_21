@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -90,7 +91,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
         }
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException {
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if (validatorfield1() & validatorfield2() & validatorfield3and4() & validatorfield5and6and7()){
             centroVaccinale = new CentroVaccinale();
             centroVaccinale.setId(GestioneCentriVaccinali.getInstance().nextId());
@@ -144,6 +145,10 @@ public class RegistraCentroVaccinaleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GestioneCentriVaccinali.getInstance().verificaFile();
+        try {
+            GestioneCentriVaccinali.getInstance().verificaFile();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

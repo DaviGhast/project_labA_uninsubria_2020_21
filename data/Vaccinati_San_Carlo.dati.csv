@@ -1,2 +1,3 @@
 Id,Nome Centro,Nome Cittadino,Cognome Cittadino,CodiceFiscale,Data,Vaccino,id Vaccinazione,EventiAvversi
 0,San Carlo,Davide,Maina,MNRDVD01P25A940X,22-09-2021,Pifzer,0,Mal Di Testa#2# #/Mio Nonno Sta Male#5#Sta Davvero Male#/Ciaoad#4#Asdsadasda#/
+1,San Carlo,Davide,Mainardi,MNRDVD01P25A940X,10-12-2021,Pfizer,1,null#0#null#/

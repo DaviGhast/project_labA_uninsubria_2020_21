@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,6 +28,9 @@ public class VisualizzaInfoController implements Initializable {
     @FXML private TableColumn<InfoEventoAvversoAnonimo, String> evento;
     @FXML private TableColumn<InfoEventoAvversoAnonimo, Byte> severita;
     @FXML private TableColumn<InfoEventoAvversoAnonimo, String> note;
+
+    public VisualizzaInfoController() throws URISyntaxException {
+    }
 
     /**
      * Closes the application.

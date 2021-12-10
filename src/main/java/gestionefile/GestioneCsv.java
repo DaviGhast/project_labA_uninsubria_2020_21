@@ -1,6 +1,10 @@
 package gestionefile;
 
+import centrivaccinali.CentriVaccinali;
+
 import java.io.*;
+import java.net.URISyntaxException;
+import java.security.CodeSource;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
@@ -23,7 +27,7 @@ public class GestioneCsv {
     /**
      *<code>pathFile</code> il percorso relativo della cartella del file CSV
      */
-    private String pathFile = "..//project_labA_uninsubria_2020_21//data";
+    private String pathFile = "project_labA_uninsubria_2020_21/data";
 
     /**
      * il nome dell'<code>arrayNomiColonne</code> del file.CSV
@@ -50,9 +54,16 @@ public class GestioneCsv {
      * @param filename nome del file che concatenato con <code>pathFile</code> da la path completa
      * @param arrayNomiColonne array di stringhe che descrive il nome delle varie colonne
      */
-    public GestioneCsv(String filename, String[] arrayNomiColonne) {
-        filename = "//"+filename.concat(ESTENSIONE_CSV);
-        pathFile = pathFile.concat(filename);
+    public GestioneCsv(String filename, String[] arrayNomiColonne) throws URISyntaxException {
+        CodeSource codeSource = CentriVaccinali.class.getProtectionDomain().getCodeSource();
+        File jarFile = new File(codeSource.getLocation().toURI().getPath());
+        String jarDir = jarFile.getParentFile().getPath();
+        System.out.println(jarDir);
+        int index = jarDir.indexOf("project_labA_uninsubria_2020_21");
+        String dir = jarDir.substring(0, index);
+        System.out.println(dir);
+        filename = "/" +filename.concat(ESTENSIONE_CSV);
+        pathFile = dir.concat(pathFile.concat(filename));
         System.out.println(pathFile);
         file = new File(pathFile);
         this.arrayNomiColonne = arrayNomiColonne;

@@ -5,6 +5,7 @@ import centrivaccinali.GestioneCentriVaccinali;
 import criptazione.AlgoritmoMD5;
 import gestionefile.GestioneCsv;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
@@ -22,7 +23,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
     /**
      * Metodo costruttore <code>GestioneCSV</code>
      */
-    private GestioneCittadinoRegistrato() {
+    private GestioneCittadinoRegistrato() throws URISyntaxException {
         super("Cittadini_Registrati.dati", new String[]{"Nome","Cognome","Email","Userid","Password","idVaccinazione"});
         verificaFile();
     }
@@ -30,7 +31,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
      * pattern singleton del metodo <code>getistance</code>
      * @return l'oggetto della classe GestioneCittadinoRegistrato
      */
-    public static GestioneCittadinoRegistrato getInstance(){
+    public static GestioneCittadinoRegistrato getInstance() throws URISyntaxException {
         if (istanza == null) {
             istanza = new GestioneCittadinoRegistrato();
         }
