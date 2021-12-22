@@ -131,9 +131,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
         infoRegex.setText("CAP: Inserire 5 caratteri numerici");
     }
 
-    /**
-     * Closes the application.
-     */
+
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);

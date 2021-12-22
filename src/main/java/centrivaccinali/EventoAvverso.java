@@ -1,7 +1,7 @@
 package centrivaccinali;
 
 /**
- * la clcasse si occupa degli eventi avversi
+ * la classe si occupa degli eventi avversi
  *  @author Davide Mainardi
  *  * @author Marc Cepraga
  *  * @author Luca Muggiasca

@@ -128,9 +128,7 @@ public class RegistraVaccinatoController implements Initializable {
     }
 
 
-    /**
-     * Closes the application.
-     */
+
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);

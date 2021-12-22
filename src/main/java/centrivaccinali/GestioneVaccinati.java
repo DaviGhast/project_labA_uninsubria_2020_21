@@ -92,7 +92,7 @@ public class GestioneVaccinati extends GestioneCsv {
     }
 
     /**
-     * questo metodo inserisce gli oggetti evento avverso nello stringbuffer per poi inserirli in Vaccinati_NomeCentroVaccinale.csv
+     * questo metodo inserisce gli oggetti evento avverso nello StringBuffer per poi inserirli in Vaccinati_NomeCentroVaccinale.csv
      * @param idVaccinato e' l'id univoco che individua il vaccinato
      * @param eventoAvverso e' il nome dell'evento avverso
      */

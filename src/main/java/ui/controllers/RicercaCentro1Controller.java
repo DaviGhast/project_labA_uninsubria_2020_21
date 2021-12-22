@@ -74,9 +74,7 @@ public class RicercaCentro1Controller {
         MainUIController.setRoot("VisualizzaInfo");
     }
 
-    /**
-     * Closes the application.
-     */
+
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);

@@ -39,7 +39,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
     }
 
     /**
-     * il metodo serve all'operatore per registrare un nuovon centro vaccinale
+     * il metodo serve all'operatore per registrare un nuovo centro vaccinale
      * @param centroVaccinale
      */
     public void registraCentroVaccinale(CentroVaccinale centroVaccinale) {
@@ -81,7 +81,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
 
     /**
      * legge ogni riga dal file centroVaccinale.csv e per ognuna di essa istanzia oggetti di tipo centroVaccinale
-     * @return listaCentriVaccinali e' una lista di CentriVaccinLI
+     * @return listaCentriVaccinali e' una lista di CentriVaccinali
      */
     public ArrayList<CentroVaccinale> getCentriVaccinali(){
         ArrayList<CentroVaccinale> listaCentriVaccinali = new ArrayList<>();

@@ -149,9 +149,7 @@ public class RegistrazioneCittadinoController implements Initializable {
         infoRegex.setText("Password: Inserire al minimo 8 caratteri: deve contenere almeno una lettera maiuscola, una lettera minuscola ed un carattere numerico. Sono ammessi caratteri speciali ");
     }
 
-    /**
-     * Closes the application.
-     */
+
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);

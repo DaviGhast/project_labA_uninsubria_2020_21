@@ -58,7 +58,7 @@ public class InfoEventoAvversoAnonimo {
     }
 
     /**
-     * @return severita  è l'indice di severità
+     * @return severita è l'indice di severità
      */
     public byte getSeverita() {
         return severita;

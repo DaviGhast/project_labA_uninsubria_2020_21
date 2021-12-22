@@ -16,7 +16,7 @@ public class CittadinoVaccinato {
      */
     private String nomeCentroVaccinale;
     /**
-     * <code>nomeCittadino</code> indica il nome cittadino
+     * <code>nomeCittadino</code> indica il nome del cittadino
      */
     private String nomeCittadino;
     /**

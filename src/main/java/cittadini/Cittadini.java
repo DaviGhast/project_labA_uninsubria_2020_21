@@ -35,7 +35,7 @@ public class Cittadini {
     }
 
     /**
-     * e' un metodo che fornisce un menu'per le opzioni dell'area centro vaccinale
+     * e' un metodo che fornisce un menu' per le opzioni dell'area centro vaccinale
      */
     public void cercaCentroVaccinale(){
         Scanner in = new Scanner(System.in);

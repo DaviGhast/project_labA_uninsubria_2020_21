@@ -17,13 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WelcomeController {
-    /**
-     * Description for the basic view.
-     */
+
     private final String OPERATORE_DESC = "Pannello di controllo per gli operatori sanitari";
-    /**
-     * Description for the debug view.
-     */
+
     private final String CITTADINO_DESC = "Pagina per i cittadini";
 
 
@@ -31,9 +27,7 @@ public class WelcomeController {
     @FXML private Label description;
     @FXML private Button confirm;
 
-    /**
-     * Displays the correlated description of the view when one of the options is selected.
-     */
+
     @FXML void view_selection() {
         if (operatore.isSelected()) {
             description.setText(OPERATORE_DESC);
@@ -52,9 +46,7 @@ public class WelcomeController {
         }
     }
 
-    /**
-     * Closes the application.
-     */
+
     @FXML void exit_button() {
         Platform.exit();
         System.exit(0);

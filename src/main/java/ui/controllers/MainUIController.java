@@ -12,17 +12,12 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- *  This class acts as a workaround for initializing the app GUI.
- * 
- */
+
 public class MainUIController extends Application {
 
     private static Scene scene;
     
-    /**
-     * Starts the application
-     */
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         scene = new Scene(loadFXML("Welcome"));
