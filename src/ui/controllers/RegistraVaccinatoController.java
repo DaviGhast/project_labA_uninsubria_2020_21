@@ -1,6 +1,5 @@
 package ui.controllers;
 
-import centrivaccinali.CentroVaccinale;
 import centrivaccinali.CittadinoVaccinato;
 import centrivaccinali.GestioneCentriVaccinali;
 import centrivaccinali.GestioneVaccinati;

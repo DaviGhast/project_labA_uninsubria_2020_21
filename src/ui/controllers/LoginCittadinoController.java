@@ -1,10 +1,7 @@
 package ui.controllers;
 
 import centrivaccinali.GestioneCentriVaccinali;
-import cittadini.CittadinoRegistrato;
 import cittadini.GestioneCittadinoRegistrato;
-import criptazione.AlgoritmoMD5;
-import gestionefile.GestioneCsv;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +16,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class LoginCittadinoController implements Initializable {
 

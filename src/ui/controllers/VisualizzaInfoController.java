@@ -1,8 +1,6 @@
 package ui.controllers;
 
-import centrivaccinali.CittadinoVaccinato;
 import centrivaccinali.GestioneVaccinati;
-import centrivaccinali.EventoAvverso;
 import centrivaccinali.InfoEventoAvversoAnonimo;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -10,7 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;

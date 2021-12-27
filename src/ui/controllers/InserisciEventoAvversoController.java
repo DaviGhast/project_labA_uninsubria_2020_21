@@ -1,8 +1,8 @@
 package ui.controllers;
 
+import centrivaccinali.EventoAvverso;
 import centrivaccinali.GestioneCentriVaccinali;
 import centrivaccinali.GestioneVaccinati;
-import centrivaccinali.EventoAvverso;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

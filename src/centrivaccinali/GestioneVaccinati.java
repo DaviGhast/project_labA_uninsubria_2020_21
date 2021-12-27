@@ -3,7 +3,7 @@ package centrivaccinali;
 import gestionefile.GestioneCsv;
 
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * la classe gestisce i cittadini vaccinati

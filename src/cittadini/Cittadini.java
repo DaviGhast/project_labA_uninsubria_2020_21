@@ -1,7 +1,6 @@
 package cittadini;
 
 import centrivaccinali.CentroVaccinale;
-import centrivaccinali.GestioneCentriVaccinali;
 
 import java.util.ArrayList;
 import java.util.Scanner;

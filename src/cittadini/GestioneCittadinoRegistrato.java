@@ -1,14 +1,10 @@
 package cittadini;
 
-import centrivaccinali.CentroVaccinale;
-import centrivaccinali.GestioneCentriVaccinali;
 import criptazione.AlgoritmoMD5;
 import gestionefile.GestioneCsv;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Vector;
 
 /**
  * contiene tutti i metodi per la gestione del CittadinoRegistrato

@@ -6,8 +6,6 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Vector;
 
 /**
  * Classe <code>GestioneCSV</code>

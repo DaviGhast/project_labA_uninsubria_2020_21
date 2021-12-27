@@ -2,9 +2,8 @@ package centrivaccinali;
 
 import gestionefile.GestioneCsv;
 
-import java.io.*;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * la classe si occupa di gestire i centri vaccinali

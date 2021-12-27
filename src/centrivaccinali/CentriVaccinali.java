@@ -1,13 +1,6 @@
 
 package centrivaccinali;
 
-import cittadini.Cittadini;
-import cittadini.GestioneCittadinoRegistrato;
-
-
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
  * CentriVaccinali e' la classe principale della sotto applicazione Centri Vaccinali.
  *
