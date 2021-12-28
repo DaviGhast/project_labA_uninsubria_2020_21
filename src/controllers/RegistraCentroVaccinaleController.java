@@ -1,4 +1,4 @@
-package ui.controllers;
+package controllers;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.GestioneCentriVaccinali;

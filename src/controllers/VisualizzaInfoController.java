@@ -1,4 +1,4 @@
-package ui.controllers;
+package controllers;
 
 import centrivaccinali.GestioneVaccinati;
 import centrivaccinali.InfoEventoAvversoAnonimo;

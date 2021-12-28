@@ -1,5 +1,5 @@
 
-package ui.controllers;
+package controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

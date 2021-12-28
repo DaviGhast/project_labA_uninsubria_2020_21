@@ -1,4 +1,4 @@
-package ui.controllers;
+package controllers;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.GestioneCentriVaccinali;
@@ -13,11 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class RicercaCentro1Controller {
+public class RicercaCentro2Controller {
 
     private CentroVaccinale centroVaccinale;
 
-    @FXML private TextField nomeCentro;
+    @FXML private TextField comuneSearch, tipologiaSearch;
     @FXML private Label description;
     @FXML private Button confirm;
     @FXML private Button search;
@@ -33,7 +33,7 @@ public class RicercaCentro1Controller {
 
     @FXML void search_button() throws URISyntaxException {
         ObservableList<CentroVaccinale> list = FXCollections.observableArrayList(
-                GestioneCentriVaccinali.getInstance().searchCentroByName(nomeCentro.getText())
+                GestioneCentriVaccinali.getInstance().searchCentroByComuneAndTipologia(comuneSearch.getText(), tipologiaSearch.getText())
         );
 
         nome.setCellValueFactory(new PropertyValueFactory<CentroVaccinale,String>("nomeCentroVaccinale"));
@@ -53,8 +53,7 @@ public class RicercaCentro1Controller {
         if (tabella.getSelectionModel().getSelectedIndex() >= 0) {
             centroVaccinale = tabella.getSelectionModel().getSelectedItem();
             confirm.setDisable(false);
-            int index = tabella.getSelectionModel().getSelectedIndex();
-            description.setText("hai selezionato il centro:" + centroVaccinale.getNomeCentroVaccinale() + "nella riga " + index++);
+            description.setText("hai selezionato il centro:" + centroVaccinale.getNomeCentroVaccinale() + "nella riga " + tabella.getSelectionModel().getSelectedIndex()+1);
         }
 
     }

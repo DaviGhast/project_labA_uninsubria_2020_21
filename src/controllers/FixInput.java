@@ -1,4 +1,4 @@
-package ui.controllers;
+package controllers;
 
 public class FixInput<dataBuffer> {
 

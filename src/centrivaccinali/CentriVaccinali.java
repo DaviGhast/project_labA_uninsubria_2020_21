@@ -1,6 +1,8 @@
 
 package centrivaccinali;
 
+import controllers.MainUIController;
+
 /**
  * CentriVaccinali e' la classe principale della sotto applicazione Centri Vaccinali.
  *
@@ -15,7 +17,7 @@ public class CentriVaccinali {
 
     public static void main(String[] args) {
         //loopMenu();
-        ui.controllers.MainUIController.launch(ui.controllers.MainUIController.class);
+        MainUIController.launch(MainUIController.class);
     }
 
 
