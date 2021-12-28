@@ -152,36 +152,33 @@ public class GestioneCsv {
                     e.printStackTrace();
                 }
                 bw.newLine();
+                bw.flush();
+                bw.close();
             } else if (line.equals(strNomiColonne())) {
                 System.out.println("Il nome delle colonne esiste");
+                bw.flush();
+                bw.close();
             } else {
                 System.out.println("Il nome delle colonne non esiste, ma la riga è già scritta.");
-                int count = 0;
-                if ((line = reader.readLine()) == null) {
-                    count++;
-                }
+                ArrayList<String> rows_data = new ArrayList<>();
                 while ((line = reader.readLine()) != null) {
-                    count++;
-                }
-                String[] rows = new String[count];
-                int count1 = 0;
-                while ((line = reader.readLine()) != null) {
-                    count1++;
-                    rows[count1] = line;
+                    if (!line.equals(strNomiColonne())) {
+                        rows_data.add(line);
+                    }
                 }
                 FileWriter fw1 = new FileWriter(file);
                 BufferedWriter bw1 = new BufferedWriter(fw1);
                 bw1.write(strNomiColonne());
                 bw1.newLine();
-                for (int i = 0; i < count; i++) {
-                    bw1.write(rows[i]);
+                bw.flush();
+                bw.close();
+                for (String row:rows_data) {
+                    bw1.write(row);
                     bw1.newLine();
                 }
                 bw1.flush();
                 bw1.close();
             }
-            bw.flush();
-            bw.close();
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -221,7 +218,6 @@ public class GestioneCsv {
      *    Scrive sul file la stringa che contiene le informazioni da scrivere sul file
      * </p>
      * @param dato stringa da
-     * @throws IOException
      */
     public void scritturaFile(String dato) {
         try {
@@ -243,7 +239,7 @@ public class GestioneCsv {
      * <p>
      * ricerca id esistente
      * </p>
-     * @param id
+     * @param id id da crecare
      */
     public boolean ricercaIdEsiste(String id) {
         boolean idExist = false;
@@ -265,7 +261,7 @@ public class GestioneCsv {
 
     /**
      * il metodo verifica l'esistenza di un userid
-     * @param userid
+     * @param userid userid
      * @return esiste o non esiste
      */
     public boolean useridEsistente(String userid){
@@ -288,12 +284,12 @@ public class GestioneCsv {
 
     /**
      * il metodo recupera il nome del centro vaccinale attraverso l'id del vaccinato
-     * @param idVaccinato
+     * @param idVaccinato l'id del vaccinato
      * @return  nomeCentro
      */
     public String getNomeCentroByIdVaccinato(Short idVaccinato){
         String line = "";
-        String nomeCentro = new String();
+        String nomeCentro = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
