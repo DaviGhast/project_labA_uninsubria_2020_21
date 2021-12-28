@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class AlgoritmoMD5 {
     /**
-     * <code>Converti</code> è un mettodo che data un password in chiaro,
+     * <code>Converti</code> è un metodo che data un password in chiaro,
      * la restituisce in criptazione MD5
      * @param password password passata dall'utente
      * @return password convertita
