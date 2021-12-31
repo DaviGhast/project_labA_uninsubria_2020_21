@@ -35,7 +35,7 @@ public class RegistrazioneCittadinoController implements Initializable {
     public boolean validatorfield1() throws URISyntaxException {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
-        if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaIdEsiste(idVaccinazione.getText())){
+        if (Pattern.matches("^[0-9]",idVaccinazione.getText()) & vaccinati.ricercaAttrEsiste(idVaccinazione.getText(), "id")){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -78,12 +78,14 @@ public class RegistrazioneCittadinoController implements Initializable {
             return false;
         }
     }
-    public boolean validatorfield5(){
-        if (Pattern.matches("^[0-9]",userid.getText())){
+    public boolean validatorfield5() throws URISyntaxException {
+        if (Pattern.matches("^[A-Za-z0-9]{1,12}",userid.getText()) &
+                !GestioneCittadinoRegistrato.getInstance().ricercaAttrEsiste(userid.getText(), "userid")){
             cross4.setVisible(false);
             checkmark4.setVisible(true);
             return true;
         } else {
+            description.setText("Userid già utilizzato, pravane un'altro");
             checkmark4.setVisible(false);
             cross4.setVisible(true);
             return false;
@@ -131,7 +133,7 @@ public class RegistrazioneCittadinoController implements Initializable {
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("id Vaccinazione : Inserire da 0 a 9 caratteri numerici");
+        infoRegex.setText("id Vaccinazione : Inserire caratteri numerici");
     }
     @FXML public void viewRegex2(){
         infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
@@ -140,10 +142,10 @@ public class RegistrazioneCittadinoController implements Initializable {
         infoRegex.setText("Cognome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex4(){
-        infoRegex.setText("Codice Fiscale: Inserire al massimo 16 caratteri alfanumerici");
+        infoRegex.setText("Codice Fiscale: Inserire 16 caratteri alfanumerici");
     }
     @FXML public void viewRegex5(){
-        infoRegex.setText("UserId: Inserire da 0 a 9 caratteri numerici");
+        infoRegex.setText("UserId: Inserire da 1 a 12 caratteri alfanumerici");
     }
     @FXML public void viewRegex6(){
         infoRegex.setText("Email: Inserire un'email valida");

@@ -101,7 +101,8 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
      */
     public boolean rispostaCittadinoEsiste(String userid, String password){
         boolean risposta = false;
-        if (useridEsistente(userid)){
+        // TODO: 30/12/2021  aggiungere login con email
+        if (ricercaAttrEsiste(userid, "userid")){
             CittadinoRegistrato cittadinoRegistrato = getCittadinoRegistrato(userid);
             if (cittadinoRegistrato.getPassword().equals(AlgoritmoMD5.converti(password))){
                 System.out.print("login");

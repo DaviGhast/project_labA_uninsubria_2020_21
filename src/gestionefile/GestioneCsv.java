@@ -4,6 +4,9 @@ import centrivaccinali.CentriVaccinali;
 
 import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.CodeSource;
 import java.util.ArrayList;
 
@@ -23,11 +26,6 @@ import java.util.ArrayList;
  */
 public class GestioneCsv {
     /**
-     *<code>pathFile</code> il percorso relativo della cartella del file CSV
-     */
-    private String pathFile = "project_labA_uninsubria_2020_21/data";
-
-    /**
      * il nome dell'<code>arrayNomiColonne</code> del file.CSV
      */
     private String[] arrayNomiColonne = null;
@@ -35,7 +33,7 @@ public class GestioneCsv {
     /**
      *<code>File</code> è la struttura file che conterrà il file CSV
      */
-    private File file;
+    private final File file;
 
     /**
      *<code>SEPARATORE_CSV</code> contentente la " , " e' il separatore usato per separare un elemento da un altro, appartenente a colonne diverse
@@ -56,15 +54,31 @@ public class GestioneCsv {
         CodeSource codeSource = CentriVaccinali.class.getProtectionDomain().getCodeSource();
         File jarFile = new File(codeSource.getLocation().toURI().getPath());
         String jarDir = jarFile.getParentFile().getPath();
-        System.out.println(jarDir);
-        int index = jarDir.indexOf("project_labA_uninsubria_2020_21");
-        String dir = jarDir.substring(0, index);
-        System.out.println(dir);
-        filename = "/" +filename.concat(ESTENSIONE_CSV);
-        pathFile = dir.concat(pathFile.concat(filename));
+        System.out.println("jarDir: "+jarDir);
+        //int index = jarDir.indexOf("project_labA_uninsubria_2020_21");
+        //String dir = jarDir.substring(0, index);
+        //System.out.println(dir);
+
+        //String currentWorkingDir = System.getProperty("user.dir");
+        //System.out.println("currentWorkingDir: "+currentWorkingDir);
+
+        String pathFile = findfile(filename + ESTENSIONE_CSV, new File(/*currentWorkingDir*/jarDir));
+        if (pathFile.isEmpty()) {
+            System.out.println("dati inesisteni");
+            pathFile = jarDir + "/data";
+            File directory = new File(pathFile);
+            if (directory.mkdir()) {
+                System.out.println("directory creata:" + directory.getName());
+            } else {
+                System.out.println("Il file esiste già.");
+            }
+            pathFile = pathFile + "/" + filename + ESTENSIONE_CSV;
+            creaFile(new File(pathFile));
+        }
         System.out.println(pathFile);
         file = new File(pathFile);
         this.arrayNomiColonne = arrayNomiColonne;
+        controllaNomiColonne();
     }
 
     /**
@@ -74,7 +88,7 @@ public class GestioneCsv {
     public short nextId() {
         //creazione e ricerca id libero
         short id = 0;
-        while (ricercaIdEsiste(""+id)!=false){
+        while (ricercaAttrEsiste(String.valueOf(id), "id")){
             id++;
         }
         return id;
@@ -104,8 +118,31 @@ public class GestioneCsv {
      * </p>
      */
     public void verificaFile () {
-        creaFile();
+        creaFile(file);
         controllaNomiColonne();
+    }
+
+    public String findfile (String namefile, File directory) {
+        File[] list = directory.listFiles();
+        String dirpath = "";
+        if(list!=null)
+            for (File fil : list) {
+                if (!fil.getName().startsWith(".")){
+                    if (fil.isDirectory()) {
+                        System.out.println("is directory");
+                        System.out.println(fil.getPath());
+                        dirpath = findfile(namefile,fil);
+                        if (dirpath.contains(namefile))
+                            break;
+                    }
+                    else if (namefile.equalsIgnoreCase(fil.getName())) {
+                        dirpath = fil.getPath();
+                        System.out.println(dirpath);
+                        break;
+                    }
+                }
+            }
+        return dirpath;
     }
 
     /**
@@ -113,9 +150,8 @@ public class GestioneCsv {
      * <p>
      *     questo metodo prova a creare il file
      * </p>
-     * @throws IOException
      */
-    public void creaFile() {
+    public void creaFile(File file) {
         try {
             if (file.createNewFile()) {
                 System.out.println("File creato: " + file.getName());
@@ -133,7 +169,6 @@ public class GestioneCsv {
      * <p>
      *     questo metodo controlla se nella prima riga del file esistono o meno i nomi dei campi o colonne
      * </p>
-     * @throws IOException
      */
     public void controllaNomiColonne() {
         String line = "";
@@ -190,7 +225,6 @@ public class GestioneCsv {
      * <p>
      *     permette di leggere il file velocemente senza ricreare gli oggetti
      * </p>
-     * @throws IOException
      */
     public ArrayList<String> letturaFile() {
         ArrayList<String> listaRighe = new ArrayList<String>();
@@ -235,51 +269,34 @@ public class GestioneCsv {
     }
 
     /**
-     * Metodo <code>ricercaIdEsiste</code>
+     * Metodo <code>ricercaAttrEsiste</code>
      * <p>
-     * ricerca id esistente
+     * ricerca e restituisce se l'attibuto esiste
      * </p>
-     * @param id id da crecare
+     * @param dato attributo da crecare
      */
-    public boolean ricercaIdEsiste(String id) {
-        boolean idExist = false;
+    public boolean ricercaAttrEsiste(String dato, String attr) {
+        boolean exist = false;
         String line = "";
+        int index = 0;
+        if (attr.equals("id")){
+            index = 0;
+        } else if (attr.equals("userid")){
+            index = 3;
+        }
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(SEPARATORE_CSV);
-                if (row[0].equals(id)){
-                    idExist = true;
+                if (row[index].equals(dato)){
+                    exist = true;
                 }
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return idExist;
-    }
-
-    /**
-     * il metodo verifica l'esistenza di un userid
-     * @param userid userid
-     * @return esiste o non esiste
-     */
-    public boolean useridEsistente(String userid){
-        boolean idExist = false;
-        String line = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while ((line = reader.readLine()) != null) {
-                String[] row = line.split(SEPARATORE_CSV);
-                if (row[3].equals(userid)){
-                    idExist = true;
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return idExist;
+        return exist;
     }
 
     /**

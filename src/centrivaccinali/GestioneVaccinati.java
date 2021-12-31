@@ -53,7 +53,7 @@ public class GestioneVaccinati extends GestioneCsv {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
         vaccinati.verificaFile();
         short idUniv = 0;
-        while (vaccinati.ricercaIdEsiste(""+idUniv)!=false){
+        while (vaccinati.ricercaAttrEsiste(String.valueOf(idUniv), "id")){
             idUniv++;
         }
         return idUniv;
