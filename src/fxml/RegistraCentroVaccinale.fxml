@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistraCentroVaccinaleController">
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistraCentroVaccinaleController">
    <children>
       <AnchorPane>
          <children>
-            <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
+            <AnchorPane layoutX="233.0" layoutY="103.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="232.0">
                <children>
                   <Label fx:id="nomeCentroLabel" alignment="CENTER" layoutX="29.0" layoutY="33.0" prefHeight="29.0" prefWidth="238.0" text="Nome Centro Vaccinale" textAlignment="CENTER">
                      <font>
@@ -148,20 +148,20 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Centro Vaccinale" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Centro Vaccinale" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
-            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
-            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
-            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="confirm" disable="true" layoutX="489.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="488.0" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Home" AnchorPane.rightAnchor="332.0" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" AnchorPane.leftAnchor="322.0" />
+            <Label fx:id="description" alignment="CENTER" layoutX="96.0" layoutY="500.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true">
+            <Label id="warningmsg" fx:id="infoRegex" alignment="CENTER" layoutX="90.0" layoutY="525.0" prefHeight="51.0" prefWidth="889.0" text="Tutti i campi sono obbligatori" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>

@@ -33,9 +33,8 @@ public class VisualizzaInfoController implements Initializable {
     }
 
 
-    @FXML void exit_button() {
-        Platform.exit();
-        System.exit(0);
+    @FXML void exit_button() throws IOException {
+        MainUIController.setRoot("Welcome");
     }
 
     @FXML public void back_button(ActionEvent actionEvent) throws IOException {

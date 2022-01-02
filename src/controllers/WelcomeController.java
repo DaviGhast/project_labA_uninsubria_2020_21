@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -44,6 +45,5 @@ public class WelcomeController {
         Platform.exit();
         System.exit(0);
     }
-
 
 }

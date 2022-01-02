@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RicercaViewController">
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RicercaViewController">
    <children>
       <AnchorPane>
          <children>
-            <AnchorPane layoutX="315.0" layoutY="168.0" prefHeight="291.0" prefWidth="419.0" styleClass="parent">
+            <AnchorPane layoutX="331.0" layoutY="167.0" prefHeight="291.0" prefWidth="419.0" styleClass="parent" AnchorPane.leftAnchor="331.0" AnchorPane.rightAnchor="330.0">
                <children>
                   <Label alignment="CENTER" layoutX="28.0" layoutY="55.0" prefHeight="23.0" prefWidth="364.0" text="Operazioni Disponibili" textAlignment="CENTER">
                      <font>
@@ -36,18 +36,18 @@
                   </RadioButton>
                </children>
             </AnchorPane>
-            <Label id="titles" alignment="CENTER" layoutX="44.0" layoutY="81.0" prefHeight="31.0" prefWidth="503.0" text="Pannello Ricerca Info Centri Vaccinali" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="42.0">
+            <Label id="titles" alignment="CENTER" layoutX="44.0" layoutY="81.0" prefHeight="31.0" prefWidth="503.0" text="Pannello Ricerca Info Centri Vaccinali" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="description" alignment="CENTER" layoutX="80.0" layoutY="504.0" prefHeight="51.0" prefWidth="419.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="79.0">
+            <Label fx:id="description" alignment="CENTER" layoutX="44.0" layoutY="503.0" prefHeight="51.0" prefWidth="419.0" text="Per favore seleziona un'opzione" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
-            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
+            <Button fx:id="confirm" disable="true" layoutX="489.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Home" AnchorPane.rightAnchor="332.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo_uninsubria.png" />
@@ -58,7 +58,7 @@
                   <Image url="@../images/java-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" AnchorPane.leftAnchor="322.0" />
          </children>
       </AnchorPane>
    </children>

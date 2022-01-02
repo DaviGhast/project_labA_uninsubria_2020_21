@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,15 +16,17 @@ import java.io.IOException;
 public class MainUIController extends Application {
 
     private static Scene scene;
-    
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         scene = new Scene(loadFXML("Welcome"));
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        //scene.setFill(Color.TRANSPARENT);
+        scene.setFill(Color.DARKGREEN);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.getIcons().add(new Image("images/logo_uninsubria.png"));
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Welcome to CentriVaccinali");
+        primaryStage.setTitle("Portale Vaccinale +Immuni");
         primaryStage.setResizable(false);
         primaryStage.show();
    }

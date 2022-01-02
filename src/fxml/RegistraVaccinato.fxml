@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistraVaccinatoController">
+<StackPane id="undecorated" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/appTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistraVaccinatoController">
    <children>
       <AnchorPane>
          <children>
-            <AnchorPane layoutX="218.0" layoutY="98.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent">
+            <AnchorPane layoutX="233.0" layoutY="103.0" prefHeight="401.0" prefWidth="603.0" styleClass="parent" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="232.0">
                <children>
                   <Label fx:id="nomeCentroLabel" alignment="CENTER" layoutX="29.0" layoutY="33.0" prefHeight="29.0" prefWidth="238.0" text="Nome Centro Vaccinale" textAlignment="CENTER">
                      <font>
@@ -147,7 +147,7 @@
                         <Image url="@../images/check_mark.png" />
                      </image>
                   </ImageView>
-                  <DatePicker fx:id="dataVaccinazione" layoutX="277.0" layoutY="261.0"  prefHeight="38.0" prefWidth="291.0" />
+                  <DatePicker fx:id="dataVaccinazione" layoutX="277.0" layoutY="261.0" prefHeight="38.0" prefWidth="291.0" />
                   <RadioButton fx:id="moderna" contentDisplay="CENTER" layoutX="434.0" layoutY="307.0" mnemonicParsing="false" onAction="#check_info" prefHeight="36.0" prefWidth="136.0" text="Moderna" toggleGroup="$views">
                      <toggleGroup>
                         <ToggleGroup fx:id="views21" />
@@ -158,15 +158,15 @@
                   </RadioButton>
                </children>
             </AnchorPane>
-            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Vaccinato" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="39.0">
+            <Label id="titles" alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="31.0" prefWidth="503.0" text="Form di Registrazione per Nuovo Vaccinato" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="confirm" disable="true" layoutX="476.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
-            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Esci" />
-            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" />
-            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="504.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="confirm" disable="true" layoutX="489.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirm_selection" prefHeight="50.0" prefWidth="103.0" text="Conferma" />
+            <Button fx:id="exit" layoutX="591.0" layoutY="578.0" mnemonicParsing="false" onAction="#exit_button" prefHeight="50.0" prefWidth="103.0" text="Home" AnchorPane.rightAnchor="322.0" />
+            <Button fx:id="back" layoutX="357.0" layoutY="578.0" mnemonicParsing="false" onAction="#back_button" prefHeight="50.0" prefWidth="103.0" text="Indietro" AnchorPane.leftAnchor="332.0" />
+            <Label fx:id="description" alignment="CENTER" layoutX="90.0" layoutY="500.0" prefHeight="51.0" prefWidth="889.0" text="Per favore completa tutti i campi prima di continuare" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
