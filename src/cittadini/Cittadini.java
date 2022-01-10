@@ -10,10 +10,10 @@ import java.util.Scanner;
  * <p>
  *     Questa classe ha lo scopo di contenere i metodi e il main della sotto applicazione per i cittadini
  * </p>
- * @author Davide Mainardi
- * @author Marc Cepraga
- * @author Luca Muggiasca
- * @author Brenno Re
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 public class Cittadini {
 
@@ -63,7 +63,7 @@ public class Cittadini {
 
     /**
      * il metodo restituisce le info di un centro vaccinale
-     * @param listaCentriVaccinali
+     * @param listaCentriVaccinali lista centri vaccinali
      * @return info del CentroVaccinale
      */
     public CentroVaccinale visualizzaInfoCentroVaccinale(ArrayList<CentroVaccinale> listaCentriVaccinali){

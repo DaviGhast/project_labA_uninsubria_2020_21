@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 /**
  * classe oggetto per i cittadini vaccinati
- * @author Davide Mainardi
- * @author Marc Cepraga
- * @author Luca Muggiasca
- * @author Brenno Re
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 
 public class CittadinoVaccinato {
@@ -51,14 +51,14 @@ public class CittadinoVaccinato {
 
     /**
      * Costruttore per le istanze della classe CittadinoVaccinato
-     * @param nomeCentroVaccinale
-     * @param nomeCittadino
-     * @param cognomeCittadino
-     * @param codiceFiscaleCittadino
-     * @param dataVaccinazione
-     * @param vaccinoSomministrato
-     * @param id
-     * @param idVaccinazione
+     * @param nomeCentroVaccinale nomecentro
+     * @param nomeCittadino nome cittadino
+     * @param cognomeCittadino cognome
+     * @param codiceFiscaleCittadino cf
+     * @param dataVaccinazione data
+     * @param vaccinoSomministrato vaccino
+     * @param id id
+     * @param idVaccinazione idvacc
      */
 
     public CittadinoVaccinato(short id, String nomeCentroVaccinale, String nomeCittadino, String cognomeCittadino, String codiceFiscaleCittadino, String dataVaccinazione, String vaccinoSomministrato, short idVaccinazione) {

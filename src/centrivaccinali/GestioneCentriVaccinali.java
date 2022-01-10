@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 /**
  * la classe si occupa di gestire i centri vaccinali
- * @author Davide Mainardi
- * @author Marc Cepraga
- * @author Luca Muggiasca
- * @author Brenno Re
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 public class GestioneCentriVaccinali extends GestioneCsv {
 
@@ -29,6 +29,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
     /**
      * design pattern singleton
      * @return istanza di GestioneCentriVaccinali
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public static GestioneCentriVaccinali getInstance() throws URISyntaxException {
         if (istanza == null) {
@@ -39,7 +40,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
 
     /**
      * il metodo serve all'operatore per registrare un nuovo centro vaccinale
-     * @param centroVaccinale
+     * @param centroVaccinale centro vaccinale
      */
     public void registraCentroVaccinale(CentroVaccinale centroVaccinale) {
             StringBuffer linea = new StringBuffer();
@@ -65,7 +66,7 @@ public class GestioneCentriVaccinali extends GestioneCsv {
 
     /**
      * il metodo verifica l'esistenza di un centroVaccinale
-     * @param nomeCentroVaccinale
+     * @param nomeCentroVaccinale nome centro
      * @return esiste o non esiste
      */
     public boolean cercaCentroEsiste(String nomeCentroVaccinale){

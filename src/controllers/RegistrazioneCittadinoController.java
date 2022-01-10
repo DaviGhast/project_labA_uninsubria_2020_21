@@ -46,7 +46,7 @@ public class RegistrazioneCittadinoController implements Initializable {
         }
     }
     public boolean validatorfield2(){
-        if (Pattern.matches("^[a-zA-Z]{2,30}",nomeCittadino.getText())){
+        if (Pattern.matches("^[a-zA-Z ]{2,30}",nomeCittadino.getText())){
             cross1.setVisible(false);
             checkmark1.setVisible(true);
             return true;
@@ -57,7 +57,7 @@ public class RegistrazioneCittadinoController implements Initializable {
         }
     }
     public boolean validatorfield3(){
-        if (Pattern.matches("^[a-zA-Z]{2,30}",cognomeCittadino.getText())){
+        if (Pattern.matches("^[a-zA-Z ]{2,30}",cognomeCittadino.getText())){
             cross2.setVisible(false);
             checkmark2.setVisible(true);
             return true;

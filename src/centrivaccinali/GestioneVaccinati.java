@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 /**
  * la classe gestisce i cittadini vaccinati
- *  @author Davide Mainardi
- *  @author Marc Cepraga
- *  @author Luca Muggiasca
- *  @author Brenno Re
+ *  @author Davide Mainardi 746490 VA
+ *  @author Marc Cepraga 744101 VA
+ *  @author Luca Muggiasca 744565 VA
+ *  @author Brenno Re 747060 VA
  */
 public class GestioneVaccinati extends GestioneCsv {
 
@@ -37,6 +37,7 @@ public class GestioneVaccinati extends GestioneCsv {
      * pattern singleton
      * @param nomeCentroVaccinale e' il nome del centro vaccinale
      * @return l'oggetto della classe GestioneVaccinati
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public static GestioneVaccinati getInstance(String nomeCentroVaccinale) throws URISyntaxException {
         if (istanza == null) {
@@ -48,6 +49,7 @@ public class GestioneVaccinati extends GestioneCsv {
     /**
      * il metodo controlla l'ultimo id inserito e crea l'id successivo
      * @return idUniv e' l'id univoco di vaccinazione
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public short nextIdUniv() throws URISyntaxException {
         GestioneCsv vaccinati = new GestioneCsv("Vaccinati.dati",new String[]{"Id Univoco", "Centro Vaccinale", "Id Interno"});
@@ -61,7 +63,8 @@ public class GestioneVaccinati extends GestioneCsv {
 
     /**
      * il metodo inserisce gli oggetti cittadinoVaccinato nello StringBuffer per poi inserirli in vaccinati.csv
-     *  @param cittadinoVaccinato e' l'oggetto della classe CittadinoVaccinato
+     * @param cittadinoVaccinato e' l'oggetto della classe CittadinoVaccinato
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public void registraVaccinato(CittadinoVaccinato cittadinoVaccinato) throws URISyntaxException {
             StringBuffer linea = new StringBuffer();

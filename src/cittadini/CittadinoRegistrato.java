@@ -5,10 +5,10 @@ package cittadini;
  * <p>
  *     Questa classe ha lo scopo di descrivere l'oggetto CittadinoRegistrato
  * </p>
- * @author Davide Mainardi
- * @author Marc Cepraga
- * @author Luca Muggiasca
- * @author Brenno Re
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 public class CittadinoRegistrato {
 

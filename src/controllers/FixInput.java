@@ -1,11 +1,15 @@
 package controllers;
 
-public class FixInput<dataBuffer> {
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
+public class FixInput{
 
     private static FixInput istanza;
     private Object dataBuffer;
-
-    private FixInput() {}
 
     public static FixInput getInstance(){
         if (istanza == null) {

@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 /**
  * contiene tutti i metodi per la gestione del CittadinoRegistrato
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 public class GestioneCittadinoRegistrato extends GestioneCsv {
 
@@ -26,6 +30,7 @@ public class GestioneCittadinoRegistrato extends GestioneCsv {
     /**
      * pattern singleton del metodo <code>getistance</code>
      * @return l'oggetto della classe GestioneCittadinoRegistrato
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public static GestioneCittadinoRegistrato getInstance() throws URISyntaxException {
         if (istanza == null) {

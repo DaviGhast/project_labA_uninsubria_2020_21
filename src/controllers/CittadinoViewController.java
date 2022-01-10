@@ -9,6 +9,12 @@ import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
 
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
 public class CittadinoViewController {
 
     private final String REGISTRA_CITTADINO_DESC = "Registrati al Portale, tieni sotto mano l'id che hai ricevuto al momento della vaccinazione";

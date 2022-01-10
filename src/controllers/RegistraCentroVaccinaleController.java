@@ -3,6 +3,7 @@ package controllers;
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.GestioneCentriVaccinali;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
 public class RegistraCentroVaccinaleController implements Initializable {
 
     private CentroVaccinale centroVaccinale;
@@ -46,7 +53,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
     }
 
     public boolean validatorfield1(){
-        if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,30}",nomeCentro.getText())){
+        if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,50}",nomeCentro.getText())){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -90,7 +97,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
         }
     }
 
-    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
+    @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException, InterruptedException {
         if (validatorfield1() & validatorfield2() & validatorfield3and4() & validatorfield5and6and7()){
             centroVaccinale = new CentroVaccinale();
             centroVaccinale.setId(GestioneCentriVaccinali.getInstance().nextId());
@@ -105,11 +112,22 @@ public class RegistraCentroVaccinaleController implements Initializable {
             GestioneCentriVaccinali.getInstance().registraCentroVaccinale(centroVaccinale);
             infoRegex.setText("Centro Vaccinale Registrato con Successo, che vuoi fare ora?");
             centroVaccinale = null;
+            Task<Void> sleeper = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                    }
+                    return null;
+                }
+            };
+            MainUIController.setRoot("OperatoreView");
         }
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("Nome Centro: Inserire da 1 a 30 caratteri");
+        infoRegex.setText("Nome Centro: Inserire da 1 a 50 caratteri");
     }
     @FXML public void viewRegex2(){
         infoRegex.setText("Qualificatore Indirizzo: Inserire da 1 a 10 caratteri alfabetici");
@@ -136,7 +154,7 @@ public class RegistraCentroVaccinaleController implements Initializable {
     }
 
     @FXML public void back_button(ActionEvent actionEvent) throws IOException {
-        MainUIController.setRoot("Welcome");
+        MainUIController.setRoot("OperatoreView");
     }
 
     @Override

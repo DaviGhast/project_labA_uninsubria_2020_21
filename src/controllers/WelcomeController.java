@@ -10,6 +10,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
 public class WelcomeController {
 
     private final String OPERATORE_DESC = "Pannello di controllo per gli operatori sanitari";

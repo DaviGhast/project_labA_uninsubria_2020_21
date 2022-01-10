@@ -18,6 +18,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
 public class InserisciEventoAvversoController implements Initializable {
 
     private EventoAvverso eventoAvverso;
@@ -51,7 +57,7 @@ public class InserisciEventoAvversoController implements Initializable {
         }
     }
     public boolean validatorfield3(){
-        if (Pattern.matches("^[a-zA-Z ,.-]{0,256}",note.getText())){
+        if (Pattern.matches("^[a-zA-Z0-9 ,.-]{0,256}",note.getText())){
             cross2.setVisible(false);
             checkmark2.setVisible(true);
             return true;
@@ -73,6 +79,7 @@ public class InserisciEventoAvversoController implements Initializable {
             } else {
                 eventoAvverso.setNote(FixInput.getInstance().fixString(note.getText()));
             }
+            System.out.println(eventoAvverso.getEvento());
             GestioneVaccinati.getInstance(GestioneCentriVaccinali.getInstance().getNomeCentroByIdVaccinato((short)
                     FixInput.getInstance().getDataBuffer())).inserisciEventiAvversi((short)
                     FixInput.getInstance().getDataBuffer(),eventoAvverso);
@@ -85,13 +92,13 @@ public class InserisciEventoAvversoController implements Initializable {
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("id Vaccinazione : Inserire da 0 a 9 caratteri numerici");
+        infoRegex.setText("Evento Avverso : Inserire da 2 a 30 caratteri alfabetici");
     }
     @FXML public void viewRegex2(){
-        infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
+        infoRegex.setText("Severita: Scala da 1 a 5");
     }
     @FXML public void viewRegex3(){
-        infoRegex.setText("Cognome Cittadino: Inserire da 2 a 30 caratteri alfabetici");
+        infoRegex.setText("Nota: Inserire al massimo 256 caratteri alfanumerici (,.-)");
     }
 
 

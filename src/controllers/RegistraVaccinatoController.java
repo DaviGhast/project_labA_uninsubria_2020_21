@@ -25,7 +25,7 @@ public class RegistraVaccinatoController implements Initializable {
     @FXML private RadioButton pfizer, moderna, astrazeneca, jandj;
     @FXML private TextField nomeCentro, nomeCittadino, cognomeCittadino, codiceFiscale;
     @FXML private DatePicker dataVaccinazione;
-    @FXML private Label description, infoRegex;
+    @FXML private Label description, infoRegex, msg;
     @FXML private Button confirm;
     @FXML private ImageView cross, checkmark, cross1, checkmark1, cross2, checkmark2, cross3, checkmark3, cross4, checkmark4;
 
@@ -49,7 +49,8 @@ public class RegistraVaccinatoController implements Initializable {
     }
 
     public boolean validatorfield1() throws URISyntaxException {
-        if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,30}",nomeCentro.getText()) & GestioneCentriVaccinali.getInstance().cercaCentroEsiste(nomeCentro.getText())){
+        if (Pattern.matches("^[a-zA-Z0-9 ,.'-]{2,50}",nomeCentro.getText()) &
+                GestioneCentriVaccinali.getInstance().cercaCentroEsiste(FixInput.getInstance().fixString(nomeCentro.getText()))){
             cross.setVisible(false);
             checkmark.setVisible(true);
             return true;
@@ -60,7 +61,7 @@ public class RegistraVaccinatoController implements Initializable {
         }
     }
     public boolean validatorfield2(){
-        if (Pattern.matches("^[a-zA-Z]{2,30}",nomeCittadino.getText())){
+        if (Pattern.matches("^[a-zA-Z ]{2,30}",nomeCittadino.getText())){
             cross1.setVisible(false);
             checkmark1.setVisible(true);
             return true;
@@ -71,7 +72,7 @@ public class RegistraVaccinatoController implements Initializable {
         }
     }
     public boolean validatorfield3(){
-        if (Pattern.matches("^[a-zA-Z]{2,30}",cognomeCittadino.getText())){
+        if (Pattern.matches("^[a-zA-Z ]{2,30}",cognomeCittadino.getText())){
             cross2.setVisible(false);
             checkmark2.setVisible(true);
             return true;
@@ -96,7 +97,7 @@ public class RegistraVaccinatoController implements Initializable {
     @FXML public void confirm_selection(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if (validatorfield1() & validatorfield2() & validatorfield3() & validatorfield4()){
             cittadinoVaccinato = new CittadinoVaccinato();
-            GestioneVaccinati gestioneVaccinati = GestioneVaccinati.getInstance(nomeCentro.getText());
+            GestioneVaccinati gestioneVaccinati = GestioneVaccinati.getInstance(FixInput.getInstance().fixString(nomeCentro.getText()));
             gestioneVaccinati.verificaFile();
             cittadinoVaccinato.setId(gestioneVaccinati.nextId());
             cittadinoVaccinato.setNomeCentroVaccinale(FixInput.getInstance().fixString(nomeCentro.getText()));
@@ -107,14 +108,14 @@ public class RegistraVaccinatoController implements Initializable {
             cittadinoVaccinato.setVaccinoSomministrato(vaccino);
             cittadinoVaccinato.setIdVaccinazione(gestioneVaccinati.nextIdUniv());
             gestioneVaccinati.registraVaccinato(cittadinoVaccinato);
-            description.setText("Cittadino Vaccinato Registrato con Successo, mi raccomando comunica al cittadino il suo codice: "+cittadinoVaccinato.getIdVaccinazione());
+            msg.setText("Cittadino Vaccinato Registrato con Successo, mi raccomando comunica al cittadino il suo codice: "+cittadinoVaccinato.getIdVaccinazione());
             confirm.setDisable(true);
             cittadinoVaccinato = null;
         }
     }
 
     @FXML public void viewRegex1(){
-        infoRegex.setText("Nome Centro: Inserire da 2 a 30 caratteri alfanumerici, il centro deve esistere");
+        infoRegex.setText("Nome Centro: Inserire da 2 a 50 caratteri alfanumerici, il centro deve esistere");
     }
     @FXML public void viewRegex2(){
         infoRegex.setText("Nome Cittadino: Inserire da 2 a 30 caratteri alfabetici");

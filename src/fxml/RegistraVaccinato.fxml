@@ -176,6 +176,11 @@
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
+            <Label id="warningmsg" fx:id="msg" alignment="CENTER" layoutX="96.0" layoutY="636.0" prefHeight="51.0" prefWidth="889.0" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

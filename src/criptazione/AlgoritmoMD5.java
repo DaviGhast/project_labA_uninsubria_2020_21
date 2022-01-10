@@ -6,7 +6,10 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * La classe <code>AlgoritmoMD5</code>
- *
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
  */
 public class AlgoritmoMD5 {
     /**

@@ -12,7 +12,12 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-
+/**
+ * @author Davide Mainardi 746490 VA
+ * @author Marc Cepraga 744101 VA
+ * @author Luca Muggiasca 744565 VA
+ * @author Brenno Re 747060 VA
+ */
 public class MainUIController extends Application {
 
     private static Scene scene;

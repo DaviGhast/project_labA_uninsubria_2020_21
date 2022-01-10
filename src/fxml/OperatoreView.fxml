@@ -21,7 +21,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="registraCentro" contentDisplay="CENTER" layoutX="92.0" layoutY="110.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="238.0" text="Registra Centro" textAlignment="CENTER" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="91.0">
+                  <RadioButton fx:id="registraCentro" contentDisplay="CENTER" layoutX="111.0" layoutY="110.0" mnemonicParsing="false" onAction="#view_selection" prefHeight="36.0" prefWidth="200.0" text="Registra Centro" textAlignment="CENTER" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="110.0">
                      <font>
                         <Font name="Century Gothic" size="21.0" />
                      </font>

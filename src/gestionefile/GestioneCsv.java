@@ -49,20 +49,23 @@ public class GestioneCsv {
      * Metodo costruttore <code>GestioneCSV</code>
      * @param filename nome del file che concatenato con <code>pathFile</code> da la path completa
      * @param arrayNomiColonne array di stringhe che descrive il nome delle varie colonne
+     * @throws URISyntaxException nel caso la sisntassi URi sia sbagliata
      */
     public GestioneCsv(String filename, String[] arrayNomiColonne) throws URISyntaxException {
         CodeSource codeSource = CentriVaccinali.class.getProtectionDomain().getCodeSource();
         File jarFile = new File(codeSource.getLocation().toURI().getPath());
         String jarDir = jarFile.getParentFile().getPath();
+        String jarDir1 = jarFile.getParentFile().getParentFile().getPath();
         System.out.println("jarDir: "+jarDir);
         //int index = jarDir.indexOf("project_labA_uninsubria_2020_21");
         //String dir = jarDir.substring(0, index);
         //System.out.println(dir);
+        //System.out.println(jarDir1);
 
         //String currentWorkingDir = System.getProperty("user.dir");
         //System.out.println("currentWorkingDir: "+currentWorkingDir);
 
-        String pathFile = findfile(filename + ESTENSIONE_CSV, new File(/*currentWorkingDir*/jarDir));
+        String pathFile = findfile(filename + ESTENSIONE_CSV, new File(/*currentWorkingDir*/jarDir1));
         if (pathFile.isEmpty()) {
             System.out.println("dati inesisteni");
             pathFile = jarDir + "/data";
@@ -150,6 +153,7 @@ public class GestioneCsv {
      * <p>
      *     questo metodo prova a creare il file
      * </p>
+     * @param file file da creare
      */
     public void creaFile(File file) {
         try {
@@ -225,6 +229,7 @@ public class GestioneCsv {
      * <p>
      *     permette di leggere il file velocemente senza ricreare gli oggetti
      * </p>
+     * @return listaRighe righe lette
      */
     public ArrayList<String> letturaFile() {
         ArrayList<String> listaRighe = new ArrayList<String>();
@@ -255,6 +260,7 @@ public class GestioneCsv {
      */
     public void scritturaFile(String dato) {
         try {
+            System.out.println(file.getName());
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(dato);
@@ -273,7 +279,9 @@ public class GestioneCsv {
      * <p>
      * ricerca e restituisce se l'attibuto esiste
      * </p>
-     * @param dato attributo da crecare
+     * @param dato dato da crecare
+     * @param attr attributo da cercare
+     * @return exist
      */
     public boolean ricercaAttrEsiste(String dato, String attr) {
         boolean exist = false;
